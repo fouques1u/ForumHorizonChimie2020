@@ -43,42 +43,7 @@ class OptionsScreen extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
-
-  Widget buildColumn(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        RaisedButton(
-          child: Text(AppLocalizations.of(context).translate('french')),
-          onPressed: () => changeLocale(Locale('fr', 'FR')),
-        ),
-        RaisedButton(
-          child: Text(AppLocalizations.of(context).translate('english')),
-          onPressed: () => changeLocale(Locale('en', 'EN')),
-        ),
-        RaisedButton(
-          child: Text('Facebook'),
-          onPressed: () => _launchFacebookUrl(_oldFacebookUrl, _facebookUrl),
-        ),
-        RaisedButton(
-          child: Text('LinkedIn'),
-          onPressed: () => _launchURL(_linkedInUrl),
-        ),
-        RaisedButton(
-          child: Text('Twitter'),
-          onPressed: () => _launchURL(_twitterUrl),
-        ),
-        RaisedButton(
-          child: Text('Maps'),
-          onPressed: () => _launchURL(_mapsUrl),
-        ),
-        RaisedButton(
-          child: Text(AppLocalizations.of(context).translate('website')),
-          onPressed: () => _launchWebviewURL(_webSiteUrl),
-        ),
-      ],
-    );
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     //return buildColumn(context);

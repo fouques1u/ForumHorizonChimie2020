@@ -1,5 +1,4 @@
 {
-    "test" : "Hello",
     "settings" : "Settings",
     "languages" : "Languages",
     "firms" : "Firms",
@@ -8,5 +7,7 @@
     "french" : "French",
     "website" : "Website",
     "choose_language" : "Choose the language",
-    "social_media" : "Social media"
+    "social_media" : "Social media",
+    "options" : "Options",
+    "home" : "Home"
 }

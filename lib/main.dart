@@ -24,8 +24,8 @@ class _MyAppState extends State<MyApp> {
     applic.onLocaleChanged = onLocaleChange;
   }
 
-  onLocaleChange(Locale locale){
-    setState((){
+  onLocaleChange(Locale locale) {
+    setState(() {
       _localeOverrideDelegate = new SpecificLocalizationDelegate(locale);
     });
   }
@@ -35,8 +35,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Forum Horizon Chimie',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primaryColor: Colors.white,
+          accentColor: Colors.lightBlue,
+          bottomAppBarColor: Colors.white,
+          textTheme: TextTheme(
+            title: TextStyle(
+              fontSize: 22,
+              color: Colors.white,
+            ),
+          )),
       home: HomePage(
         title: 'Forum Horizon Chimie',
         setNewLanguage: onLocaleChange,

@@ -11,28 +11,28 @@ class CurvedBottomNavigationBar extends StatelessWidget {
     return CurvedNavigationBar(
       animationDuration: Duration(milliseconds: 500),
       height: 60,
-      color: Colors.white,
-      backgroundColor: Colors.lightBlueAccent,
+      color: Theme.of(context).accentColor,
+      backgroundColor: Colors.white,
       animationCurve: Curves.ease,
       items: [
         Icon(
           Icons.home,
           size: 30,
-          color: Colors.lightBlue,
+          color: Theme.of(context).primaryColor,
         ),
         Icon(
           Icons.map,
-          color: Colors.lightBlue,
+          color: Theme.of(context).primaryColor,
           size: 30,
         ),
         Icon(
           Icons.event_note,
-          color: Colors.lightBlue,
+          color: Theme.of(context).primaryColor,
           size: 30,
         ),
         Icon(
           Icons.dehaze,
-          color: Colors.lightBlue,
+          color: Theme.of(context).primaryColor,
           size: 30,
         )
       ],
