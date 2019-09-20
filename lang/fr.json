@@ -3,5 +3,10 @@
     "settings" : "Paramètres",
     "languages" : "Langages",
     "firms" : "Entreprises",
-    "plan" : "Plan"
+    "plan" : "Plan",
+    "english" : "Anglais",
+    "french" : "Français",
+    "website" : "Site web",
+    "choose_language" : "Choisir la langue",
+    "social_media" : "Réseaux sociaux"
 }
