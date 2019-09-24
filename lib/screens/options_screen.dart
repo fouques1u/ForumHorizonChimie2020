@@ -43,96 +43,107 @@ class OptionsScreen extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    //return buildColumn(context);
-    return Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(15),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            AppLocalizations.of(context).translate("choose_language"),
-            style: TextStyle(color: Colors.lightBlue, fontSize: 20),
+    return Container(
+      color: Theme.of(context).primaryColor,
+          child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(15),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              AppLocalizations.of(context).translate("choose_language"),
+              style: TextStyle(color: Colors.lightBlue, fontSize: 20),
+            ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              OutlineButton(
-                child: Text(
-                  AppLocalizations.of(context).translate('french'),
-                  style: TextStyle(color: Colors.lightBlue),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                OutlineButton(
+                  child: Text(
+                    AppLocalizations.of(context).translate('french'),
+                    style: TextStyle(color: Colors.lightBlue),
+                  ),
+                  onPressed: () => changeLocale(Locale('fr', 'FR')),
+                  borderSide: BorderSide(color: Colors.lightBlue),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
                 ),
-                onPressed: () => changeLocale(Locale('fr', 'FR')),
-                borderSide: BorderSide(color: Colors.lightBlue),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-              ),
-              OutlineButton(
-                child: Text(
-                  AppLocalizations.of(context).translate('english'),
-                  style: TextStyle(color: Colors.lightBlue),
+                OutlineButton(
+                  child: Text(
+                    AppLocalizations.of(context).translate('english'),
+                    style: TextStyle(color: Colors.lightBlue),
+                  ),
+                  onPressed: () => changeLocale(Locale('en', 'EN')),
+                  borderSide: BorderSide(color: Colors.lightBlue),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
                 ),
-                onPressed: () => changeLocale(Locale('en', 'EN')),
-                borderSide: BorderSide(color: Colors.lightBlue),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        Container(
-          padding: EdgeInsets.all(15),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            AppLocalizations.of(context).translate("social_media"),
-            style: TextStyle(color: Colors.lightBlue, fontSize: 20),
+          Container(
+            padding: EdgeInsets.all(15),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              AppLocalizations.of(context).translate("social_media"),
+              style: TextStyle(color: Colors.lightBlue, fontSize: 20),
+            ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 5,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              GestureDetector(
-                child: Icon(
-                  FontAwesomeIcons.facebook,
-                  color: Color.fromRGBO(60, 90, 153, 1),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 5,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      FontAwesomeIcons.facebook,
+                      color: Color.fromRGBO(60, 90, 153, 1),
+                    ),
+                    onTap: () =>
+                        _launchFacebookUrl(_oldFacebookUrl, _facebookUrl),
+                  ),
                 ),
-                onTap: () => _launchFacebookUrl(_oldFacebookUrl, _facebookUrl),
-              ),
-              GestureDetector(
-                child: Icon(
-                  FontAwesomeIcons.linkedin,
-                  color: Color.fromRGBO(0, 119, 181, 1),
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      FontAwesomeIcons.linkedin,
+                      color: Color.fromRGBO(0, 119, 181, 1),
+                    ),
+                    onTap:  () => _launchURL(_linkedInUrl),
+                  ),
                 ),
-                onTap: () => () => _launchURL(_linkedInUrl),
-              ),
-              GestureDetector(
-                child: Icon(
-                  FontAwesomeIcons.twitter,
-                  color: Colors.lightBlue,
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      FontAwesomeIcons.twitter,
+                      color: Colors.lightBlue,
+                    ),
+                    onTap: () => _launchURL(_twitterUrl),
+                  ),
                 ),
-                onTap: () => () => _launchURL(_twitterUrl),
-              ),
-              GestureDetector(
-                child: Icon(
-                  Icons.language,
-                  color: Colors.lightBlue,
-                ),
-                onTap: () => () => _launchURL(_webSiteUrl),
-              )
-            ],
-          ),
-        )
-      ],
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.language,
+                      color: Colors.lightBlue,
+                    ),
+                    onTap: () => _launchURL(_webSiteUrl),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
