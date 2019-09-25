@@ -5,7 +5,12 @@ class FirstFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      child: Text('first floor'),
+      child: Column(
+        children: <Widget>[
+          Image.asset("assets/images/plan_rdc.png"),
+          Text('data')
+        ],
+      ),
     );
   }
 }

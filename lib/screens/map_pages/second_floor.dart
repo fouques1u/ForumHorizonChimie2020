@@ -5,7 +5,10 @@ class SecondFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      child: Text('second floor'),
+      child: Image.asset(
+        "assets/images/plan_etage_2.png",
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
