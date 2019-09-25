@@ -9,5 +9,9 @@
     "choose_language" : "Choose the language",
     "social_media" : "Social media",
     "options" : "Options",
-    "home" : "Home"
+    "home" : "Home",
+    "reserve_photo_cv" : "Reserve a cv photo appointment",
+    "name" : "Name",
+    "surname" : "Surname",
+    "available_dates" : "Available dates :"
 }

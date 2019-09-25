@@ -11,5 +11,9 @@
     "social_media" : "Réseaux sociaux",
     "options" : "Options",
     "cv_registering" : "Créneaux CV",
-    "home" : "Accueil"
+    "home" : "Accueil",
+    "reserve_photo_cv" : "Réserver son créneau photo",
+    "name" : "Nom",
+    "surname" : "Prénom",
+    "available_dates" : "Horaires disponibles : "
 }
