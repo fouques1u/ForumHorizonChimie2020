@@ -7,8 +7,10 @@ class FirstFloorPage extends StatelessWidget {
       color: Theme.of(context).primaryColor,
       child: Column(
         children: <Widget>[
-          Image.asset("assets/images/plan_rdc.png"),
-          Text('data')
+          Container(
+            alignment: Alignment.center,
+            child: Image.asset("assets/images/plan_rdc.png"),
+          ),
         ],
       ),
     );

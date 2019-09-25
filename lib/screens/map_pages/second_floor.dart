@@ -5,9 +5,11 @@ class SecondFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      child: Image.asset(
-        "assets/images/plan_etage_2.png",
-        fit: BoxFit.cover,
+      child: Container(
+        alignment: Alignment.center,
+        child: Image.asset(
+          "assets/images/plan_etage_2.png",
+        ),
       ),
     );
   }
