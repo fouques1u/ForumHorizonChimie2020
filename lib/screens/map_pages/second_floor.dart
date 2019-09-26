@@ -6,7 +6,8 @@ class SecondFloorPage extends StatelessWidget {
     return Container(
       color: Theme.of(context).primaryColor,
       child: Container(
-        alignment: Alignment.center,
+        alignment: Alignment.topLeft,
+        height: MediaQuery.of(context).size.height * 0.1, // Doesn't work
         child: Image.asset(
           "assets/images/plan_etage_2.png",
         ),

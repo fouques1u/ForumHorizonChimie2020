@@ -9,7 +9,7 @@ class CurvedBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
-      animationDuration: Duration(milliseconds: 500),
+      animationDuration: Duration(milliseconds: 650),
       height: 60,
       color: Theme.of(context).accentColor,
       backgroundColor: Colors.white,
