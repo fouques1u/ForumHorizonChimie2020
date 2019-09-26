@@ -7,7 +7,7 @@ class CvScreen extends StatelessWidget {
     return DecoratedBox(
       child: OutlineButton(
         child: Text(
-          AppLocalizations.of(context).translate('english'),
+          '8:00',
           style: TextStyle(color: Colors.lightBlue),
         ),
         onPressed: () {},
@@ -47,21 +47,53 @@ class CvScreen extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: GridView(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: MediaQuery.of(context).size.width * 0.8,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 5/2,
-              ),
+          LimitedBox(
+            maxHeight: MediaQuery.of(context).size.height * 0.4,
+            child: GridView.count(
+              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              crossAxisCount: 4,
+              childAspectRatio: 4,
               children: <Widget>[
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
+                buildTimeSlot(context),
                 buildTimeSlot(context),
                 buildTimeSlot(context),
               ],
             ),
+          ),
+          Row(
+            children: <Widget>[
+              Text('data'),
+              Text('data'),
+              Text('data'),
+              OutlineButton(
+                child: Text(AppLocalizations.of(context).translate('confirm')),
+              )
+            ],
           )
         ],
       ),
@@ -72,7 +104,7 @@ class CvScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Column(
+      child: ListView(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(15),

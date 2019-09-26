@@ -14,5 +14,6 @@
     "reserve_photo_cv" : "Reserve a cv photo appointment",
     "name" : "Name",
     "surname" : "Surname",
-    "available_dates" : "Available dates :"
+    "available_dates" : "Available dates :",
+    "confirm" : "Confirm"
 }

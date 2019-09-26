@@ -15,5 +15,6 @@
     "reserve_photo_cv" : "Réserver son créneau photo",
     "name" : "Nom",
     "surname" : "Prénom",
-    "available_dates" : "Horaires disponibles : "
+    "available_dates" : "Horaires disponibles : ",
+    "confirm" : "Confirmer"
 }
