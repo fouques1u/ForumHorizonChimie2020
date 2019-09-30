@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:forum_horizon_chimie/colors.dart';
 
 import './app_localizations.dart';
 import './application.dart';
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Forum Horizon Chimie',
       theme: ThemeData(
           primaryColor: Colors.white,
-          accentColor: Colors.lightBlue,
+          accentColor: darkBlueColor,
           bottomAppBarColor: Colors.white,
           textTheme: TextTheme(
             title: TextStyle(

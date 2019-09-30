@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:forum_horizon_chimie/colors.dart';
 
 class CurvedBottomNavigationBar extends StatelessWidget {
   final Function changePage;
@@ -11,7 +12,7 @@ class CurvedBottomNavigationBar extends StatelessWidget {
     return CurvedNavigationBar(
       animationDuration: Duration(milliseconds: 650),
       height: 60,
-      color: Theme.of(context).accentColor,
+      color: lightBlueColor,
       backgroundColor: Colors.white,
       animationCurve: Curves.ease,
       items: [
