@@ -6,7 +6,17 @@ import '../../colors.dart';
 class FirstFloorPage extends StatelessWidget {
   Widget buildCircularButton(BuildContext context, String standNumber) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return Container(
+              height: 200,
+              child: Text(standNumber),
+            );
+          }
+        );
+      },
       child: Container(
         alignment: Alignment.topLeft,
         padding: EdgeInsets.all(10),
