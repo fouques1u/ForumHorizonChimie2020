@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:forum_horizon_chimie/colors.dart';
 
+import 'package:forum_horizon_chimie/colors.dart';
 import './app_localizations.dart';
 import './application.dart';
 import 'home_page.dart';
@@ -36,15 +36,22 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Forum Horizon Chimie',
       theme: ThemeData(
-          primaryColor: Colors.white,
-          accentColor: darkBlueColor,
-          bottomAppBarColor: Colors.white,
-          textTheme: TextTheme(
-            title: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
-          )),
+        primaryColor: Colors.white,
+        accentColor: darkBlueColor,
+        bottomAppBarColor: Colors.white,
+        textTheme: TextTheme(
+          title: TextStyle(
+            fontSize: 22,
+            color: Colors.white,
+            fontFamily: 'Gotham'
+          ),
+          subtitle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'Gotham',
+          ),
+        ),
+      ),
       home: HomePage(
         title: 'Forum Horizon Chimie',
         setNewLanguage: onLocaleChange,

@@ -62,8 +62,13 @@ class _HomePageState extends State<HomePage> {
         body: _pages[_selectedPageIndex]['page'],
         bottomNavigationBar: CurvedBottomNavigationBar(
           changePage: _selectPage,
-        )
-        /*
+        ));
+  }
+}
+
+/*
+Classical Bottom navigation Bar 
+
           BottomNavigationBar(
             backgroundColor: Colors.white54,
             selectedItemColor: Colors.lightBlueAccent,
@@ -120,7 +125,4 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),*/ 
-    );
-  }
-}
+      ),*/

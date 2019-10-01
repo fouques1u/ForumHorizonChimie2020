@@ -15,5 +15,9 @@
     "name" : "Name",
     "surname" : "Surname",
     "available_dates" : "Available dates :",
-    "confirm" : "Confirm"
+    "confirm" : "Confirm",
+    "first_floor" : "FIRST FLOOR",
+    "second_floor" : "SECOND FLOOR",
+    "third_floor" : "THIRD FLOOR",
+    "search_firm" : "SEARCH A FIRM"
 }

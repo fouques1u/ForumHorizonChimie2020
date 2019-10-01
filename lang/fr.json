@@ -16,5 +16,9 @@
     "name" : "Nom",
     "surname" : "Prénom",
     "available_dates" : "Horaires disponibles : ",
-    "confirm" : "Confirmer"
+    "confirm" : "Confirmer",
+    "first_floor" : "PREMIER ETAGE",
+    "second_floor" : "DEUXIEME ETAGE",
+    "third_floor" : "TROISIEME ETAGE",
+    "search_firm" : "CHERCHER UNE ENTREPRISE"
 }
