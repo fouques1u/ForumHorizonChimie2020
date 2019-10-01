@@ -8,10 +8,11 @@ class SearchFirmPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      child: Column(
+      child: ListView(
+        scrollDirection: Axis.vertical,
         children: <Widget>[
           SizedBox(
-            height: 30,
+            height: 10,
           ),
           Container(
             width: double.infinity,

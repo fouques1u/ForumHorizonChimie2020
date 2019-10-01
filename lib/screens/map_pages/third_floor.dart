@@ -7,10 +7,11 @@ class ThirdFloorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      child: Column(
+      child: ListView(
+        scrollDirection: Axis.vertical,
         children: <Widget>[
           SizedBox(
-            height: 30,
+            height: 10,
           ),
           Container(
             width: double.infinity,
@@ -30,7 +31,12 @@ class ThirdFloorPage extends StatelessWidget {
               border: Border.all(color: Colors.white, width: 1.0),
             ),
             alignment: Alignment.center,
-            child: FittedBox(child: Text(AppLocalizations.of(context).translate('third_floor'), style: Theme.of(context).textTheme.subtitle,)),
+            child: FittedBox(
+              child: Text(
+                AppLocalizations.of(context).translate('third_floor'),
+                style: Theme.of(context).textTheme.subtitle,
+              ),
+            ),
           ),
         ],
       ),
