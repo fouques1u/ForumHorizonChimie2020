@@ -4,22 +4,19 @@ import '../../colors.dart';
 import '../../app_localizations.dart';
 
 class SecondFloorPage extends StatelessWidget {
-
   Widget buildCircularButton(BuildContext context, String standNumber) {
     return InkWell(
-          onTap: () {
-            
-          },
-          child: Container(
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: simpleBlueColor,
-            ),
-            child: Text(standNumber),
-          ),
-        );
+      onTap: () {},
+      child: Container(
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: simpleBlueColor,
+        ),
+        child: Text(standNumber),
+      ),
+    );
   }
 
   Widget buildRow(BuildContext context, List<String> standNumbers) {
@@ -75,25 +72,40 @@ class SecondFloorPage extends StatelessWidget {
             height: 20,
           ),
           Container(
-              margin: EdgeInsets.all(20),
-              width: double.infinity,
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 15.0,
-                      spreadRadius: 0.0,
-                      color: lightBlueColor)
-                ],
-                shape: BoxShape.rectangle,
-                color: darkBlueColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(children: <Widget>[
-                buildRow(context, ['201', '202', '203', '204', '205',]),
-                SizedBox(height: 10,),
-                buildRow(context, ['206', '207', '208', '209', '210',])
-              ], )),
+            margin: EdgeInsets.all(20),
+            width: double.infinity,
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    blurRadius: 15.0, spreadRadius: 0.0, color: lightBlueColor)
+              ],
+              shape: BoxShape.rectangle,
+              color: darkBlueColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: <Widget>[
+                buildRow(context, [
+                  '201',
+                  '202',
+                  '203',
+                  '204',
+                  '205',
+                ]),
+                SizedBox(
+                  height: 10,
+                ),
+                buildRow(context, [
+                  '206',
+                  '207',
+                  '208',
+                  '209',
+                  '210',
+                ])
+              ],
+            ),
+          ),
         ],
       ),
     );
