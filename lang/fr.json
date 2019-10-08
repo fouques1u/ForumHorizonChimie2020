@@ -19,6 +19,6 @@
     "confirm" : "Confirmer",
     "first_floor" : "PREMIER ETAGE",
     "second_floor" : "DEUXIEME ETAGE",
-    "third_floor" : "TROISIEME ETAGE",
+    "ground_floor" : "REZ DE CHAUSSÉE",
     "search_firm" : "CHERCHER UNE ENTREPRISE"
 }

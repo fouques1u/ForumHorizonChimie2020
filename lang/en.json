@@ -18,6 +18,6 @@
     "confirm" : "Confirm",
     "first_floor" : "FIRST FLOOR",
     "second_floor" : "SECOND FLOOR",
-    "third_floor" : "THIRD FLOOR",
+    "ground_floor" : "GROUND FLOOR",
     "search_firm" : "SEARCH A FIRM"
 }

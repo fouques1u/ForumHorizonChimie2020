@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../../app_localizations.dart';
 import '../../colors.dart';
@@ -9,9 +10,8 @@ class SearchFirmPage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/forum-apercu.jpg'),
-          fit: BoxFit.none
-        ),
+            image: AssetImage('assets/images/forum-apercu.jpg'),
+            fit: BoxFit.none),
         color: Theme.of(context).primaryColor,
       ),
       child: ListView(
@@ -20,30 +20,7 @@ class SearchFirmPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: <Color>[
-                  lightGreenColor,
-                  lightBlueColor,
-                  simpleBlueColor,
-                  darkBlueColor,
-                ],
-              ),
-              borderRadius: BorderRadius.circular(15),
-              shape: BoxShape.rectangle,
-              border: Border.all(color: Colors.white, width: 1.0),
-            ),
-            alignment: Alignment.center,
-            child: FittedBox(
-                child: Text(
-              AppLocalizations.of(context).translate('search_firm'),
-              style: Theme.of(context).textTheme.subtitle,
-            )),
-          ),
+          ClassicPageTitle(title: 'search_firm'),
         ],
       ),
     );

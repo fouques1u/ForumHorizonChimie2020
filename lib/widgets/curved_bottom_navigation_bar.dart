@@ -13,7 +13,7 @@ class CurvedBottomNavigationBar extends StatelessWidget {
       animationDuration: Duration(milliseconds: 650),
       height: 60,
       color: lightBlueColor,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       animationCurve: Curves.ease,
       items: [
         Icon(

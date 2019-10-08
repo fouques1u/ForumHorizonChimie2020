@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
+import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../../colors.dart';
 
@@ -8,14 +9,17 @@ class FirstFloorPage extends StatelessWidget {
     return InkWell(
       onTap: () {
         showModalBottomSheet(
-          context: context,
-          builder: (BuildContext context) {
-            return Container(
-              height: 200,
-              child: Text(standNumber),
-            );
-          }
-        );
+            context: context,
+            elevation: 4,
+            builder: (BuildContext context) {
+              return Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text(standNumber),
+              );
+            });
       },
       child: Container(
         alignment: Alignment.topLeft,
@@ -48,30 +52,7 @@ class FirstFloorPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: <Color>[
-                  lightGreenColor,
-                  lightBlueColor,
-                  simpleBlueColor,
-                  darkBlueColor,
-                ],
-              ),
-              borderRadius: BorderRadius.circular(15),
-              shape: BoxShape.rectangle,
-              border: Border.all(color: Colors.white, width: 1.0),
-            ),
-            alignment: Alignment.center,
-            child: FittedBox(
-                child: Text(
-              AppLocalizations.of(context).translate('first_floor'),
-              style: Theme.of(context).textTheme.subtitle,
-            )),
-          ),
+          ClassicPageTitle(title: 'ground_floor'),
           Container(
             alignment: Alignment.center,
             child: Image.asset("assets/images/plan_rdc.png"),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
-import 'package:forum_horizon_chimie/curved_bottom_navigation_bar.dart';
 
+import 'widgets/curved_bottom_navigation_bar.dart';
 import 'screens/cv_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/map_screen.dart';

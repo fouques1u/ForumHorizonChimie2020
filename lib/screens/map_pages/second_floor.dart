@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../../colors.dart';
 import '../../app_localizations.dart';
@@ -38,30 +39,7 @@ class SecondFloorPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: <Color>[
-                  lightGreenColor,
-                  lightBlueColor,
-                  simpleBlueColor,
-                  darkBlueColor,
-                ],
-              ),
-              borderRadius: BorderRadius.circular(15),
-              shape: BoxShape.rectangle,
-              border: Border.all(color: Colors.white, width: 1.0),
-            ),
-            alignment: Alignment.center,
-            child: FittedBox(
-                child: Text(
-              AppLocalizations.of(context).translate('second_floor'),
-              style: Theme.of(context).textTheme.subtitle,
-            )),
-          ),
+          ClassicPageTitle(title: 'first_floor',),
           Container(
             alignment: Alignment.topLeft,
             child: Image.asset(
