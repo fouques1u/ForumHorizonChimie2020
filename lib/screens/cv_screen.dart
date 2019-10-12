@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/colors.dart';
+import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../app_localizations.dart';
 
@@ -8,10 +10,10 @@ class CvScreen extends StatelessWidget {
       child: OutlineButton(
         child: Text(
           timePeriod,
-          style: TextStyle(color: Colors.lightBlue),
+          style: TextStyle(color: lightBlueColor),
         ),
         onPressed: () {},
-        borderSide: BorderSide(color: Colors.lightBlue),
+        borderSide: BorderSide(color: lightBlueColor),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
       decoration: BoxDecoration(
@@ -50,7 +52,7 @@ class CvScreen extends StatelessWidget {
           LimitedBox(
             maxHeight: MediaQuery.of(context).size.height * 0.4,
             child: GridView.count(
-              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              padding: EdgeInsets.all(5),
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               crossAxisCount: 4,
@@ -91,13 +93,31 @@ class CvScreen extends StatelessWidget {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text('data'),
               Text('data'),
               Text('data'),
-              OutlineButton(
-                child: Text(AppLocalizations.of(context).translate('confirm')), onPressed: () {},
-              )
+              InkWell(
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  child: Text(
+                    AppLocalizations.of(context).translate('confirm'),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  decoration: BoxDecoration(
+                      color: lightGreenColor,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: lightBlueColor,
+                          blurRadius: 5,
+                        ),
+                      ]),
+                ),
+                onTap: () {},
+              ),
             ],
           )
         ],
@@ -111,23 +131,26 @@ class CvScreen extends StatelessWidget {
       color: Colors.white,
       child: ListView(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(15),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              AppLocalizations.of(context).translate("reserve_photo_cv"),
-              style: TextStyle(color: Colors.lightBlue, fontSize: 20),
-            ),
+          SizedBox(
+            height: 10,
+          ),
+          ClassicPageTitle(
+            title: 'reserve_photo_cv',
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            decoration: BoxDecoration(),
-            child: Card(
-              color: Colors.lightGreen,
-              elevation: 4,
-              child: buildForm(context),
+            decoration: BoxDecoration(
+              color: simpleBlueColor,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4,
+                  color: lightBlueColor,
+                ),
+              ],
             ),
+            child: buildForm(context),
           ),
         ],
       ),

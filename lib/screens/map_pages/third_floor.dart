@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
-import '../../app_localizations.dart';
-import '../../colors.dart';
+
+import '../../widgets/page_title_classic.dart';
 
 class ThirdFloorPage extends StatelessWidget {
   @override
