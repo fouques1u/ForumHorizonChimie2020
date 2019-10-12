@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../../colors.dart';
@@ -43,7 +44,7 @@ class SecondFloorPage extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             child: Image.asset(
-              "assets/images/plan_etage_2.png",
+              "assets/images/plan_etage_1.png",
             ),
           ),
           SizedBox(
@@ -62,25 +63,32 @@ class SecondFloorPage extends StatelessWidget {
               color: darkBlueColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
+            child: GridView.count(
+              padding: EdgeInsets.all(5),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              crossAxisCount: 4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 3,
               children: <Widget>[
-                buildRow(context, [
-                  '201',
-                  '202',
-                  '203',
-                  '204',
-                  '205',
-                ]),
-                SizedBox(
-                  height: 10,
-                ),
-                buildRow(context, [
-                  '206',
-                  '207',
-                  '208',
-                  '209',
-                  '210',
-                ])
+                OutlineButtonClassic(text: '101', action: () {},),
+                OutlineButtonClassic(text: '102', action: () {},),
+                OutlineButtonClassic(text: '103', action: () {},),
+                OutlineButtonClassic(text: '104', action: () {},),
+                OutlineButtonClassic(text: '105', action: () {},),
+                OutlineButtonClassic(text: '106', action: () {},),
+                OutlineButtonClassic(text: '106bis', action: () {},),
+                OutlineButtonClassic(text: '107', action: () {},),
+                OutlineButtonClassic(text: '108', action: () {},),
+                OutlineButtonClassic(text: '109', action: () {},),
+                OutlineButtonClassic(text: '110', action: () {},),
+                OutlineButtonClassic(text: '111', action: () {},),
+                OutlineButtonClassic(text: '112', action: () {},),
+                OutlineButtonClassic(text: '113', action: () {},),
+                OutlineButtonClassic(text: '115', action: () {},),
+                OutlineButtonClassic(text: '116', action: () {},),
+                OutlineButtonClassic(text: '117', action: () {},),
               ],
             ),
           ),

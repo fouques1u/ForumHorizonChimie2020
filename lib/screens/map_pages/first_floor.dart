@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
+import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../../colors.dart';
@@ -47,6 +48,7 @@ class FirstFloorPage extends StatelessWidget {
     return Container(
       color: Theme.of(context).primaryColor,
       child: ListView(
+        shrinkWrap: true,
         scrollDirection: Axis.vertical,
         children: <Widget>[
           SizedBox(
@@ -74,79 +76,45 @@ class FirstFloorPage extends StatelessWidget {
               color: darkBlueColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
+            child: GridView.count(
+              padding: EdgeInsets.all(5),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              crossAxisCount: 4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 3,
               children: <Widget>[
-                buildRow(context, [
-                  '01',
-                  '02',
-                  '03',
-                  '04',
-                  '05',
-                ]),
-                SizedBox(
-                  height: 10,
-                ),
-                buildRow(context, [
-                  '06',
-                  '07',
-                  '08',
-                  '09',
-                  '10',
-                ]),
-                SizedBox(
-                  height: 10,
-                ),
-                buildRow(context, [
-                  '11',
-                  '12',
-                  '13',
-                  '14',
-                  '15',
-                ]),
-                SizedBox(
-                  height: 10,
-                ),
-                buildRow(context, [
-                  '16',
-                  '17',
-                  '18',
-                  '20',
-                  '20bis',
-                ]),
-                SizedBox(
-                  height: 10,
-                ),
-                buildRow(context, [
-                  '21',
-                  '23',
-                  '25',
-                  '26',
-                  '27',
-                ]),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    buildCircularButton(context, '28'),
-                    buildCircularButton(context, '29'),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: simpleBlueColor,
-                        ),
-                        child: Text('Handicafé'), // TODO : Translate
-                      ),
-                    )
-                  ],
-                )
+                OutlineButtonClassic(text: '1', action: () {},),
+                OutlineButtonClassic(text: '2', action: () {},),
+                OutlineButtonClassic(text: '3', action: () {},),
+                OutlineButtonClassic(text: '4', action: () {},),
+                OutlineButtonClassic(text: '5', action: () {},),
+                OutlineButtonClassic(text: '6', action: () {},),
+                OutlineButtonClassic(text: '7', action: () {},),
+                OutlineButtonClassic(text: '8', action: () {},),
+                OutlineButtonClassic(text: '9', action: () {},),
+                OutlineButtonClassic(text: '10', action: () {},),
+                OutlineButtonClassic(text: '11', action: () {},),
+                OutlineButtonClassic(text: '12', action: () {},),
+                OutlineButtonClassic(text: '13', action: () {},),
+                OutlineButtonClassic(text: '14', action: () {},),
+                OutlineButtonClassic(text: '15', action: () {},),
+                OutlineButtonClassic(text: '16', action: () {},),
+                OutlineButtonClassic(text: '17', action: () {},),
+                OutlineButtonClassic(text: '18', action: () {},),
+                OutlineButtonClassic(text: '20', action: () {},),
+                OutlineButtonClassic(text: '20bis', action: () {},),
+                OutlineButtonClassic(text: '21', action: () {},),
+                OutlineButtonClassic(text: '23', action: () {},),
+                OutlineButtonClassic(text: '25', action: () {},),
+                OutlineButtonClassic(text: '26', action: () {},),
+                OutlineButtonClassic(text: '27', action: () {},),
+                OutlineButtonClassic(text: '28', action: () {},),
+                OutlineButtonClassic(text: '29', action: () {},),
+                OutlineButtonClassic(text: 'Handicafé', action: () {},),
               ],
-            ),
+            )
           ),
         ],
       ),

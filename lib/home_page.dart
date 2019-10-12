@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       {'page': HomeScreen(), 'title_code': 'home'},
       {
         'page': MapScreen(
-            controller: PageController(keepPage: true, initialPage: 2)),
+            controller: PageController(keepPage: true, initialPage: 0)),
         'title_code': 'plan'
       },
       {'page': CvScreen(), 'title_code': 'cv_registering'},
