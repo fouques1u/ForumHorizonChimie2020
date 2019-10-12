@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/page_title_classic.dart';
 import '../../widgets/outline_button_classic.dart';
 import '../../colors.dart';
 
 class ThirdFloorPage extends StatelessWidget {
+  void showFirmInformations(BuildContext context, String standNumber) {
+    showModalBottomSheet(
+      backgroundColor: lightGreenColor,
+      context: context,
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      builder: (context) => FirmModalBottomSheet(standNumber: standNumber,),
+    );
+  }
+
+  final List<String> standNumbers = [
+    '201',
+    '202',
+    '203',
+    '204',
+    '205',
+    '206',
+    '207',
+    '208',
+    '209',
+    '210',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,18 +70,13 @@ class ThirdFloorPage extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               childAspectRatio: 3,
-              children: <Widget>[
-                OutlineButtonClassic(text: '201', action: () {},),
-                OutlineButtonClassic(text: '202', action: () {},),
-                OutlineButtonClassic(text: '203', action: () {},),
-                OutlineButtonClassic(text: '204', action: () {},),
-                OutlineButtonClassic(text: '205', action: () {},),
-                OutlineButtonClassic(text: '206', action: () {},),
-                OutlineButtonClassic(text: '207', action: () {},),
-                OutlineButtonClassic(text: '208', action: () {},),
-                OutlineButtonClassic(text: '209', action: () {},),
-                OutlineButtonClassic(text: '210', action: () {},),
-              ],
+              children: standNumbers
+                  .map((String standNumber) => OutlineButtonClassic(
+                        text: standNumber,
+                        action: () =>
+                            showFirmInformations(context, standNumber),
+                      ))
+                  .toList(),
             ),
           ),
         ],

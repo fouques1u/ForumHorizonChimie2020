@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
-import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
+import '../../widgets/firm_modal_bottom_sheet.dart';
+import '../../widgets/outline_button_classic.dart';
+import '../../widgets/page_title_classic.dart';
 import '../../colors.dart';
 import '../../app_localizations.dart';
 
 class SecondFloorPage extends StatelessWidget {
-  Widget buildCircularButton(BuildContext context, String standNumber) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: simpleBlueColor,
-        ),
-        child: Text(standNumber),
-      ),
+  void showFirmInformations(BuildContext context, String standNumber) {
+    showModalBottomSheet(
+      backgroundColor: lightGreenColor,
+      context: context,
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      builder: (context) => FirmModalBottomSheet(standNumber: standNumber,),
     );
   }
 
-  Widget buildRow(BuildContext context, List<String> standNumbers) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: standNumbers.map((standNumber) {
-        return buildCircularButton(context, standNumber);
-      }).toList(),
-    );
-  }
+  final List<String> standNumbers = [
+    '101',
+    '102',
+    '103',
+    '104',
+    '105',
+    '106',
+    '106bis',
+    '107',
+    '108',
+    '109',
+    '110',
+    '111',
+    '112',
+    '113',
+    '115',
+    '116',
+    '117',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +47,9 @@ class SecondFloorPage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          ClassicPageTitle(title: 'first_floor',),
+          ClassicPageTitle(
+            title: 'first_floor',
+          ),
           Container(
             alignment: Alignment.topLeft,
             child: Image.asset(
@@ -71,25 +80,13 @@ class SecondFloorPage extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               childAspectRatio: 3,
-              children: <Widget>[
-                OutlineButtonClassic(text: '101', action: () {},),
-                OutlineButtonClassic(text: '102', action: () {},),
-                OutlineButtonClassic(text: '103', action: () {},),
-                OutlineButtonClassic(text: '104', action: () {},),
-                OutlineButtonClassic(text: '105', action: () {},),
-                OutlineButtonClassic(text: '106', action: () {},),
-                OutlineButtonClassic(text: '106bis', action: () {},),
-                OutlineButtonClassic(text: '107', action: () {},),
-                OutlineButtonClassic(text: '108', action: () {},),
-                OutlineButtonClassic(text: '109', action: () {},),
-                OutlineButtonClassic(text: '110', action: () {},),
-                OutlineButtonClassic(text: '111', action: () {},),
-                OutlineButtonClassic(text: '112', action: () {},),
-                OutlineButtonClassic(text: '113', action: () {},),
-                OutlineButtonClassic(text: '115', action: () {},),
-                OutlineButtonClassic(text: '116', action: () {},),
-                OutlineButtonClassic(text: '117', action: () {},),
-              ],
+              children: standNumbers
+                  .map((String standNumber) => OutlineButtonClassic(
+                        text: standNumber,
+                        action: () =>
+                            showFirmInformations(context, standNumber),
+                      ))
+                  .toList(),
             ),
           ),
         ],
