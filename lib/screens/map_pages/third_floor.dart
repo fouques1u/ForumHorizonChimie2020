@@ -54,6 +54,15 @@ class ThirdFloorPage extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: <Color>[
+                  darkBlueColor,
+                  simpleBlueColor,
+                  lightBlueColor,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               boxShadow: [
                 BoxShadow(
                     blurRadius: 15.0, spreadRadius: 0.0, color: lightBlueColor)

@@ -10,22 +10,33 @@ class OutlineButtonClassic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      child: OutlineButton(
+    return InkWell(
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 1,
+          horizontal: 5,
+        ),
         child: FittedBox(
           child: Text(
             text,
-            style: TextStyle(color: lightBlueColor),
+            style: TextStyle(color: simpleBlueColor),
           ),
         ),
-        onPressed: () => action(),
-        borderSide: BorderSide(color: lightBlueColor),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Color.fromRGBO(255, 255, 255, 0.9),
+              Colors.white,
+              Color.fromRGBO(255, 255, 255, 0.9),
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+            color: Colors.white,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(15)),
       ),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(15)),
+      onTap: () => action(),
     );
   }
 }

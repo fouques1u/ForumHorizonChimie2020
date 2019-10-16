@@ -13,8 +13,11 @@ class FirstFloorPage extends StatelessWidget {
       backgroundColor: lightGreenColor,
       context: context,
       elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
-      builder: (context) => FirmModalBottomSheet(standNumber: standNumber,),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      builder: (context) => FirmModalBottomSheet(
+        standNumber: standNumber,
+      ),
     );
   }
 
@@ -73,9 +76,22 @@ class FirstFloorPage extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: <Color>[
+                  darkBlueColor,
+                  simpleBlueColor,
+                  lightBlueColor,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 15.0, spreadRadius: 0.0, color: lightBlueColor)
+                  blurRadius: 15.0,
+                  spreadRadius: 0.0,
+                  color: lightBlueColor,
+                  //offset: Offset.fromDirection(1),  See nike shop speed code vid.
+                )
               ],
               shape: BoxShape.rectangle,
               color: darkBlueColor,
