@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1039992495477",
+    "firebase_url": "https://test-3cadd.firebaseio.com",
+    "project_id": "test-3cadd",
+    "storage_bucket": "test-3cadd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039992495477:android:522b4e9160b9db583fc73c",
+        "android_client_info": {
+          "package_name": "com.example.forum_horizon_chimie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039992495477-hcca6e01ccbffssouufhec08r1142d9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUoI7dkxfg1tqW6vVYwLspy6ownxH3Ajc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039992495477-hcca6e01ccbffssouufhec08r1142d9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

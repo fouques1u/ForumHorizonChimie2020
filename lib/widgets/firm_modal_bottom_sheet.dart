@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirmModalBottomSheet extends StatelessWidget {
   final String standNumber;
@@ -11,8 +12,7 @@ class FirmModalBottomSheet extends StatelessWidget {
       'fb://page/EiffageConstruction'; // Handle versions in Facebook
   final String _facebookUrl =
       'fb://facewebmodal/f?href=https://www.facebook.com/EiffageConstruction/';
-  final String _linkedInUrl =
-      'https://www.linkedin.com/company/eiffage_2/';
+  final String _linkedInUrl = 'https://www.linkedin.com/company/eiffage_2/';
   final String _twitterUrl = 'http://www.twitter.com/eiffage';
   final String _webSiteUrl = 'https://www.eiffage.com';
 
@@ -63,53 +63,54 @@ class FirmModalBottomSheet extends StatelessWidget {
             ),
             textAlign: TextAlign.justify,
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.white70,
-              borderRadius: BorderRadiusDirectional.circular(15)
-            ),
+                color: Colors.white70,
+                borderRadius: BorderRadiusDirectional.circular(15)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(
-                    child: GestureDetector(
-                      child: Icon(
-                        FontAwesomeIcons.facebook,
-                        color: Color.fromRGBO(60, 90, 153, 1),
-                      ),
-                      onTap: () =>
-                          _launchFacebookUrl(_oldFacebookUrl, _facebookUrl),
+                  child: GestureDetector(
+                    child: Icon(
+                      FontAwesomeIcons.facebook,
+                      color: Color.fromRGBO(60, 90, 153, 1),
                     ),
+                    onTap: () =>
+                        _launchFacebookUrl(_oldFacebookUrl, _facebookUrl),
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      child: Icon(
-                        FontAwesomeIcons.linkedin,
-                        color: Color.fromRGBO(0, 119, 181, 1),
-                      ),
-                      onTap:  () => _launchURL(_linkedInUrl),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      FontAwesomeIcons.linkedin,
+                      color: Color.fromRGBO(0, 119, 181, 1),
                     ),
+                    onTap: () => _launchURL(_linkedInUrl),
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      child: Icon(
-                        FontAwesomeIcons.twitter,
-                        color: Colors.lightBlue,
-                      ),
-                      onTap: () => _launchURL(_twitterUrl),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      FontAwesomeIcons.twitter,
+                      color: Colors.lightBlue,
                     ),
+                    onTap: () => _launchURL(_twitterUrl),
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      child: Icon(
-                        Icons.language,
-                        color: Colors.lightBlue,
-                      ),
-                      onTap: () => _launchURL(_webSiteUrl),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.language,
+                      color: Colors.lightBlue,
                     ),
-                  )
+                    onTap: () => _launchURL(_webSiteUrl),
+                  ),
+                )
               ],
             ),
           )
