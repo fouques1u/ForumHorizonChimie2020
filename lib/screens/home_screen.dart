@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Text('data'),
           if (data.data != null) Text(data.data['nom'].toString()),
+          if (data.data != null) Text(data.data['stand'].toString()),
         ]);
       },
     );

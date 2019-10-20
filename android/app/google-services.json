@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "1039992495477",
-    "firebase_url": "https://test-3cadd.firebaseio.com",
-    "project_id": "test-3cadd",
-    "storage_bucket": "test-3cadd.appspot.com"
+    "project_number": "233375140951",
+    "firebase_url": "https://forumhorizonchimie-3d3a8.firebaseio.com",
+    "project_id": "forumhorizonchimie-3d3a8",
+    "storage_bucket": "forumhorizonchimie-3d3a8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1039992495477:android:522b4e9160b9db583fc73c",
+        "mobilesdk_app_id": "1:233375140951:android:98c11b92ef3152d07f6712",
         "android_client_info": {
           "package_name": "com.example.forum_horizon_chimie"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1039992495477-hcca6e01ccbffssouufhec08r1142d9s.apps.googleusercontent.com",
+          "client_id": "233375140951-7p1a59kjja5fohppja7ef67mvfj7gvps.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCUoI7dkxfg1tqW6vVYwLspy6ownxH3Ajc"
+          "current_key": "AIzaSyAomJF6iEVczYU3r0CuzYpgWBtVOIqtA_4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1039992495477-hcca6e01ccbffssouufhec08r1142d9s.apps.googleusercontent.com",
+              "client_id": "233375140951-7p1a59kjja5fohppja7ef67mvfj7gvps.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "233375140951-oltqd7a0rkgk3g6b48ecbf7at6stls7n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.forumHorizonChimie"
+              }
             }
           ]
         }
