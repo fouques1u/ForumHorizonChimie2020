@@ -5,25 +5,12 @@ import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../app_localizations.dart';
 
-class CvScreen extends StatelessWidget {
-  Widget buildTimeSlot(BuildContext context, String timePeriod) {
-    return DecoratedBox(
-      child: OutlineButton(
-        child: Text(
-          timePeriod,
-          style: TextStyle(color: lightBlueColor),
-        ),
-        onPressed: () {},
-        borderSide: BorderSide(color: lightBlueColor),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      ),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(15)),
-    );
-  }
+class CvScreen extends StatefulWidget {
+  @override
+  _CvScreenState createState() => _CvScreenState();
+}
 
+class _CvScreenState extends State<CvScreen> {
   Widget buildForm(BuildContext context) {
     return Container(
       alignment: Alignment.topLeft,
@@ -153,6 +140,15 @@ class CvScreen extends StatelessWidget {
                   color: lightBlueColor,
                 ),
               ],
+              gradient: LinearGradient(
+                colors: <Color>[
+                  lightBlueColor,
+                  simpleBlueColor,
+                  darkBlueColor,
+                ],
+                end: Alignment.topLeft,
+                begin: Alignment.bottomRight,
+              ),
             ),
             child: buildForm(context),
           ),
