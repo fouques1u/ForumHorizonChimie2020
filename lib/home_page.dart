@@ -20,11 +20,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Map<String, Object>> _pages;
   int _selectedPageIndex = 0;
+  int _mapPageIndex = 0;
 
   void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;
     });
+  }
+
+  void _selectDestination(int indexScreen, int mapIndexScreen, bool specifyMapIndex) {
+    _selectedPageIndex = indexScreen;
+    if (specifyMapIndex) {
+      _mapPageIndex = mapIndexScreen;
+    } 
   }
 
   @override
@@ -35,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       {'page': HomeScreen(), 'title_code': 'home'},
       {
         'page': MapScreen(
-            controller: PageController(keepPage: true, initialPage: 0)),
+            controller: PageController(initialPage: _mapPageIndex)),
         'title_code': 'plan'
       },
       {'page': CvScreen(), 'title_code': 'cv_registering'},

@@ -5,31 +5,15 @@ import 'package:forum_horizon_chimie/app_localizations.dart';
 import 'package:forum_horizon_chimie/colors.dart';
 import 'package:forum_horizon_chimie/widgets/grid_tile_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
+import '../data.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
+class HomeScreen extends StatelessWidget {
+  final Function selectDestination;
 
-class _HomeScreenState extends State<HomeScreen> {
-  @override
+  HomeScreen({@required this.selectDestination});
+  
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Firestore.instance.collection('firms').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return Text('Loading...');
-        var data = snapshot.data.documents[0];
-        return Column(children: <Widget>[
-          SizedBox(
-            height: 50,
-          ),
-          Text('data'),
-          if (data.data != null) Text(data.data['nom'].toString()),
-          if (data.data != null) Text(data.data['stand'].toString()),
-        ]);
-      },
-    );
-    /*Container(
+    return Container(
       color: Theme.of(context).primaryColor,
       child: ListView(
         children: <Widget>[
@@ -51,6 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-    );*/
+    );
   }
 }

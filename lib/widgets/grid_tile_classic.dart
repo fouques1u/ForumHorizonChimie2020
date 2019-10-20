@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../data.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
 
 class GridTileClassic extends StatelessWidget {
@@ -9,33 +11,34 @@ class GridTileClassic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      child: FittedBox(
-        alignment: Alignment.bottomRight,
-        child: Text(
-          AppLocalizations.of(context).translate(textCode),
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Gotham',
+    return InkWell(
+      onTap: () {
+        getFirms();
+      },
+      child: Container(
+        padding: EdgeInsets.all(15),
+        child: FittedBox(
+          alignment: Alignment.bottomRight,
+          child: Text(
+            AppLocalizations.of(context).translate(textCode),
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Gotham',
+            ),
           ),
         ),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        shape: BoxShape.rectangle,
-        color: colorTile,
-        gradient: LinearGradient(
-          colors: <Color>[
-            colorTile,
-            Colors.white
-          ],
-          begin: Alignment.bottomRight,
-          end: Alignment.topLeft,
-        ),
-        boxShadow: <BoxShadow>[
-          BoxShadow(color: colorTile, blurRadius: 6, spreadRadius: 0),
-        ]
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            shape: BoxShape.rectangle,
+            color: colorTile,
+            gradient: LinearGradient(
+              colors: <Color>[colorTile, Colors.white],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+            ),
+            boxShadow: <BoxShadow>[
+              BoxShadow(color: colorTile, blurRadius: 6, spreadRadius: 0),
+            ]),
       ),
     );
   }
