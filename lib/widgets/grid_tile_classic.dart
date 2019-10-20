@@ -6,14 +6,15 @@ import 'package:forum_horizon_chimie/app_localizations.dart';
 class GridTileClassic extends StatelessWidget {
   final Color colorTile;
   final String textCode;
+  final Function onTapFunction;
 
-  GridTileClassic({@required this.colorTile, @required this.textCode});
+  GridTileClassic({@required this.colorTile, @required this.textCode, @required this.onTapFunction});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        getFirms();
+        onTapFunction();
       },
       child: Container(
         padding: EdgeInsets.all(15),
@@ -24,6 +25,7 @@ class GridTileClassic extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Gotham',
+              fontSize: 10,
             ),
           ),
         ),
@@ -31,11 +33,7 @@ class GridTileClassic extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             shape: BoxShape.rectangle,
             color: colorTile,
-            gradient: LinearGradient(
-              colors: <Color>[colorTile, Colors.white],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
-            ),
+            
             boxShadow: <BoxShadow>[
               BoxShadow(color: colorTile, blurRadius: 6, spreadRadius: 0),
             ]),

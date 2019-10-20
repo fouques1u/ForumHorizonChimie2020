@@ -4,12 +4,14 @@ import 'package:forum_horizon_chimie/colors.dart';
 
 class CurvedBottomNavigationBar extends StatelessWidget {
   final Function changePage;
+  final Key bottomNavigationKey;
 
-  CurvedBottomNavigationBar({this.changePage});
+  CurvedBottomNavigationBar({this.changePage, this.bottomNavigationKey});
 
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+      key: bottomNavigationKey,
       animationDuration: Duration(milliseconds: 650),
       height: 60,
       color: lightGreenColor,

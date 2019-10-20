@@ -6,7 +6,7 @@ import 'package:forum_horizon_chimie/screens/map_pages/third_floor.dart';
 import './map_pages/search_firm.dart';
 
 class MapScreen extends StatefulWidget {
-  PageController controller;
+  final PageController controller;
 
   MapScreen({@required this.controller});
 
@@ -22,7 +22,7 @@ class _MapScreenState extends State<MapScreen> {
       scrollDirection: Axis.horizontal,
       pageSnapping: true,
       children: <Widget>[
-        SearchFirmPage(),
+        SearchFirmPage(pageController: widget.controller),
         FirstFloorPage(),
         SecondFloorPage(),
         ThirdFloorPage(),

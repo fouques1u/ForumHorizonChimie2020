@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
 
@@ -18,9 +19,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey _bottomNavigationKey = GlobalKey();
+  final PageController _pageController = PageController();
   List<Map<String, Object>> _pages;
+  CurvedNavigationBarState _navigationBarState;
   int _selectedPageIndex = 0;
-  int _mapPageIndex = 0;
 
   void _selectPage(int index) {
     setState(() {
@@ -28,22 +31,28 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _selectDestination(int indexScreen, int mapIndexScreen, bool specifyMapIndex) {
-    _selectedPageIndex = indexScreen;
-    if (specifyMapIndex) {
-      _mapPageIndex = mapIndexScreen;
-    } 
+  void _selectDestination(int indexScreen) {
+    setState(() {
+      _selectedPageIndex = indexScreen;
+      _navigationBarState = _bottomNavigationKey.currentState;
+      _navigationBarState.setPage(_selectedPageIndex);
+    });
   }
 
   @override
   void initState() {
     super.initState();
-
     _pages = [
-      {'page': HomeScreen(), 'title_code': 'home'},
+      {
+        'page': HomeScreen(
+          selectDestination: _selectDestination,
+        ),
+        'title_code': 'home'
+      },
       {
         'page': MapScreen(
-            controller: PageController(initialPage: _mapPageIndex)),
+          controller: _pageController,
+        ),
         'title_code': 'plan'
       },
       {'page': CvScreen(), 'title_code': 'cv_registering'},
@@ -59,78 +68,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        /*appBar: AppBar(
-        backgroundColor: Theme.of(context).accentColor,
-        title: Text(
-          AppLocalizations.of(context)
-              .translate(_pages[_selectedPageIndex]['title_code']),
-          style: Theme.of(context).textTheme.title,
-        ),
-      ),*/
         body: _pages[_selectedPageIndex]['page'],
         bottomNavigationBar: CurvedBottomNavigationBar(
+          bottomNavigationKey: _bottomNavigationKey,
           changePage: _selectPage,
         ));
   }
 }
-
-/*
-Classical Bottom navigation Bar 
-
-          BottomNavigationBar(
-            backgroundColor: Colors.white54,
-            selectedItemColor: Colors.lightBlueAccent,
-            unselectedItemColor: Colors.lightBlue,
-        currentIndex: _selectedPageIndex,
-        onTap: (index) => _selectPage(index),
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.lightBlue,
-            ),
-            title: Text(
-              AppLocalizations.of(context).translate('home'),
-              style: TextStyle(
-                color: Colors.lightBlue,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.map,
-              color: Colors.lightBlue,
-            ),
-            title: Text(
-              AppLocalizations.of(context).translate('plan'),
-              style: TextStyle(
-                color: Colors.lightBlue,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.event_note,
-              color: Colors.lightBlue,
-            ),
-            title: Text(
-              AppLocalizations.of(context).translate('cv_registering'),
-              style: TextStyle(
-                color: Colors.lightBlue,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.dehaze,
-              color: Colors.lightBlue,
-            ),
-            title: Text(
-              AppLocalizations.of(context).translate('options'),
-              style: TextStyle(
-                color: Colors.lightBlue,
-              ),
-            ),
-          ),
-        ],
-      ),*/

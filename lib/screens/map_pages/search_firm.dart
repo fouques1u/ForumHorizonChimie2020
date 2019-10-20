@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/grid_tile_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
 import '../../app_localizations.dart';
@@ -6,6 +7,9 @@ import '../../colors.dart';
 
 class SearchFirmPage extends StatelessWidget {
   TextEditingController _editingController = TextEditingController();
+  final PageController pageController;
+
+  SearchFirmPage({@required this.pageController});
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +42,46 @@ class SearchFirmPage extends StatelessWidget {
               controller: _editingController,
               backgroundCursorColor: darkBlueColor,
               cursorColor: simpleBlueColor,
-              style: TextStyle(color: darkBlueColor, fontFamily: 'Gotham', fontSize: 20, ),
+              style: TextStyle(
+                color: darkBlueColor,
+                fontFamily: 'Gotham',
+                fontSize: 20,
+              ),
               focusNode: FocusNode(),
             ),
+          ),
+          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              GridTileClassic(
+                colorTile: darkBlueColor,
+                textCode: "ground_floor",
+                onTapFunction: () => pageController.animateToPage(
+                  1,
+                  curve: Curves.ease,
+                  duration: Duration(milliseconds: 650),
+                )
+              ),
+              GridTileClassic(
+                colorTile: simpleBlueColor,
+                textCode: "first_floor",
+                onTapFunction: () => pageController.animateToPage(
+                  2,
+                  curve: Curves.ease,
+                  duration: Duration(milliseconds: 650),
+                )
+              ),
+              GridTileClassic(
+                colorTile: lightBlueColor,
+                textCode: "second_floor",
+                onTapFunction: () => pageController.animateToPage(
+                  3,
+                  curve: Curves.ease,
+                  duration: Duration(milliseconds: 650),
+                )
+              ),
+            ],
           )
         ],
       ),

@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   final Function selectDestination;
 
   HomeScreen({@required this.selectDestination});
-  
+
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
@@ -21,16 +21,27 @@ class HomeScreen extends StatelessWidget {
             title: "home",
           ),
           GridView.count(
-            padding: EdgeInsets.all(20),
             shrinkWrap: true,
-            crossAxisCount: 2,
+            padding: EdgeInsets.all(20),
+            crossAxisCount: 3,
             crossAxisSpacing: 15,
             mainAxisSpacing: 15,
             children: <Widget>[
-              GridTileClassic(colorTile: darkBlueColor, textCode: "home",),
-              GridTileClassic(colorTile: simpleBlueColor, textCode: "home",),
-              GridTileClassic(colorTile: lightBlueColor, textCode: "home",),
-              GridTileClassic(colorTile: lightGreenColor, textCode: "home",),
+              GridTileClassic(
+                colorTile: darkBlueColor,
+                textCode: "firms",
+                onTapFunction: () => selectDestination(1),
+              ),
+              GridTileClassic(
+                colorTile: simpleBlueColor,
+                textCode: "cv_registering",
+                onTapFunction: () => selectDestination(2),
+              ),
+              GridTileClassic(
+                colorTile: lightBlueColor,
+                textCode: "options",
+                onTapFunction: () => selectDestination(3),
+              ),
             ],
           ),
         ],
