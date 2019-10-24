@@ -19,7 +19,7 @@ class OutlineButtonClassic extends StatelessWidget {
         child: FittedBox(
           child: Text(
             text,
-            style: TextStyle(color: simpleBlueColor),
+            style: TextStyle(color: lightBlueColor),
           ),
         ),
         decoration: BoxDecoration(

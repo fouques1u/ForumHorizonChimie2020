@@ -142,7 +142,6 @@ class _CvScreenState extends State<CvScreen> {
               ],
               gradient: LinearGradient(
                 colors: <Color>[
-                  lightBlueColor,
                   simpleBlueColor,
                   darkBlueColor,
                 ],

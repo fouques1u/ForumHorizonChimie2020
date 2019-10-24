@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:forum_horizon_chimie/widgets/grid_tile_classic.dart';
-import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
+import '../../widgets/grid_tile_classic.dart';
+import '../../widgets/page_title_classic.dart';
 import '../../app_localizations.dart';
 import '../../colors.dart';
 

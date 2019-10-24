@@ -80,7 +80,6 @@ class FirstFloorPage extends StatelessWidget {
                 colors: <Color>[
                   darkBlueColor,
                   simpleBlueColor,
-                  lightBlueColor,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,

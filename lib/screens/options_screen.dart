@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:forum_horizon_chimie/colors.dart';
+import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -48,14 +51,15 @@ class OptionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-          child: Column(
+      child: ListView(
         children: <Widget>[
+          ClassicPageTitle(title: "options",),
           Container(
             padding: EdgeInsets.all(15),
             alignment: Alignment.centerLeft,
             child: Text(
               AppLocalizations.of(context).translate("choose_language"),
-              style: TextStyle(color: Colors.lightBlue, fontSize: 20),
+              style: TextStyle(color: simpleBlueColor, fontSize: titleTextSize),
             ),
           ),
           Container(
@@ -66,20 +70,20 @@ class OptionsScreen extends StatelessWidget {
                 OutlineButton(
                   child: Text(
                     AppLocalizations.of(context).translate('french'),
-                    style: TextStyle(color: Colors.lightBlue),
+                    style: TextStyle(color: lightBlueColor),
                   ),
                   onPressed: () => changeLocale(Locale('fr', 'FR')),
-                  borderSide: BorderSide(color: Colors.lightBlue),
+                  borderSide: BorderSide(color: lightBlueColor),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                 ),
                 OutlineButton(
                   child: Text(
                     AppLocalizations.of(context).translate('english'),
-                    style: TextStyle(color: Colors.lightBlue),
+                    style: TextStyle(color: lightBlueColor),
                   ),
                   onPressed: () => changeLocale(Locale('en', 'EN')),
-                  borderSide: BorderSide(color: Colors.lightBlue),
+                  borderSide: BorderSide(color: lightBlueColor),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                 ),
@@ -91,7 +95,7 @@ class OptionsScreen extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               AppLocalizations.of(context).translate("social_media"),
-              style: TextStyle(color: Colors.lightBlue, fontSize: 20),
+              style: TextStyle(color: simpleBlueColor, fontSize: 20),
             ),
           ),
           Container(
@@ -118,7 +122,7 @@ class OptionsScreen extends StatelessWidget {
                       FontAwesomeIcons.linkedin,
                       color: Color.fromRGBO(0, 119, 181, 1),
                     ),
-                    onTap:  () => _launchURL(_linkedInUrl),
+                    onTap: () => _launchURL(_linkedInUrl),
                   ),
                 ),
                 Expanded(
@@ -134,7 +138,7 @@ class OptionsScreen extends StatelessWidget {
                   child: GestureDetector(
                     child: Icon(
                       Icons.language,
-                      color: Colors.lightBlue,
+                      color: lightBlueColor,
                     ),
                     onTap: () => _launchURL(_webSiteUrl),
                   ),

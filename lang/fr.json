@@ -12,13 +12,13 @@
     "social_media" : "Réseaux sociaux",
     "options" : "Options",
     "home" : "Accueil",
-    "reserve_photo_cv" : "RÉSERVER SON CRÉNEAU PHOTO",
+    "reserve_photo_cv" : "Réserver son créneau photo",
     "name" : "Nom",
     "surname" : "Prénom",
     "available_dates" : "Horaires disponibles : ",
     "confirm" : "Confirmer",
-    "first_floor" : "PREMIER ETAGE",
-    "second_floor" : "DEUXIEME ETAGE",
-    "ground_floor" : "REZ DE CHAUSSÉE",
-    "search_firm" : "CHERCHER UNE ENTREPRISE"
+    "first_floor" : "Premier étage",
+    "second_floor" : "Deuxième étage",
+    "ground_floor" : "Rez de chaussée",
+    "search_firm" : "Chercher une entreprise"
 }

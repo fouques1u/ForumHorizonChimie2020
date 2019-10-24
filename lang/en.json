@@ -11,13 +11,13 @@
     "social_media" : "Social media",
     "options" : "Options",
     "home" : "Home",
-    "reserve_photo_cv" : "RESERVE A CV PHOTO APPOINTMENT",
+    "reserve_photo_cv" : "Reserve a cv photo appointment",
     "name" : "Name",
     "surname" : "Surname",
     "available_dates" : "Available dates :",
     "confirm" : "Confirm",
-    "first_floor" : "FIRST FLOOR",
-    "second_floor" : "SECOND FLOOR",
-    "ground_floor" : "GROUND FLOOR",
-    "search_firm" : "SEARCH A FIRM"
+    "first_floor" : "First floor",
+    "second_floor" : "Second floor",
+    "ground_floor" : "Ground floor",
+    "search_firm" : "Search a firm"
 }
