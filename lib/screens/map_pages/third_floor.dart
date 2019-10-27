@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/arrow.dart';
 
 import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/page_title_classic.dart';
@@ -6,6 +7,10 @@ import '../../widgets/outline_button_classic.dart';
 import '../../colors.dart';
 
 class ThirdFloorPage extends StatelessWidget {
+  final PageController pageController;
+
+  ThirdFloorPage({@required this.pageController});
+
   void showFirmInformations(BuildContext context, String standNumber) {
     showModalBottomSheet(
       backgroundColor: lightGreenColor,
@@ -87,6 +92,20 @@ class ThirdFloorPage extends StatelessWidget {
                   .toList(),
             ),
           ),
+          Container(
+                child: Arrow(
+                  onPressed: () {
+                    pageController.animateToPage(
+                      2,
+                      curve: Curves.ease,
+                      duration: Duration(milliseconds: 650),
+                    );
+                  },
+                  isForward: false,
+                ),
+                alignment: Alignment.bottomLeft,
+                margin: EdgeInsets.all(20),
+              ),
         ],
       ),
     );

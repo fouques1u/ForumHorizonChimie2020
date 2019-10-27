@@ -23,9 +23,9 @@ class _MapScreenState extends State<MapScreen> {
       pageSnapping: true,
       children: <Widget>[
         SearchFirmPage(pageController: widget.controller),
-        FirstFloorPage(),
-        SecondFloorPage(),
-        ThirdFloorPage(),
+        FirstFloorPage(pageController: widget.controller),
+        SecondFloorPage(pageController: widget.controller),
+        ThirdFloorPage(pageController: widget.controller),
       ],
     );
   }

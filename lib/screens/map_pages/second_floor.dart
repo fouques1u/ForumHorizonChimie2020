@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/arrow.dart';
 
 import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/outline_button_classic.dart';
@@ -7,13 +8,20 @@ import '../../colors.dart';
 import '../../app_localizations.dart';
 
 class SecondFloorPage extends StatelessWidget {
+  final PageController pageController;
+
+  SecondFloorPage({@required this.pageController});
+
   void showFirmInformations(BuildContext context, String standNumber) {
     showModalBottomSheet(
       backgroundColor: lightGreenColor,
       context: context,
       elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
-      builder: (context) => FirmModalBottomSheet(standNumber: standNumber,),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      builder: (context) => FirmModalBottomSheet(
+        standNumber: standNumber,
+      ),
     );
   }
 
@@ -96,6 +104,37 @@ class SecondFloorPage extends StatelessWidget {
                       ))
                   .toList(),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                child: Arrow(
+                  onPressed: () {
+                    pageController.animateToPage(
+                      1,
+                      curve: Curves.ease,
+                      duration: Duration(milliseconds: 650),
+                    );
+                  },
+                  isForward: false,
+                ),
+                margin: EdgeInsets.all(20),
+              ),
+              Container(
+                child: Arrow(
+                  onPressed: () {
+                    pageController.animateToPage(
+                      3,
+                      curve: Curves.ease,
+                      duration: Duration(milliseconds: 650),
+                    );
+                  },
+                  isForward: true,
+                ),
+                margin: EdgeInsets.all(20),
+              ),
+            ],
           ),
         ],
       ),

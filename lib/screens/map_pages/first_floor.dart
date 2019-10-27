@@ -2,12 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:forum_horizon_chimie/app_localizations.dart';
+import 'package:forum_horizon_chimie/widgets/arrow.dart';
 import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../colors.dart';
 
 class FirstFloorPage extends StatelessWidget {
+  final PageController pageController;
+
+  FirstFloorPage({@required this.pageController});
+
   void showFirmInformations(BuildContext context, String standNumber) {
     showModalBottomSheet(
       backgroundColor: lightGreenColor,
@@ -113,6 +118,37 @@ class FirstFloorPage extends StatelessWidget {
                   )
                   .toList(),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                child: Arrow(
+                  onPressed: () {
+                    pageController.animateToPage(
+                      0,
+                      curve: Curves.ease,
+                      duration: Duration(milliseconds: 650),
+                    );
+                  },
+                  isForward: false,
+                ),
+                margin: EdgeInsets.all(20),
+              ),
+              Container(
+                child: Arrow(
+                  onPressed: () {
+                    pageController.animateToPage(
+                      2,
+                      curve: Curves.ease,
+                      duration: Duration(milliseconds: 650),
+                    );
+                  },
+                  isForward: true,
+                ),
+                margin: EdgeInsets.all(20),
+              ),
+            ],
           ),
         ],
       ),

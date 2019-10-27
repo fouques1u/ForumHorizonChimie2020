@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/arrow.dart';
 
 import '../../widgets/grid_tile_classic.dart';
 import '../../widgets/page_title_classic.dart';
@@ -50,39 +51,52 @@ class SearchFirmPage extends StatelessWidget {
               focusNode: FocusNode(),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               GridTileClassic(
-                colorTile: darkBlueColor,
-                textCode: "ground_floor",
-                onTapFunction: () => pageController.animateToPage(
+                  colorTile: darkBlueColor,
+                  textCode: "ground_floor",
+                  onTapFunction: () => pageController.animateToPage(
+                        1,
+                        curve: Curves.ease,
+                        duration: Duration(milliseconds: 650),
+                      )),
+              GridTileClassic(
+                  colorTile: simpleBlueColor,
+                  textCode: "first_floor",
+                  onTapFunction: () => pageController.animateToPage(
+                        2,
+                        curve: Curves.ease,
+                        duration: Duration(milliseconds: 650),
+                      )),
+              GridTileClassic(
+                  colorTile: lightBlueColor,
+                  textCode: "second_floor",
+                  onTapFunction: () => pageController.animateToPage(
+                        3,
+                        curve: Curves.ease,
+                        duration: Duration(milliseconds: 650),
+                      )),
+            ],
+          ),
+          Container(
+            child: Arrow(
+              onPressed: () {
+                pageController.animateToPage(
                   1,
                   curve: Curves.ease,
                   duration: Duration(milliseconds: 650),
-                )
-              ),
-              GridTileClassic(
-                colorTile: simpleBlueColor,
-                textCode: "first_floor",
-                onTapFunction: () => pageController.animateToPage(
-                  2,
-                  curve: Curves.ease,
-                  duration: Duration(milliseconds: 650),
-                )
-              ),
-              GridTileClassic(
-                colorTile: lightBlueColor,
-                textCode: "second_floor",
-                onTapFunction: () => pageController.animateToPage(
-                  3,
-                  curve: Curves.ease,
-                  duration: Duration(milliseconds: 650),
-                )
-              ),
-            ],
-          )
+                );
+              },
+              isForward: true,
+            ),
+            alignment: Alignment.bottomRight,
+            margin: EdgeInsets.all(20),
+          ),
         ],
       ),
     );
