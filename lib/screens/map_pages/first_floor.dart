@@ -64,9 +64,6 @@ class FirstFloorPage extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
           ClassicPageTitle(title: 'ground_floor'),
           Container(
             alignment: Alignment.center,

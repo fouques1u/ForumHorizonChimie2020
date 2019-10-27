@@ -20,13 +20,10 @@ class GridTileClassic extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: FittedBox(
           alignment: Alignment.bottomRight,
+          fit: BoxFit.scaleDown,
           child: Text(
             AppLocalizations.of(context).translate(textCode),
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Gotham',
-              fontSize: 10,
-            ),
+            style: Theme.of(context).textTheme.body1,
           ),
         ),
         decoration: BoxDecoration(

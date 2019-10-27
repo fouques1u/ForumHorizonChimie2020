@@ -95,7 +95,7 @@ class OptionsScreen extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               AppLocalizations.of(context).translate("social_media"),
-              style: TextStyle(color: simpleBlueColor, fontSize: 20),
+              style: TextStyle(color: simpleBlueColor, fontSize: titleTextSize),
             ),
           ),
           Container(

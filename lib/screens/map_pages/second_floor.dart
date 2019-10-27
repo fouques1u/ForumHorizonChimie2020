@@ -51,9 +51,6 @@ class SecondFloorPage extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
           ClassicPageTitle(
             title: 'first_floor',
           ),

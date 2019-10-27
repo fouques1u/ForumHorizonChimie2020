@@ -43,6 +43,7 @@ class _CvScreenState extends State<CvScreen> {
           ),
           LimitedBox(
             maxHeight: MediaQuery.of(context).size.height * 0.4,
+
             child: GridView.count(
               padding: EdgeInsets.all(5),
               crossAxisSpacing: 10,
@@ -129,15 +130,12 @@ class _CvScreenState extends State<CvScreen> {
       color: Colors.white,
       child: ListView(
         children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
           ClassicPageTitle(
             title: 'reserve_photo_cv',
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
             decoration: BoxDecoration(
               color: simpleBlueColor,
               borderRadius: BorderRadius.circular(10),

@@ -23,9 +23,6 @@ class SearchFirmPage extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
           ClassicPageTitle(title: 'search_firm'),
           Container(
             padding: EdgeInsets.all(10),

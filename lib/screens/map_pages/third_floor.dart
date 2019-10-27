@@ -41,9 +41,6 @@ class ThirdFloorPage extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
           ClassicPageTitle(
             title: 'second_floor',
           ),
