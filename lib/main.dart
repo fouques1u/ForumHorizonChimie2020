@@ -40,6 +40,11 @@ class _MyAppState extends State<MyApp> {
         accentColor: darkBlueColor,
         bottomAppBarColor: Colors.white,
         textTheme: TextTheme(
+          body1: TextStyle(
+            fontSize: 14,
+            fontFamily: 'Gotham',
+            color: Colors.white,
+          ),
           title: TextStyle(
             fontSize: 22,
             color: Colors.white,

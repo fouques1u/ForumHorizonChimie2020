@@ -18,23 +18,27 @@ class _CvScreenState extends State<CvScreen> {
       child: Column(
         children: <Widget>[
           TextField(
+            style: Theme.of(context).textTheme.body1,
             decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: AppLocalizations.of(context).translate('name')),
+              border: InputBorder.none,
+              hintText: AppLocalizations.of(context).translate('name'),
+              hintStyle: Theme.of(context).textTheme.body1,
+            ),
           ),
           TextField(
+            style: Theme.of(context).textTheme.body1,
             decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: AppLocalizations.of(context).translate('surname')),
+              border: InputBorder.none,
+              hintText: AppLocalizations.of(context).translate('surname'),
+              hintStyle: Theme.of(context).textTheme.body1,
+            ),
           ),
           Container(
             alignment: Alignment.topLeft,
-            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
             child: Text(
               AppLocalizations.of(context).translate('available_dates'),
-              style: TextStyle(
-                fontSize: 16,
-              ),
+              style: Theme.of(context).textTheme.subtitle,
             ),
           ),
           LimitedBox(
@@ -83,12 +87,15 @@ class _CvScreenState extends State<CvScreen> {
               ],
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text('data'),
-              Text('data'),
-              Text('data'),
+              Text('data', style: Theme.of(context).textTheme.body1),
+              Text('data', style: Theme.of(context).textTheme.body1),
+              Text('data', style: Theme.of(context).textTheme.body1),
               InkWell(
                 child: Container(
                   padding: EdgeInsets.all(5),

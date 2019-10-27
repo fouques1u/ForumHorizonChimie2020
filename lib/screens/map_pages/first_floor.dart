@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:forum_horizon_chimie/app_localizations.dart';
 import 'package:forum_horizon_chimie/widgets/arrow.dart';
 import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';

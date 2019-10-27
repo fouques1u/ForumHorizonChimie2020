@@ -5,7 +5,6 @@ import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/outline_button_classic.dart';
 import '../../widgets/page_title_classic.dart';
 import '../../colors.dart';
-import '../../app_localizations.dart';
 
 class SecondFloorPage extends StatelessWidget {
   final PageController pageController;

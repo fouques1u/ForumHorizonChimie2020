@@ -3,7 +3,6 @@ import 'package:forum_horizon_chimie/widgets/arrow.dart';
 
 import '../../widgets/grid_tile_classic.dart';
 import '../../widgets/page_title_classic.dart';
-import '../../app_localizations.dart';
 import '../../colors.dart';
 
 class SearchFirmPage extends StatelessWidget {
