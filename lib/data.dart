@@ -98,12 +98,9 @@ void getFirms() async {
         'web_url': documentSnapshot.data['web_url'],
       };
       if (!firmsId.contains(documentSnapshot.documentID)) {
-        print('Wasn\'t there');
         firmsData.add(newMap);
         firmsId.add(documentSnapshot.documentID);
-      } else {
-        print('Already there');
-      }
+      } 
     }
   });
 }

@@ -128,11 +128,6 @@ class FirmModalBottomSheet extends StatelessWidget {
               ],
             ),
           ),
-          Column(
-            children: firmsData.map((Map<String,String> map) {
-              return Text(map['stand']);
-            }).toList(),
-          )
         ],
       ),
     );
