@@ -5,6 +5,7 @@ import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/outline_button_classic.dart';
 import '../../widgets/page_title_classic.dart';
 import '../../colors.dart';
+import '../../data.dart';
 
 class SecondFloorPage extends StatelessWidget {
   final PageController pageController;
@@ -19,7 +20,7 @@ class SecondFloorPage extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
       builder: (context) => FirmModalBottomSheet(
-        standNumber: standNumber,
+        standInformations: getStandInformations(standNumber),
       ),
     );
   }

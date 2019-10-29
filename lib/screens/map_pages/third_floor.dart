@@ -5,6 +5,7 @@ import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/page_title_classic.dart';
 import '../../widgets/outline_button_classic.dart';
 import '../../colors.dart';
+import '../../data.dart';
 
 class ThirdFloorPage extends StatelessWidget {
   final PageController pageController;
@@ -16,8 +17,11 @@ class ThirdFloorPage extends StatelessWidget {
       backgroundColor: lightGreenColor,
       context: context,
       elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
-      builder: (context) => FirmModalBottomSheet(standNumber: standNumber,),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      builder: (context) => FirmModalBottomSheet(
+        standInformations: getStandInformations(standNumber),
+      ),
     );
   }
 
@@ -90,19 +94,19 @@ class ThirdFloorPage extends StatelessWidget {
             ),
           ),
           Container(
-                child: Arrow(
-                  onPressed: () {
-                    pageController.animateToPage(
-                      2,
-                      curve: Curves.ease,
-                      duration: Duration(milliseconds: 650),
-                    );
-                  },
-                  isForward: false,
-                ),
-                alignment: Alignment.bottomLeft,
-                margin: EdgeInsets.all(20),
-              ),
+            child: Arrow(
+              onPressed: () {
+                pageController.animateToPage(
+                  2,
+                  curve: Curves.ease,
+                  duration: Duration(milliseconds: 650),
+                );
+              },
+              isForward: false,
+            ),
+            alignment: Alignment.bottomLeft,
+            margin: EdgeInsets.all(20),
+          ),
         ],
       ),
     );

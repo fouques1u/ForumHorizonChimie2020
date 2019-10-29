@@ -6,6 +6,7 @@ import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../colors.dart';
+import '../../data.dart';
 
 class FirstFloorPage extends StatelessWidget {
   final PageController pageController;
@@ -20,7 +21,7 @@ class FirstFloorPage extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
       builder: (context) => FirmModalBottomSheet(
-        standNumber: standNumber,
+        standInformations: getStandInformations(standNumber),
       ),
     );
   }

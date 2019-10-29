@@ -3,8 +3,11 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../data.dart';
+
 class FirmModalBottomSheet extends StatelessWidget {
-  final String standNumber;
+  final Map<String, String> standInformations;
+
   final String _firmTitle = 'EIFFAGE';
   final String _firmDescription =
       'Eiffage est un groupe de construction et de concessions français, fondé en 1993 par la fusion de Fougerolle et de SAE. Le groupe exerce aujourd\'hui dans de nombreux domaines des travaux publics : construction, infrastructures, concessions et énergie.';
@@ -16,7 +19,7 @@ class FirmModalBottomSheet extends StatelessWidget {
   final String _twitterUrl = 'http://www.twitter.com/eiffage';
   final String _webSiteUrl = 'https://www.eiffage.com';
 
-  FirmModalBottomSheet({@required this.standNumber});
+  FirmModalBottomSheet({@required this.standInformations});
 
   Future _launchURL(String url) async {
     if (await canLaunch(url)) {
@@ -44,11 +47,22 @@ class FirmModalBottomSheet extends StatelessWidget {
         scrollDirection: Axis.vertical,
         children: <Widget>[
           Text(
-            _firmTitle,
+            standInformations['nom'],
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Gotham',
               fontSize: 24,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            'Stand : ${standInformations['stand']}',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Gotham',
+              fontSize: 18,
             ),
           ),
           SizedBox(
@@ -113,6 +127,11 @@ class FirmModalBottomSheet extends StatelessWidget {
                 )
               ],
             ),
+          ),
+          Column(
+            children: firmsData.map((Map<String,String> map) {
+              return Text(map['stand']);
+            }).toList(),
           )
         ],
       ),
