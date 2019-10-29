@@ -22,7 +22,7 @@ class _CvScreenState extends State<CvScreen> {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: AppLocalizations.of(context).translate('name'),
-              hintStyle: Theme.of(context).textTheme.body1,
+              hintStyle: TextStyle(color: Colors.white70, fontFamily: 'Gotham', fontSize: 14,),
             ),
           ),
           TextField(
@@ -30,7 +30,7 @@ class _CvScreenState extends State<CvScreen> {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: AppLocalizations.of(context).translate('surname'),
-              hintStyle: Theme.of(context).textTheme.body1,
+              hintStyle: TextStyle(color: Colors.white70, fontFamily: 'Gotham', fontSize: 14,),
             ),
           ),
           Container(

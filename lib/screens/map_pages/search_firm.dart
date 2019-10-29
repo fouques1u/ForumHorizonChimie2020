@@ -50,34 +50,40 @@ class SearchFirmPage extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              GridTileClassic(
-                  colorTile: darkBlueColor,
-                  textCode: "ground_floor",
-                  onTapFunction: () => pageController.animateToPage(
-                        1,
-                        curve: Curves.ease,
-                        duration: Duration(milliseconds: 650),
-                      )),
-              GridTileClassic(
-                  colorTile: simpleBlueColor,
-                  textCode: "first_floor",
-                  onTapFunction: () => pageController.animateToPage(
-                        2,
-                        curve: Curves.ease,
-                        duration: Duration(milliseconds: 650),
-                      )),
-              GridTileClassic(
-                  colorTile: lightBlueColor,
-                  textCode: "second_floor",
-                  onTapFunction: () => pageController.animateToPage(
-                        3,
-                        curve: Curves.ease,
-                        duration: Duration(milliseconds: 650),
-                      )),
-            ],
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: FittedBox(
+              child: Row(
+                children: <Widget>[
+                  GridTileClassic(
+                      colorTile: darkBlueColor,
+                      textCode: "ground_floor",
+                      onTapFunction: () => pageController.animateToPage(
+                            1,
+                            curve: Curves.ease,
+                            duration: Duration(milliseconds: 650),
+                          )),
+                  SizedBox(width: 10),
+                  GridTileClassic(
+                      colorTile: simpleBlueColor,
+                      textCode: "first_floor",
+                      onTapFunction: () => pageController.animateToPage(
+                            2,
+                            curve: Curves.ease,
+                            duration: Duration(milliseconds: 650),
+                          )),
+                  SizedBox(width: 10),
+                  GridTileClassic(
+                      colorTile: lightBlueColor,
+                      textCode: "second_floor",
+                      onTapFunction: () => pageController.animateToPage(
+                            3,
+                            curve: Curves.ease,
+                            duration: Duration(milliseconds: 650),
+                          )),
+                ],
+              ),
+            ),
           ),
           Container(
             child: Arrow(
