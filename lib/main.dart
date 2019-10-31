@@ -5,6 +5,7 @@ import 'package:forum_horizon_chimie/colors.dart';
 import './app_localizations.dart';
 import './application.dart';
 import 'home_page.dart';
+import './data.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +24,8 @@ class _MyAppState extends State<MyApp> {
     _localeOverrideDelegate = new SpecificLocalizationDelegate(null);
 
     applic.onLocaleChanged = onLocaleChange;
+
+    getFirms();
   }
 
   onLocaleChange(Locale locale) {

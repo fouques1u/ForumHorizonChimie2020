@@ -8,17 +8,6 @@ import '../data.dart';
 class FirmModalBottomSheet extends StatelessWidget {
   final Map<String, String> standInformations;
 
-  final String _firmTitle = 'EIFFAGE';
-  final String _firmDescription =
-      'Eiffage est un groupe de construction et de concessions français, fondé en 1993 par la fusion de Fougerolle et de SAE. Le groupe exerce aujourd\'hui dans de nombreux domaines des travaux publics : construction, infrastructures, concessions et énergie.';
-  final String _oldFacebookUrl =
-      'fb://page/EiffageConstruction'; // Handle versions in Facebook
-  final String _facebookUrl =
-      'fb://facewebmodal/f?href=https://www.facebook.com/EiffageConstruction/';
-  final String _linkedInUrl = 'https://www.linkedin.com/company/eiffage_2/';
-  final String _twitterUrl = 'http://www.twitter.com/eiffage';
-  final String _webSiteUrl = 'https://www.eiffage.com';
-
   FirmModalBottomSheet({@required this.standInformations});
 
   Future _launchURL(String url) async {
@@ -69,7 +58,7 @@ class FirmModalBottomSheet extends StatelessWidget {
             height: 20,
           ),
           Text(
-            _firmDescription,
+            standInformations['description'],
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Gotham',
@@ -95,7 +84,7 @@ class FirmModalBottomSheet extends StatelessWidget {
                       color: Color.fromRGBO(60, 90, 153, 1),
                     ),
                     onTap: () =>
-                        _launchFacebookUrl(_oldFacebookUrl, _facebookUrl),
+                        _launchFacebookUrl(standInformations['old_facebook_url'], standInformations['facebook_url']),
                   ),
                 ),
                 Expanded(
@@ -104,7 +93,7 @@ class FirmModalBottomSheet extends StatelessWidget {
                       FontAwesomeIcons.linkedin,
                       color: Color.fromRGBO(0, 119, 181, 1),
                     ),
-                    onTap: () => _launchURL(_linkedInUrl),
+                    onTap: () => _launchURL(standInformations['linkedin_url']),
                   ),
                 ),
                 Expanded(
@@ -113,7 +102,7 @@ class FirmModalBottomSheet extends StatelessWidget {
                       FontAwesomeIcons.twitter,
                       color: Colors.lightBlue,
                     ),
-                    onTap: () => _launchURL(_twitterUrl),
+                    onTap: () => _launchURL(standInformations['twitter_url']),
                   ),
                 ),
                 Expanded(
@@ -122,7 +111,7 @@ class FirmModalBottomSheet extends StatelessWidget {
                       Icons.language,
                       color: Colors.lightBlue,
                     ),
-                    onTap: () => _launchURL(_webSiteUrl),
+                    onTap: () => _launchURL(standInformations['web_url']),
                   ),
                 )
               ],

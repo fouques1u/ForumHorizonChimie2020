@@ -89,6 +89,20 @@ class ThirdFloorPage extends StatelessWidget {
                         text: standNumber,
                         action: () =>
                             showFirmInformations(context, standNumber),
+                        longPressAction: () {
+                          final standInformations =
+                              getStandInformations(standNumber);
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            backgroundColor: darkBlueColor,
+                            content: Text(
+                              'Stand ${standNumber} : ${standInformations['nom']}',
+                              style: Theme.of(context).textTheme.body1,
+                            ),
+                            duration: Duration(
+                              milliseconds: 1000,
+                            ),
+                          ));
+                        },
                       ))
                   .toList(),
             ),
