@@ -1,6 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:forum_horizon_chimie/app_localizations.dart';
 
 import 'widgets/curved_bottom_navigation_bar.dart';
 import 'screens/cv_screen.dart';

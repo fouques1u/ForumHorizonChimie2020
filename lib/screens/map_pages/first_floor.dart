@@ -26,7 +26,7 @@ class FirstFloorPage extends StatelessWidget {
     );
   }
 
-  List<String> standNumbers = [
+  final List<String> standNumbers = [
     '1',
     '2',
     '3',
@@ -118,7 +118,7 @@ class FirstFloorPage extends StatelessWidget {
                         Scaffold.of(context).showSnackBar(SnackBar(
                           backgroundColor: darkBlueColor,
                           content: Text(
-                            'Stand ${standNumber} : ${standInformations['nom']}',
+                            'Stand $standNumber : ${standInformations['nom']}',
                             style: Theme.of(context).textTheme.body1,
                           ),
                           duration: Duration(

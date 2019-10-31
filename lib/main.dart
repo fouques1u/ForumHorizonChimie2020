@@ -48,6 +48,11 @@ class _MyAppState extends State<MyApp> {
             fontFamily: 'Gotham',
             color: Colors.white,
           ),
+          body2: TextStyle(
+            fontSize: 14,
+            fontFamily: 'Gotham',
+            color: darkBlueColor,
+          ),
           title: TextStyle(
             fontSize: 22,
             color: Colors.white,

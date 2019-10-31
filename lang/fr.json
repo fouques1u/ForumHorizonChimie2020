@@ -21,5 +21,6 @@
     "second_floor" : "Deuxième étage",
     "ground_floor" : "Rez de chaussée",
     "search_firm" : "Chercher une entreprise",
-    "handicafe" : "Handicafé"
+    "handicafe" : "Handicafé",
+    "no_firms_found" : "Pas d'entreprises trouvées..."
 }

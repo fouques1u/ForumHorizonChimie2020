@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
 
 class GridTileClassic extends StatelessWidget {

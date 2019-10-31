@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
 
 List<Map<String, String>> firmsData = [];
 List<String> firmsId = [];
@@ -111,4 +110,16 @@ Map<String,String> getStandInformations(String stand) {
   return firmsData.firstWhere((Map<String,String> element) {
     return element['stand'] == stand;
   });
+}
+
+List<String> getFirmsNames() {
+  getFirms();
+  
+  List<String> result = new List();
+
+  firmsData.forEach((Map<String,String> map) {
+    result.add(map['nom']);
+  });
+
+  return result;
 }

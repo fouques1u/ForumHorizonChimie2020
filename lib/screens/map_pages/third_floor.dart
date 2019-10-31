@@ -95,7 +95,7 @@ class ThirdFloorPage extends StatelessWidget {
                           Scaffold.of(context).showSnackBar(SnackBar(
                             backgroundColor: darkBlueColor,
                             content: Text(
-                              'Stand ${standNumber} : ${standInformations['nom']}',
+                              'Stand $standNumber : ${standInformations['nom']}',
                               style: Theme.of(context).textTheme.body1,
                             ),
                             duration: Duration(
