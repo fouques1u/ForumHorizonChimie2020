@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
     applic.onLocaleChanged = onLocaleChange;
 
     getFirms();
+    getCreneaux();
   }
 
   onLocaleChange(Locale locale) {

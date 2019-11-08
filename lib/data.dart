@@ -137,13 +137,17 @@ List<String> getFirmsNames() {
   return result;
 }
 
-void getCreneaux() async {
-  List<DocumentSnapshot> data = await Firestore.instance
-      .collection('creneaux_cv')
+Future<List<DocumentSnapshot>> getSnapshot(String collection) async {
+  return await Firestore.instance
+      .collection(collection)
       .getDocuments()
       .then((QuerySnapshot querySnapshot) {
     return querySnapshot.documents;
   });
+}
+
+void getCreneaux() async {
+  List<DocumentSnapshot> data = await getSnapshot('creneaux_cv');
 
   data.forEach((DocumentSnapshot documentSnapshot) {
     if (documentSnapshot.data.isNotEmpty) {
@@ -162,12 +166,7 @@ void getCreneaux() async {
 }
 
 void updateCreneau(Map<String,Object> map) async {
-  List<DocumentSnapshot> data = await Firestore.instance
-      .collection('creneaux_cv')
-      .getDocuments()
-      .then((QuerySnapshot querySnapshot) {
-    return querySnapshot.documents;
-  });
+  List<DocumentSnapshot> data = await getSnapshot('creneaux_cv');
 
   final DocumentSnapshot creneauToUpdate = data.firstWhere((DocumentSnapshot documentSnapshot) {
     return documentSnapshot.data['horaire'] == map['horaire'];
@@ -175,3 +174,21 @@ void updateCreneau(Map<String,Object> map) async {
 
   await Firestore.instance.collection('creneaux_cv').document(creneauToUpdate.documentID).updateData(map);
 }
+
+List<String> getAvailableCreneaux() {
+  getCreneaux();
+
+  List<String> res = [];
+
+  listCreneaux.forEach((Map<String,Object> map) {
+    if (map['dispo']) {
+      res.add(map['horaire']);
+    }
+  });
+
+  res.sort();
+
+  return res;
+}
+
+
