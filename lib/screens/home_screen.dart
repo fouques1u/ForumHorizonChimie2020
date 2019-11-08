@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/icon_data.dart';
 import 'package:forum_horizon_chimie/app_localizations.dart';
 
 import 'package:forum_horizon_chimie/colors.dart';
+import 'package:forum_horizon_chimie/data.dart';
 import 'package:forum_horizon_chimie/widgets/grid_tile_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
