@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:forum_horizon_chimie/colors.dart';
 
 List<Map<String, String>> firmsData = [];
 List<String> firmsId = [];
@@ -173,6 +175,16 @@ void updateCreneau(Map<String,Object> map) async {
   });
 
   await Firestore.instance.collection('creneaux_cv').document(creneauToUpdate.documentID).updateData(map);
+
+  Fluttertoast.showToast(
+        msg: "This is Center Short Toast",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: darkBlueColor,
+        textColor: white,
+        fontSize: 16.0
+    );
 }
 
 List<String> getAvailableCreneaux() {

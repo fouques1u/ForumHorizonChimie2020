@@ -48,120 +48,155 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        /*
-        image: DecorationImage(
-            image: AssetImage('assets/images/forum-apercu.jpg'),
-            fit: BoxFit.none),
-            */
-        color: Colors.black,
-      ),
-      child: ListView(
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          ClassicPageTitle(title: 'search_firm'),
-          Container(
-            padding: EdgeInsets.all(5),
-            margin: EdgeInsets.fromLTRB(25, 20, 25, 10),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadiusDirectional.circular(15)),
-            child: TextField(
-              controller: _filter,
-              decoration: InputDecoration(
-                hintText: AppLocalizations.of(context).translate('search_firm'),
-                hintStyle: Theme.of(context).textTheme.body2,
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: darkBlueColor,
+    return InkWell(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Container(
+        decoration: BoxDecoration(
+          /*
+          image: DecorationImage(
+              image: AssetImage('assets/images/forum-apercu.jpg'),
+              fit: BoxFit.none),
+              */
+          color: Colors.white,
+        ),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+            ClassicPageTitle(title: 'search_firm'),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
+              decoration: BoxDecoration(
+                color: simpleBlueColor,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 4,
+                    color: lightBlueColor,
+                  ),
+                ],
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    simpleBlueColor,
+                    darkBlueColor,
+                  ],
+                  end: Alignment.topLeft,
+                  begin: Alignment.bottomRight,
                 ),
               ),
-              onChanged: (String text) => onSearchTextChanged(text),
-            ),
-          ),
-          Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.fromLTRB(25, 0, 25, 20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-              ),
               child: Column(
-                children: _filteredNames.length < 5
-                    ? (_filteredNames.length == 0
-                        ? [
-                            Text(
-                                AppLocalizations.of(context)
-                                    .translate("no_firms_found"),
-                                style: Theme.of(context).textTheme.body2)
-                          ]
-                        : _filteredNames.map((String name) {
-                            return new ListTile(
-                              title: Text(name),
-                              onTap: () => print(name),
-                            );
-                          }).toList())
-                    : _filteredNames
-                        .map((String name) {
-                          return new ListTile(
-                            title: Text(name),
-                            onTap: () => print(name),
-                          );
-                        })
-                        .toList()
-                        .sublist(0, 5),
-              )),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: FittedBox(
-              child: Row(
                 children: <Widget>[
-                  GridTileClassic(
-                      colorTile: darkBlueColor,
-                      textCode: "ground_floor",
-                      onTapFunction: () => widget.pageController.animateToPage(
-                            1,
-                            curve: Curves.ease,
-                            duration: Duration(milliseconds: 650),
-                          )),
-                  SizedBox(width: 10),
-                  GridTileClassic(
-                      colorTile: simpleBlueColor,
-                      textCode: "first_floor",
-                      onTapFunction: () => widget.pageController.animateToPage(
-                            2,
-                            curve: Curves.ease,
-                            duration: Duration(milliseconds: 650),
-                          )),
-                  SizedBox(width: 10),
-                  GridTileClassic(
-                      colorTile: lightBlueColor,
-                      textCode: "second_floor",
-                      onTapFunction: () => widget.pageController.animateToPage(
-                            3,
-                            curve: Curves.ease,
-                            duration: Duration(milliseconds: 650),
-                          )),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadiusDirectional.circular(15)),
+                    child: TextField(
+                      controller: _filter,
+                      decoration: InputDecoration(
+                        hintText: AppLocalizations.of(context)
+                            .translate('search_firm'),
+                        hintStyle: Theme.of(context).textTheme.body2,
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: darkBlueColor,
+                        ),
+                      ),
+                      onChanged: (String text) => onSearchTextChanged(text),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(15, 0, 15, 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      children: _filteredNames.length < 5
+                          ? (_filteredNames.length == 0
+                              ? [
+                                  Text(
+                                      AppLocalizations.of(context)
+                                          .translate("no_firms_found"),
+                                      style: Theme.of(context).textTheme.body2)
+                                ]
+                              : _filteredNames.map((String name) {
+                                  return new ListTile(
+                                    title: Text(name),
+                                    onTap: () => print(name),
+                                  );
+                                }).toList())
+                          : _filteredNames
+                              .map((String name) {
+                                return new ListTile(
+                                  title: Text(name),
+                                  onTap: () => print(name),
+                                );
+                              })
+                              .toList()
+                              .sublist(0, 5),
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-          Container(
-            child: Arrow(
-              onPressed: () {
-                widget.pageController.animateToPage(
-                  1,
-                  curve: Curves.ease,
-                  duration: Duration(milliseconds: 650),
-                );
-              },
-              isForward: true,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: FittedBox(
+                child: Row(
+                  children: <Widget>[
+                    GridTileClassic(
+                        colorTile: darkBlueColor,
+                        textCode: "ground_floor",
+                        onTapFunction: () =>
+                            widget.pageController.animateToPage(
+                              1,
+                              curve: Curves.ease,
+                              duration: Duration(milliseconds: 650),
+                            )),
+                    SizedBox(width: 10),
+                    GridTileClassic(
+                        colorTile: simpleBlueColor,
+                        textCode: "first_floor",
+                        onTapFunction: () =>
+                            widget.pageController.animateToPage(
+                              2,
+                              curve: Curves.ease,
+                              duration: Duration(milliseconds: 650),
+                            )),
+                    SizedBox(width: 10),
+                    GridTileClassic(
+                        colorTile: lightBlueColor,
+                        textCode: "second_floor",
+                        onTapFunction: () =>
+                            widget.pageController.animateToPage(
+                              3,
+                              curve: Curves.ease,
+                              duration: Duration(milliseconds: 650),
+                            )),
+                  ],
+                ),
+              ),
             ),
-            alignment: Alignment.bottomRight,
-            margin: EdgeInsets.all(20),
-          ),
-        ],
+            Container(
+              child: Arrow(
+                onPressed: () {
+                  widget.pageController.animateToPage(
+                    1,
+                    curve: Curves.ease,
+                    duration: Duration(milliseconds: 650),
+                  );
+                },
+                isForward: true,
+              ),
+              alignment: Alignment.bottomRight,
+              margin: EdgeInsets.all(20),
+            ),
+          ],
+        ),
       ),
     );
   }

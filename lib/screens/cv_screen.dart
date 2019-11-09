@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:forum_horizon_chimie/colors.dart';
-import 'package:forum_horizon_chimie/data.dart';
-import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
-import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
+import 'dart:io';
 
+import '../colors.dart';
+import '../data.dart';
+import '../widgets/outline_button_classic.dart';
+import '../widgets/page_title_classic.dart';
 import '../app_localizations.dart';
 
 class CvScreen extends StatefulWidget {
@@ -46,6 +48,11 @@ class _CvScreenState extends State<CvScreen> {
                 prenom = textInput;
               });
             },
+            onChanged: (String textInput) {
+              setState(() {
+                prenom = textInput;
+              });
+            },
           ),
           SizedBox(
             height: 10,
@@ -68,6 +75,11 @@ class _CvScreenState extends State<CvScreen> {
               ),
             ),
             onSubmitted: (String textInput) {
+              setState(() {
+                nom = textInput;
+              });
+            },
+            onChanged: (String textInput) {
               setState(() {
                 nom = textInput;
               });
@@ -147,14 +159,88 @@ class _CvScreenState extends State<CvScreen> {
                   ]),
             ),
             onTap: () {
-              final mapToUpdate = {
-                'dispo': false,
-                'horaire': horaire,
-                'nom': nom,
-                'prenom': prenom
-              };
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    final mapToUpdate = {
+                      'dispo': false,
+                      'horaire': horaire,
+                      'nom': nom,
+                      'prenom': prenom
+                    };
 
-              updateCreneau(mapToUpdate);
+                    return Platform.isAndroid
+                        ? AlertDialog(
+                            title: Text(
+                              AppLocalizations.of(context)
+                                  .translate('dialog_cv_title'),
+                              style: TextStyle(
+                                  color: darkBlueColor, fontFamily: 'Gotham'),
+                            ),
+                            content: Text(AppLocalizations.of(context)
+                                    .translate('dialog_cv_text') +
+                                '\n$nom\n$prenom\n$horaire',style: TextStyle(fontFamily: 'Gotham',)),
+                            actions: <Widget>[
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)
+                                          .translate('dialog_cv_cancel'),
+                                      style: TextStyle(
+                                          color: darkBlueColor,
+                                          fontFamily: 'Gotham'))),
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  updateCreneau(mapToUpdate);
+                                },
+                                child: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('dialog_cv_confirm'),
+                                    style: TextStyle(
+                                        color: darkBlueColor,
+                                        fontFamily: 'Gotham')),
+                              )
+                            ],
+                          )
+                        : CupertinoAlertDialog(
+                            title: Text(
+                                AppLocalizations.of(context)
+                                    .translate('dialog_cv_title'),
+                                style: TextStyle(
+                                    color: darkBlueColor,
+                                    fontFamily: 'Gotham')),
+                            content: Text(AppLocalizations.of(context)
+                                    .translate('dialog_cv_text') +
+                                "\n$nom\n$prenom\n$horaire",style: TextStyle(fontFamily: 'Gotham',),),
+                            actions: <Widget>[
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)
+                                          .translate('dialog_cv_cancel'),
+                                      style: TextStyle(
+                                          color: darkBlueColor,
+                                          fontFamily: 'Gotham'))),
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  updateCreneau(mapToUpdate);
+                                },
+                                child: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('dialog_cv_confirm'),
+                                    style: TextStyle(
+                                        color: darkBlueColor,
+                                        fontFamily: 'Gotham')),
+                              )
+                            ],
+                          );
+                  });
             },
           ),
         ],
@@ -164,37 +250,40 @@ class _CvScreenState extends State<CvScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: ListView(
-        children: <Widget>[
-          ClassicPageTitle(
-            title: 'reserve_photo_cv',
-          ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
-            decoration: BoxDecoration(
-              color: simpleBlueColor,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4,
-                  color: lightBlueColor,
-                ),
-              ],
-              gradient: LinearGradient(
-                colors: <Color>[
-                  simpleBlueColor,
-                  darkBlueColor,
-                ],
-                end: Alignment.topLeft,
-                begin: Alignment.bottomRight,
-              ),
+    return InkWell(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Container(
+        color: Colors.white,
+        child: ListView(
+          children: <Widget>[
+            ClassicPageTitle(
+              title: 'reserve_photo_cv',
             ),
-            child: buildForm(context),
-          ),
-        ],
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
+              decoration: BoxDecoration(
+                color: simpleBlueColor,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 4,
+                    color: lightBlueColor,
+                  ),
+                ],
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    simpleBlueColor,
+                    darkBlueColor,
+                  ],
+                  end: Alignment.topLeft,
+                  begin: Alignment.bottomRight,
+                ),
+              ),
+              child: buildForm(context),
+            ),
+          ],
+        ),
       ),
     );
   }
