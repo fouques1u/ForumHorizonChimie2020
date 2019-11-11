@@ -150,7 +150,7 @@ Future<List<DocumentSnapshot>> getSnapshot(String collection) async {
   });
 }
 
-void getCreneaux() async {
+Future<Null> getCreneaux() async {
   List<DocumentSnapshot> data = await getSnapshot('creneaux_cv');
 
   data.forEach((DocumentSnapshot documentSnapshot) {
@@ -167,6 +167,9 @@ void getCreneaux() async {
       }
     }
   });
+
+  print('complete');
+  return null;
 }
 
 void updateCreneau(Map<String, Object> map, BuildContext context) async {
@@ -181,6 +184,13 @@ void updateCreneau(Map<String, Object> map, BuildContext context) async {
       .collection('creneaux_cv')
       .document(creneauToUpdate.documentID)
       .updateData(map);
+  
+  Map<String, Object> creneauInList = listCreneaux.firstWhere((Map<String, Object> localMap) {
+    return map['horaire'] == localMap['horaire'];
+  });
+
+  listCreneaux.remove(creneauInList);
+  listCreneaux.add(map);
 }
 
 List<String> getAvailableCreneaux() {

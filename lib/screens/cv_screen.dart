@@ -52,6 +52,7 @@ class _CvScreenState extends State<CvScreen> {
       margin: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
+          // Textfields
           TextField(
             style: Theme.of(context).textTheme.body1,
             decoration: InputDecoration(
@@ -119,9 +120,14 @@ class _CvScreenState extends State<CvScreen> {
               style: Theme.of(context).textTheme.subtitle,
             ),
           ),
+          // GridView
           LimitedBox(
             maxHeight: MediaQuery.of(context).size.height * 0.4,
-            child: GridView.count(
+            child: RefreshIndicator(
+              backgroundColor: white,
+              color: darkBlueColor,
+              child: GridView.count(
+                physics: const AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.all(5),
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
@@ -137,11 +143,23 @@ class _CvScreenState extends State<CvScreen> {
                     },
                     longPressAction: () {},
                   );
-                }).toList()),
+                }).toList(),
+              ),
+              onRefresh: () {
+                Future<void> result = getCreneaux();
+
+                setState(() {
+                  creneaux = getAvailableCreneaux();
+                });
+
+                return result;
+              },
+            ),
           ),
           SizedBox(
             height: 10,
           ),
+          // Creneau résumé.
           Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(vertical: 10),
@@ -166,6 +184,7 @@ class _CvScreenState extends State<CvScreen> {
               ],
             ),
           ),
+          // Confirmer
           InkWell(
             child: Container(
               padding: EdgeInsets.all(10),
@@ -226,9 +245,11 @@ class _CvScreenState extends State<CvScreen> {
                                   Navigator.pop(context);
                                   if (checkCreneauAvailability(horaire)) {
                                     updateCreneau(mapToUpdate, context);
-                                    showSimpleDialog(context, 'dialog_confirmation_toast');
+                                    showSimpleDialog(
+                                        context, 'dialog_confirmation_toast');
                                   } else {
-                                    showSimpleDialog(context, 'toast_unable_save_creneau');
+                                    showSimpleDialog(
+                                        context, 'toast_unable_save_creneau');
                                   }
                                 },
                                 child: Text(
@@ -271,9 +292,11 @@ class _CvScreenState extends State<CvScreen> {
                                   Navigator.pop(context);
                                   if (checkCreneauAvailability(horaire)) {
                                     updateCreneau(mapToUpdate, context);
-                                    showSimpleDialog(context, 'dialog_confirmation_toast');
+                                    showSimpleDialog(
+                                        context, 'dialog_confirmation_toast');
                                   } else {
-                                    showSimpleDialog(context, 'toast_unable_save_creneau');
+                                    showSimpleDialog(
+                                        context, 'toast_unable_save_creneau');
                                   }
                                 },
                                 child: Text(
