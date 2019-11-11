@@ -29,5 +29,7 @@
     "dialog_cv_title" : "Êtes vous sûr(e) de vouloir réserver un créneau ?",
     "dialog_cv_text" : "Votre créneau être réservé :",
     "dialog_cv_confirm" : "Oui, réserver un créneau.",
-    "dialog_cv_cancel" : "Annuler"
+    "dialog_cv_cancel" : "Annuler",
+    "dialog_confirmation_toast" : "Vous avez réservé un créneau !",
+    "toast_unable_save_creneau" : "Désolé ! Malheureusement nous n'avons pas pu réserver ce créneau : Déjà pris."
 }

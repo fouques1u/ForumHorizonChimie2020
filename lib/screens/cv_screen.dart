@@ -20,6 +20,32 @@ class _CvScreenState extends State<CvScreen> {
   String prenom = "";
   String horaire = "";
 
+  void showSimpleDialog(BuildContext context, String textCode) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: Text(
+            AppLocalizations.of(context).translate(textCode),
+            style: TextStyle(fontFamily: 'Gotham', color: darkBlueColor),
+          ),
+          children: <Widget>[
+            SimpleDialogOption(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontFamily: 'Gotham',
+                  color: darkBlueColor,
+                ),
+              ),
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   Widget buildForm(BuildContext context) {
     return Container(
       alignment: Alignment.topLeft,
@@ -177,9 +203,13 @@ class _CvScreenState extends State<CvScreen> {
                               style: TextStyle(
                                   color: darkBlueColor, fontFamily: 'Gotham'),
                             ),
-                            content: Text(AppLocalizations.of(context)
-                                    .translate('dialog_cv_text') +
-                                '\n$nom\n$prenom\n$horaire',style: TextStyle(fontFamily: 'Gotham',)),
+                            content: Text(
+                                AppLocalizations.of(context)
+                                        .translate('dialog_cv_text') +
+                                    '\n$nom\n$prenom\n$horaire',
+                                style: TextStyle(
+                                  fontFamily: 'Gotham',
+                                )),
                             actions: <Widget>[
                               FlatButton(
                                   onPressed: () {
@@ -194,7 +224,12 @@ class _CvScreenState extends State<CvScreen> {
                               FlatButton(
                                 onPressed: () {
                                   Navigator.pop(context);
-                                  updateCreneau(mapToUpdate);
+                                  if (checkCreneauAvailability(horaire)) {
+                                    updateCreneau(mapToUpdate, context);
+                                    showSimpleDialog(context, 'dialog_confirmation_toast');
+                                  } else {
+                                    showSimpleDialog(context, 'toast_unable_save_creneau');
+                                  }
                                 },
                                 child: Text(
                                     AppLocalizations.of(context)
@@ -212,9 +247,14 @@ class _CvScreenState extends State<CvScreen> {
                                 style: TextStyle(
                                     color: darkBlueColor,
                                     fontFamily: 'Gotham')),
-                            content: Text(AppLocalizations.of(context)
-                                    .translate('dialog_cv_text') +
-                                "\n$nom\n$prenom\n$horaire",style: TextStyle(fontFamily: 'Gotham',),),
+                            content: Text(
+                              AppLocalizations.of(context)
+                                      .translate('dialog_cv_text') +
+                                  "\n$nom\n$prenom\n$horaire",
+                              style: TextStyle(
+                                fontFamily: 'Gotham',
+                              ),
+                            ),
                             actions: <Widget>[
                               FlatButton(
                                   onPressed: () {
@@ -229,7 +269,12 @@ class _CvScreenState extends State<CvScreen> {
                               FlatButton(
                                 onPressed: () {
                                   Navigator.pop(context);
-                                  updateCreneau(mapToUpdate);
+                                  if (checkCreneauAvailability(horaire)) {
+                                    updateCreneau(mapToUpdate, context);
+                                    showSimpleDialog(context, 'dialog_confirmation_toast');
+                                  } else {
+                                    showSimpleDialog(context, 'toast_unable_save_creneau');
+                                  }
                                 },
                                 child: Text(
                                     AppLocalizations.of(context)

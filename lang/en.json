@@ -28,5 +28,7 @@
     "dialog_cv_title" : "Sure to reserve your slot ?",
     "dialog_cv_text" : "Your current slot will be saved :",
     "dialog_cv_confirm" : "Yes, save a slot.",
-    "dialog_cv_cancel" : "Cancel"
+    "dialog_cv_cancel" : "Cancel",
+    "dialog_confirmation_toast" : "You have successfully saved this slot !",
+    "toast_unable_save_creneau" : "Sorry ! Unfortunately we couldn't save this slot : already taken."
 }

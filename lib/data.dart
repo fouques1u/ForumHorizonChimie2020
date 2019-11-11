@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:forum_horizon_chimie/app_localizations.dart';
 import 'package:forum_horizon_chimie/colors.dart';
 
 List<Map<String, String>> firmsData = [];
@@ -62,7 +64,7 @@ List<String> listStands = const [
   '210'
 ];
 
-List<Map<String,Object>> listCreneaux = [];
+List<Map<String, Object>> listCreneaux = [];
 List<String> listCreneauxId = [];
 
 /*
@@ -155,11 +157,11 @@ void getCreneaux() async {
     if (documentSnapshot.data.isNotEmpty) {
       Map<String, Object> newMap = {
         'dispo': documentSnapshot.data['dispo'],
-        'horaire' : documentSnapshot.data['horaire'],
+        'horaire': documentSnapshot.data['horaire'],
         'nom': documentSnapshot.data['nom'],
-        'prenom' : documentSnapshot.data['prenom'],
+        'prenom': documentSnapshot.data['prenom'],
       };
-      if (!firmsId.contains(documentSnapshot.documentID)) {
+      if (!listCreneauxId.contains(documentSnapshot.documentID)) {
         listCreneaux.add(newMap);
         listCreneauxId.add(documentSnapshot.documentID);
       }
@@ -167,24 +169,18 @@ void getCreneaux() async {
   });
 }
 
-void updateCreneau(Map<String,Object> map) async {
+void updateCreneau(Map<String, Object> map, BuildContext context) async {
   List<DocumentSnapshot> data = await getSnapshot('creneaux_cv');
 
-  final DocumentSnapshot creneauToUpdate = data.firstWhere((DocumentSnapshot documentSnapshot) {
+  final DocumentSnapshot creneauToUpdate =
+      data.firstWhere((DocumentSnapshot documentSnapshot) {
     return documentSnapshot.data['horaire'] == map['horaire'];
   });
 
-  await Firestore.instance.collection('creneaux_cv').document(creneauToUpdate.documentID).updateData(map);
-
-  Fluttertoast.showToast(
-        msg: "This is Center Short Toast",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIos: 1,
-        backgroundColor: darkBlueColor,
-        textColor: white,
-        fontSize: 16.0
-    );
+  await Firestore.instance
+      .collection('creneaux_cv')
+      .document(creneauToUpdate.documentID)
+      .updateData(map);
 }
 
 List<String> getAvailableCreneaux() {
@@ -192,7 +188,7 @@ List<String> getAvailableCreneaux() {
 
   List<String> res = [];
 
-  listCreneaux.forEach((Map<String,Object> map) {
+  listCreneaux.forEach((Map<String, Object> map) {
     if (map['dispo']) {
       res.add(map['horaire']);
     }
@@ -203,4 +199,13 @@ List<String> getAvailableCreneaux() {
   return res;
 }
 
+bool checkCreneauAvailability(String horaire) {
+  getCreneaux();
 
+  Map<String,Object> creneau = listCreneaux.firstWhere((Map<String, Object> map) {
+    return map['horaire'] == horaire;
+  });
+
+  print(creneau['dispo']);
+  return creneau['dispo'];
+}
