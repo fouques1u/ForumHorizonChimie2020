@@ -127,6 +127,7 @@ class _CvScreenState extends State<CvScreen> {
               backgroundColor: white,
               color: darkBlueColor,
               child: GridView.count(
+                scrollDirection: Axis.vertical,
                 physics: const AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.all(5),
                 crossAxisSpacing: 10,

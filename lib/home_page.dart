@@ -6,6 +6,7 @@ import 'screens/cv_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/map_screen.dart';
 import 'screens/options_screen.dart';
+import 'screens/conference_screen.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -54,6 +55,7 @@ class _HomePageState extends State<HomePage> {
         ),
         'title_code': 'plan'
       },
+      {'page' : ConferenceScreen(), 'title_code': 'conference'},
       {'page': CvScreen(), 'title_code': 'cv_registering'},
       {
         'page': OptionsScreen(

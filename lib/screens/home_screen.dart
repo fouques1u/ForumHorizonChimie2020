@@ -32,25 +32,32 @@ class HomeScreen extends StatelessWidget {
                   onTapFunction: () => selectDestination(1),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 GridTileClassic(
                   height: 50,
                   colorTile: simpleBlueColor,
-                  textCode: "cv_registering",
+                  textCode: 'conference',
                   onTapFunction: () => selectDestination(2),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 15,),
                 GridTileClassic(
                   height: 50,
                   colorTile: lightBlueColor,
-                  textCode: "options",
+                  textCode: "cv_registering",
                   onTapFunction: () => selectDestination(3),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
+                ),
+                GridTileClassic(
+                  height: 50,
+                  colorTile: lightGreenColor,
+                  textCode: "options",
+                  onTapFunction: () => selectDestination(4),
+                ),
+                SizedBox(
+                  height: 15,
                 ),
               ],
             ),

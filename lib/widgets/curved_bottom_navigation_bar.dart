@@ -29,12 +29,17 @@ class CurvedBottomNavigationBar extends StatelessWidget {
           size: 30,
         ),
         Icon(
+          Icons.format_quote,
+          color: Theme.of(context).primaryColor,
+          size: 30,
+        ),
+        Icon(
           Icons.event_note,
           color: Theme.of(context).primaryColor,
           size: 30,
         ),
         Icon(
-          Icons.dehaze,
+          Icons.info,
           color: Theme.of(context).primaryColor,
           size: 30,
         )
