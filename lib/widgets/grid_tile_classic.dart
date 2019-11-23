@@ -6,8 +6,9 @@ class GridTileClassic extends StatelessWidget {
   final Color colorTile;
   final String textCode;
   final Function onTapFunction;
+  final double height;
 
-  GridTileClassic({@required this.colorTile, @required this.textCode, @required this.onTapFunction});
+  GridTileClassic({@required this.colorTile, @required this.textCode, @required this.onTapFunction, @required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class GridTileClassic extends StatelessWidget {
       },
       child: Container(
         padding: EdgeInsets.all(15),
+        height: height,
         child: FittedBox(
           alignment: Alignment.bottomRight,
           fit: BoxFit.scaleDown,
@@ -29,7 +31,6 @@ class GridTileClassic extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             shape: BoxShape.rectangle,
             color: colorTile,
-            
             boxShadow: <BoxShadow>[
               BoxShadow(color: colorTile, blurRadius: 6, spreadRadius: 0),
             ]),

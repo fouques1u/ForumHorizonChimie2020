@@ -206,8 +206,9 @@ class _CvScreenState extends State<CvScreen> {
             onTap: () {
               showDialog(
                   context: context,
-                  builder: (context) {
+                  builder: (context)  {
                     final mapToUpdate = {
+                      'deviceId' : deviceId,
                       'dispo': false,
                       'horaire': horaire,
                       'nom': nom,

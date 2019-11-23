@@ -20,81 +20,41 @@ class HomeScreen extends StatelessWidget {
           ClassicPageTitle(
             title: "home",
           ),
-          GridView.count(
-            shrinkWrap: true,
-            padding: EdgeInsets.all(20),
-            crossAxisCount: 3,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            children: <Widget>[
-              GridTileClassic(
-                colorTile: darkBlueColor,
-                textCode: "firms",
-                onTapFunction: () => selectDestination(1),
-              ),
-              GridTileClassic(
-                colorTile: simpleBlueColor,
-                textCode: "cv_registering",
-                onTapFunction: () => selectDestination(2),
-              ),
-              GridTileClassic(
-                colorTile: lightBlueColor,
-                textCode: "options",
-                onTapFunction: () => selectDestination(3),
-              ),
-            ],
-          ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            child: GridTileClassic(
-              colorTile: darkBlueColor,
-              textCode: "president_word",
-              onTapFunction: () {
-                showModalBottomSheet(
-                  backgroundColor: lightGreenColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
-                  ),
-                  builder: (BuildContext context) {
-                    return Container(
-                      color: lightGreenColor,
-                      margin: EdgeInsets.all(20),
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      child: ListView(
-                        scrollDirection: Axis.vertical,
-                        children: <Widget>[
-                          Text(
-                            AppLocalizations.of(context)
-                                .translate('president_word_title'),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Gotham',
-                              fontSize: 24,
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            AppLocalizations.of(context).translate('president_word_text'),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Gotham',
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                        ],
-                      ),
-                    );
-                    ;
-                  },
-                  context: context,
-                );
-              },
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                GridTileClassic(
+                  height: 50,
+                  colorTile: darkBlueColor,
+                  textCode: "firms",
+                  onTapFunction: () => selectDestination(1),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GridTileClassic(
+                  height: 50,
+                  colorTile: simpleBlueColor,
+                  textCode: "cv_registering",
+                  onTapFunction: () => selectDestination(2),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GridTileClassic(
+                  height: 50,
+                  colorTile: lightBlueColor,
+                  textCode: "options",
+                  onTapFunction: () => selectDestination(3),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
             ),
-          ),
+          )
         ],
       ),
     );

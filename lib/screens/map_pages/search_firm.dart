@@ -149,6 +149,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                 child: Row(
                   children: <Widget>[
                     GridTileClassic(
+                      height: 40,
                         colorTile: darkBlueColor,
                         textCode: "ground_floor",
                         onTapFunction: () =>
@@ -159,6 +160,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                             )),
                     SizedBox(width: 10),
                     GridTileClassic(
+                      height: 40,
                         colorTile: simpleBlueColor,
                         textCode: "first_floor",
                         onTapFunction: () =>
@@ -169,6 +171,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                             )),
                     SizedBox(width: 10),
                     GridTileClassic(
+                      height: 40,
                         colorTile: lightBlueColor,
                         textCode: "second_floor",
                         onTapFunction: () =>

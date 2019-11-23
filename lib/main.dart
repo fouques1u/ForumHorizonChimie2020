@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
 
     getFirms();
     getCreneaux();
+    getDeviceInfo();
   }
 
   onLocaleChange(Locale locale) {
