@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.white70,
+              color: Colors.white,
             ),
             child: FittedBox(
               fit: BoxFit.scaleDown,

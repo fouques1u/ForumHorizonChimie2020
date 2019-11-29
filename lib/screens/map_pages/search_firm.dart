@@ -69,9 +69,10 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    blurRadius: 4,
+                    blurRadius: 15.0,
+                    spreadRadius: 0.0,
                     color: lightBlueColor,
-                  ),
+                  )
                 ],
                 gradient: LinearGradient(
                   colors: <Color>[

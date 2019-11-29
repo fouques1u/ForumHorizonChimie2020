@@ -207,9 +207,9 @@ class _CvScreenState extends State<CvScreen> {
             onTap: () {
               showDialog(
                   context: context,
-                  builder: (context)  {
+                  builder: (context) {
                     final mapToUpdate = {
-                      'deviceId' : deviceId,
+                      'deviceId': deviceId,
                       'dispo': false,
                       'horaire': horaire,
                       'nom': nom,
@@ -324,11 +324,11 @@ class _CvScreenState extends State<CvScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
         decoration: BoxDecoration(
-        image: DecorationImage(
-          image: ExactAssetImage('assets/images/img_1_gradient.jpg'),
-          fit: BoxFit.cover,
+          image: DecorationImage(
+            image: ExactAssetImage('assets/images/img_1_gradient.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
         child: ListView(
           children: <Widget>[
             ClassicPageTitle(
@@ -342,9 +342,10 @@ class _CvScreenState extends State<CvScreen> {
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
-                    blurRadius: 4,
+                    blurRadius: 15.0,
+                    spreadRadius: 0.0,
                     color: lightBlueColor,
-                  ),
+                  )
                 ],
                 gradient: LinearGradient(
                   colors: <Color>[
