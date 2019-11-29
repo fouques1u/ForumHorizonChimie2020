@@ -52,12 +52,10 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
         decoration: BoxDecoration(
-          /*
           image: DecorationImage(
-              image: AssetImage('assets/images/forum-apercu.jpg'),
-              fit: BoxFit.none),
-              */
-          color: Colors.white,
+            image: ExactAssetImage('assets/images/img_2_gradient.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
         child: ListView(
           scrollDirection: Axis.vertical,
@@ -149,7 +147,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                 child: Row(
                   children: <Widget>[
                     GridTileClassic(
-                      height: 40,
+                        height: 40,
                         colorTile: darkBlueColor,
                         textCode: "ground_floor",
                         onTapFunction: () =>
@@ -160,7 +158,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                             )),
                     SizedBox(width: 10),
                     GridTileClassic(
-                      height: 40,
+                        height: 40,
                         colorTile: simpleBlueColor,
                         textCode: "first_floor",
                         onTapFunction: () =>
@@ -171,7 +169,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                             )),
                     SizedBox(width: 10),
                     GridTileClassic(
-                      height: 40,
+                        height: 40,
                         colorTile: lightBlueColor,
                         textCode: "second_floor",
                         onTapFunction: () =>

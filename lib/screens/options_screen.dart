@@ -50,7 +50,12 @@ class OptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage('assets/images/img_3_gradient.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: ListView(
         children: <Widget>[
           ClassicPageTitle(title: "options",),

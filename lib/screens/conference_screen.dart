@@ -28,7 +28,12 @@ class _ConferenceScreenState extends State<ConferenceScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage('assets/images/img_3_gradient.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: ListView(
         children: <Widget>[
           ClassicPageTitle(

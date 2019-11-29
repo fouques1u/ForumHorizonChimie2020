@@ -12,13 +12,78 @@ class HomeScreen extends StatelessWidget {
 
   HomeScreen({@required this.selectDestination});
 
+  void showPresidentWord(BuildContext context) {
+    showModalBottomSheet(
+                  backgroundColor: lightGreenColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
+                  ),
+                  builder: (BuildContext context) {
+                    return Container(
+                      color: lightGreenColor,
+                      margin: EdgeInsets.all(20),
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: ListView(
+                        scrollDirection: Axis.vertical,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('president_word_title'),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Gotham',
+                              fontSize: 24,
+                            ),
+                            textAlign: TextAlign.justify,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            AppLocalizations.of(context).translate('president_word_text'),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Gotham',
+                              fontSize: 14,
+                            ),
+                            textAlign: TextAlign.justify,
+                          ),
+                        ],
+                      ),
+                    );
+                    ;
+                  },
+                  context: context,
+                );
+  }
+
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage('assets/images/img_1_gradient.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: ListView(
         children: <Widget>[
           ClassicPageTitle(
             title: "home",
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white70,
+            ),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                AppLocalizations.of(context).translate('welcome_to_fhc'),
+                style: Theme.of(context).textTheme.body2,
+              ),
+            ),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -40,7 +105,9 @@ class HomeScreen extends StatelessWidget {
                   textCode: 'conference',
                   onTapFunction: () => selectDestination(2),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 GridTileClassic(
                   height: 50,
                   colorTile: lightBlueColor,

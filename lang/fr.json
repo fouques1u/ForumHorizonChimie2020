@@ -32,5 +32,6 @@
     "dialog_cv_cancel" : "Annuler",
     "dialog_confirmation_toast" : "Vous avez réservé un créneau !",
     "toast_unable_save_creneau" : "Désolé ! Malheureusement nous n'avons pas pu réserver ce créneau : Déjà pris.",
-    "conference" : "Conference"
+    "conference" : "Conférences",
+    "welcome_to_fhc" : "Bienvenue au Forum Horizon Chimie !"
 }

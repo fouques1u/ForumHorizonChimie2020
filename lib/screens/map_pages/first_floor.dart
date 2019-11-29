@@ -60,7 +60,12 @@ class FirstFloorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: ExactAssetImage('assets/images/img_2_gradient.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,

@@ -31,5 +31,6 @@
     "dialog_cv_cancel" : "Cancel",
     "dialog_confirmation_toast" : "You have successfully saved this slot !",
     "toast_unable_save_creneau" : "Sorry ! Unfortunately we couldn't save this slot : already taken.",
-    "conference" : "Talks"
+    "conference" : "Talks", 
+    "welcome_to_fhc" : "Welcome to the job fair Forum Horizon Chimie !"
 }
