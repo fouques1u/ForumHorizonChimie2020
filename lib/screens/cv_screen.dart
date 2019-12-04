@@ -344,7 +344,7 @@ class _CvScreenState extends State<CvScreen> {
                   BoxShadow(
                     blurRadius: 15.0,
                     spreadRadius: 0.0,
-                    color: lightBlueColor,
+                    color: darkBlueColor,
                   )
                 ],
                 gradient: LinearGradient(

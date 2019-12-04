@@ -31,8 +31,7 @@ class ConferenceWidget extends StatelessWidget {
             BoxShadow(
               blurRadius: 15.0,
               spreadRadius: 0.0,
-              color: lightBlueColor,
-              //offset: Offset.fromDirection(1),  See nike shop speed code vid.
+              color: darkBlueColor,
             )
           ],
           shape: BoxShape.rectangle,

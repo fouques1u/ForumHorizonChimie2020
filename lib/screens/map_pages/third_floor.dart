@@ -75,7 +75,10 @@ class ThirdFloorPage extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 15.0, spreadRadius: 0.0, color: lightBlueColor)
+                  blurRadius: 15.0,
+                  spreadRadius: 0.0,
+                  color: darkBlueColor,
+                )
               ],
               shape: BoxShape.rectangle,
               color: darkBlueColor,

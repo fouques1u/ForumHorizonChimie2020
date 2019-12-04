@@ -61,13 +61,10 @@ class SecondFloorPage extends StatelessWidget {
             title: 'first_floor',
           ),
           Container(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.center,
             child: Image.asset(
               "assets/images/plan_etage_1.png",
             ),
-          ),
-          SizedBox(
-            height: 20,
           ),
           Container(
             margin: EdgeInsets.all(20),
@@ -84,7 +81,10 @@ class SecondFloorPage extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                    blurRadius: 15.0, spreadRadius: 0.0, color: lightBlueColor)
+                  blurRadius: 15.0,
+                  spreadRadius: 0.0,
+                  color: darkBlueColor,
+                )
               ],
               shape: BoxShape.rectangle,
               color: darkBlueColor,
@@ -103,14 +103,20 @@ class SecondFloorPage extends StatelessWidget {
                         text: standNumber,
                         action: () =>
                             showFirmInformations(context, standNumber),
-                            longPressAction: () {
-                        final standInformations = getStandInformations(standNumber);
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                          backgroundColor: darkBlueColor,
-                          content: Text('Stand $standNumber : ${standInformations['nom']}', style: Theme.of(context).textTheme.body1,),
-                          duration: Duration(milliseconds: 1000,),
-                        ));
-                      },
+                        longPressAction: () {
+                          final standInformations =
+                              getStandInformations(standNumber);
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            backgroundColor: darkBlueColor,
+                            content: Text(
+                              'Stand $standNumber : ${standInformations['nom']}',
+                              style: Theme.of(context).textTheme.body1,
+                            ),
+                            duration: Duration(
+                              milliseconds: 1000,
+                            ),
+                          ));
+                        },
                       ))
                   .toList(),
             ),

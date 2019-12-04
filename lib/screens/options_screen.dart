@@ -79,7 +79,7 @@ class OptionsScreen extends StatelessWidget {
                 BoxShadow(
                   blurRadius: 15.0,
                   spreadRadius: 0.0,
-                  color: lightBlueColor,
+                  color: darkBlueColor,
                 )
               ],
             ),

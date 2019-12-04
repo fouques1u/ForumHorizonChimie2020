@@ -75,9 +75,6 @@ class FirstFloorPage extends StatelessWidget {
             alignment: Alignment.center,
             child: Image.asset("assets/images/plan_rdc.png"),
           ),
-          SizedBox(
-            height: 10,
-          ),
           Container(
             margin: EdgeInsets.all(20),
             width: double.infinity,
@@ -95,8 +92,7 @@ class FirstFloorPage extends StatelessWidget {
                 BoxShadow(
                   blurRadius: 15.0,
                   spreadRadius: 0.0,
-                  color: lightBlueColor,
-                  //offset: Offset.fromDirection(1),  See nike shop speed code vid.
+                  color: darkBlueColor,
                 )
               ],
               shape: BoxShape.rectangle,

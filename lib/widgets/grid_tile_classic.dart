@@ -25,6 +25,27 @@ class GridTileClassic extends StatelessWidget {
           size: 20,
         );
         break;
+      case 'ground_floor':
+        icon = Icon(
+          Icons.filter_1,
+          color: Colors.white,
+          size: 20,
+        );
+        break;
+      case 'second_floor':
+        icon = Icon(
+          Icons.filter_3,
+          color: Colors.white,
+          size: 20,
+        );
+        break;
+      case 'first_floor':
+        icon = Icon(
+          Icons.filter_2,
+          color: Colors.white,
+          size: 20,
+        );
+        break;
       case 'cv_registering':
         icon = Icon(
           Icons.event_note,
@@ -57,7 +78,7 @@ class GridTileClassic extends StatelessWidget {
         onTapFunction();
       },
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
         height: height,
         child: FittedBox(
           alignment: Alignment.centerLeft,
@@ -67,7 +88,9 @@ class GridTileClassic extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               icon,
-              SizedBox(width: 10,),
+              SizedBox(
+                width: 10,
+              ),
               Text(
                 AppLocalizations.of(context).translate(textCode),
                 style: Theme.of(context).textTheme.body1,
