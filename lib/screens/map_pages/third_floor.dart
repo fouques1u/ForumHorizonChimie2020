@@ -54,7 +54,7 @@ class ThirdFloorPage extends StatelessWidget {
             title: 'second_floor',
           ),
           Container(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.center,
             child: Image.asset(
               "assets/images/plan_etage_2.png",
               width: MediaQuery.of(context).size.width * 0.9,
