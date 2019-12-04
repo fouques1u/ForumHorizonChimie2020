@@ -70,13 +70,18 @@ class OptionsScreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: darkBlueColor,
-              gradient: LinearGradient(colors: <Color>[
-                darkBlueColor,
-                simpleBlueColor
+              gradient: LinearGradient(
+                colors: <Color>[darkBlueColor, simpleBlueColor],
+                end: Alignment.bottomRight,
+                begin: Alignment.topLeft,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 15.0,
+                  spreadRadius: 0.0,
+                  color: lightBlueColor,
+                )
               ],
-              end: Alignment.bottomRight,
-              begin: Alignment.topLeft,
-              )
             ),
             child: Column(
               children: <Widget>[
@@ -85,8 +90,8 @@ class OptionsScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     AppLocalizations.of(context).translate("choose_language"),
-                    style: TextStyle(
-                        color: Colors.white, fontSize: titleTextSize),
+                    style:
+                        TextStyle(color: Colors.white, fontSize: titleTextSize),
                   ),
                 ),
                 Container(
@@ -122,8 +127,8 @@ class OptionsScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     AppLocalizations.of(context).translate("social_media"),
-                    style: TextStyle(
-                        color: Colors.white, fontSize: titleTextSize),
+                    style:
+                        TextStyle(color: Colors.white, fontSize: titleTextSize),
                   ),
                 ),
                 Container(
