@@ -3,9 +3,6 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info/device_info.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:forum_horizon_chimie/app_localizations.dart';
-import 'package:forum_horizon_chimie/colors.dart';
 
 List<Map<String, String>> firmsData = [];
 List<String> firmsId = [];
@@ -70,7 +67,7 @@ List<Map<String, Object>> listCreneaux = [];
 List<String> listCreneauxId = [];
 String deviceId;
 
-void getDeviceInfo() async {
+void getDeviceId() async {
     DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await _deviceInfoPlugin.androidInfo;

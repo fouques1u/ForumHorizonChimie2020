@@ -38,7 +38,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.3
 
+flutter_icons:
+    android: true 
+    ios: true
+    image_path: "assets/images/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -54,6 +59,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - lang/
+   - assets/images/icon.png
    - assets/images/plan_rdc.png
    - assets/images/plan_etage_2.png
    - assets/images/plan_etage_1.png

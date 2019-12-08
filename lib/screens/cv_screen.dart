@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/widgets/slot_widget.dart';
 import 'dart:io';
 
 import '../colors.dart';
@@ -14,7 +15,10 @@ class CvScreen extends StatefulWidget {
 }
 
 class _CvScreenState extends State<CvScreen> {
-  List<String> creneaux = getAvailableCreneaux();
+  List<String> _creneaux = getAvailableCreneaux();
+  List<Map<String, String>> _creneauxTaken = [
+    {"nom": "Cochet", "prenom": "Henri", "horaire": "9:05"}
+  ];
 
   String nom = "";
   String prenom = "";
@@ -134,7 +138,7 @@ class _CvScreenState extends State<CvScreen> {
                 mainAxisSpacing: 10,
                 crossAxisCount: 4,
                 childAspectRatio: 4,
-                children: creneaux.map((String creneau) {
+                children: _creneaux.map((String creneau) {
                   return OutlineButtonClassic(
                     text: creneau,
                     action: () {
@@ -150,7 +154,7 @@ class _CvScreenState extends State<CvScreen> {
                 Future<void> result = getCreneaux();
 
                 setState(() {
-                  creneaux = getAvailableCreneaux();
+                  _creneaux = getAvailableCreneaux();
                 });
 
                 return result;
@@ -318,6 +322,18 @@ class _CvScreenState extends State<CvScreen> {
     );
   }
 
+  Widget builSlotWidget(List<Map<String, String>> creneauxTaken) {
+    return Column(
+      children: creneauxTaken.map((Map<String, String> creneau) {
+        return SlotWidget(
+          nom: creneau["nom"],
+          prenom: creneau["prenom"],
+          horaire: creneau["horaire"],
+        );
+      }).toList(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -334,6 +350,8 @@ class _CvScreenState extends State<CvScreen> {
             ClassicPageTitle(
               title: 'reserve_photo_cv',
             ),
+            builSlotWidget(_creneauxTaken),
+            SizedBox(height: 10,),
             Container(
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
@@ -356,7 +374,11 @@ class _CvScreenState extends State<CvScreen> {
                   begin: Alignment.bottomRight,
                 ),
               ),
-              child: buildForm(context),
+              child: Column(
+                children: <Widget>[
+                  buildForm(context),
+                ],
+              ),
             ),
           ],
         ),

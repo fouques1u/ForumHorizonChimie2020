@@ -17,23 +17,27 @@ class SearchFirmPage extends StatefulWidget {
 }
 
 class _SearchFirmPageState extends State<SearchFirmPage> {
-  final TextEditingController _filter = new TextEditingController();
-  List<String> _names = new List(); // names we get from API
-  List<String> _filteredNames = new List(); // names filtered by search text
+  final TextEditingController _filter = TextEditingController();
+  List<String> _names = List(); // names we get from API
+  List<String> _filteredNames = List(); // names filtered by search text
 
   onSearchTextChanged(String text) async {
     _filteredNames.clear();
 
     if (text.isEmpty) {
-      setState(() {});
       return;
     }
 
+    text.toLowerCase();
+
     _names.forEach((name) {
-      if (name.contains(text))
+      String copy = name;
+
+      if (copy.toLowerCase().contains(text)) {
         setState(() {
           _filteredNames.add(name);
         });
+      }
     });
   }
 
@@ -44,6 +48,51 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
     _names = getFirmsNames();
 
     onSearchTextChanged("");
+  }
+
+  Widget buildFloorButtons(
+      {BuildContext context,
+      Function onTapFunction,
+      Icon icon,
+      String textCode,
+      Color colorTile}) {
+    return InkWell(
+      onTap: () {
+        onTapFunction();
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            icon,
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              AppLocalizations.of(context).translate(textCode),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: 'Gotham',
+              ),
+            ),
+          ],
+        ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            shape: BoxShape.rectangle,
+            color: colorTile,
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: colorTile,
+                blurRadius: 6,
+                spreadRadius: 0,
+              ),
+            ]),
+      ),
+    );
   }
 
   @override
@@ -71,7 +120,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                   BoxShadow(
                     blurRadius: 15.0,
                     spreadRadius: 0.0,
-                    color: lightBlueColor,
+                    color: darkBlueColor,
                   )
                 ],
                 gradient: LinearGradient(
@@ -144,48 +193,71 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: FittedBox(
-                child: Row(
-                  children: <Widget>[
-                    GridTileClassic(
-                        height: 40,
-                        colorTile: darkBlueColor,
-                        textCode: "ground_floor",
-                        onTapFunction: () =>
-                            widget.pageController.animateToPage(
-                              1,
-                              curve: Curves.ease,
-                              duration: Duration(milliseconds: 650),
-                            )),
-                    SizedBox(width: 10),
-                    GridTileClassic(
-                        height: 40,
-                        colorTile: simpleBlueColor,
-                        textCode: "first_floor",
-                        onTapFunction: () =>
-                            widget.pageController.animateToPage(
-                              2,
-                              curve: Curves.ease,
-                              duration: Duration(milliseconds: 650),
-                            )),
-                    SizedBox(width: 10),
-                    GridTileClassic(
-                        height: 40,
-                        colorTile: lightBlueColor,
-                        textCode: "second_floor",
-                        onTapFunction: () =>
-                            widget.pageController.animateToPage(
-                              3,
-                              curve: Curves.ease,
-                              duration: Duration(milliseconds: 650),
-                            )),
-                  ],
-                ),
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  buildFloorButtons(
+                    context: context,
+                    colorTile: darkBlueColor,
+                    icon: Icon(
+                      Icons.filter_1,
+                      color: Colors.white,
+                    ),
+                    textCode: "ground_floor",
+                    onTapFunction: () {
+                      widget.pageController.animateToPage(
+                        1,
+                        curve: Curves.ease,
+                        duration: Duration(milliseconds: 650),
+                      );
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  buildFloorButtons(
+                    context: context,
+                    colorTile: simpleBlueColor,
+                    icon: Icon(
+                      Icons.filter_2,
+                      color: Colors.white,
+                    ),
+                    textCode: "first_floor",
+                    onTapFunction: () {
+                      widget.pageController.animateToPage(
+                        2,
+                        curve: Curves.ease,
+                        duration: Duration(milliseconds: 650),
+                      );
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  buildFloorButtons(
+                    context: context,
+                    colorTile: lightBlueColor,
+                    icon: Icon(
+                      Icons.filter_3,
+                      color: Colors.white,
+                    ),
+                    textCode: "second_floor",
+                    onTapFunction: () {
+                      widget.pageController.animateToPage(
+                        3,
+                        curve: Curves.ease,
+                        duration: Duration(milliseconds: 650),
+                      );
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                  ),
+                ],
               ),
             ),
             Container(
               child: Arrow(
                 onPressed: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
                   widget.pageController.animateToPage(
                     1,
                     curve: Curves.ease,

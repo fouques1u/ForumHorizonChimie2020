@@ -60,10 +60,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: Colors.white,
+        /*
         image: DecorationImage(
           image: ExactAssetImage('assets/images/img_1_gradient.jpg'),
           fit: BoxFit.cover,
         ),
+        */
       ),
       child: ListView(
         children: <Widget>[
