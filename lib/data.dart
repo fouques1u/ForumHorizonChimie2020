@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -66,19 +67,30 @@ List<String> listStands = const [
 List<Map<String, Object>> listCreneaux = [];
 List<String> listCreneauxId = [];
 String deviceId;
+const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+final String defaultDeviceId = getRandomString(20);
+
+String getRandomString(int strlen) {
+  Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);
+  String result = "";
+  for (var i = 0; i < strlen; i++) {
+    result += chars[rnd.nextInt(chars.length)];
+  }
+  return result;
+}
 
 void getDeviceId() async {
-    DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
-    if (Platform.isAndroid) {
-      AndroidDeviceInfo androidInfo = await _deviceInfoPlugin.androidInfo;
-      deviceId = androidInfo.fingerprint;
-    } else if (Platform.isIOS) {
-      IosDeviceInfo iosDeviceInfo = await _deviceInfoPlugin.iosInfo;
-      deviceId = iosDeviceInfo.identifierForVendor;
-    } else {
-      deviceId = 'Error on device Id : Device Id not found...';
-    }
+  DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
+  if (Platform.isAndroid) {
+    AndroidDeviceInfo androidInfo = await _deviceInfoPlugin.androidInfo;
+    deviceId = androidInfo.fingerprint;
+  } else if (Platform.isIOS) {
+    IosDeviceInfo iosDeviceInfo = await _deviceInfoPlugin.iosInfo;
+    deviceId = iosDeviceInfo.identifierForVendor;
+  } else {
+    deviceId = defaultDeviceId;
   }
+}
 
 void getFirms() async {
   List<DocumentSnapshot> data = await Firestore.instance
@@ -170,8 +182,9 @@ void updateCreneau(Map<String, Object> map, BuildContext context) async {
       .collection('creneaux_cv')
       .document(creneauToUpdate.documentID)
       .updateData(map);
-  
-  Map<String, Object> creneauInList = listCreneaux.firstWhere((Map<String, Object> localMap) {
+
+  Map<String, Object> creneauInList =
+      listCreneaux.firstWhere((Map<String, Object> localMap) {
     return map['horaire'] == localMap['horaire'];
   });
 
@@ -198,23 +211,31 @@ List<String> getAvailableCreneaux() {
 bool checkCreneauAvailability(String horaire) {
   getCreneaux();
 
-  Map<String,Object> creneau = listCreneaux.firstWhere((Map<String, Object> map) {
+  Map<String, Object> creneau =
+      listCreneaux.firstWhere((Map<String, Object> map) {
     return map['horaire'] == horaire;
   });
 
   return creneau['dispo'];
 }
 
-List<Map<String, Object>> getSavedCreneaux(String deviceId) {
-  getCreneaux();
+// Good way to use future.
+Future<List<Map<String, String>>> getCreneauxSaved() async {
+  List<DocumentSnapshot> _data = await getSnapshot('creneaux_cv');
 
-  List result = List();
+  List<Map<String, String>> _returnValue = [];
 
-  listCreneaux.forEach((Map<String,Object> map) {
-    if (map['deviceId'] == deviceId) {
-      result.add(map);
+  _data.forEach((DocumentSnapshot documentSnapshot) {
+    if (documentSnapshot.data.isNotEmpty) {
+      if (documentSnapshot.data["deviceId"] == deviceId) {
+        _returnValue.add({
+          "horaire": documentSnapshot.data["horaire"],
+          "nom": documentSnapshot.data["nom"],
+          "prenom": documentSnapshot.data["prenom"]
+        });
+      }
     }
   });
 
-  return result;
+  return _returnValue;
 }

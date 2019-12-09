@@ -16,9 +16,6 @@ class CvScreen extends StatefulWidget {
 
 class _CvScreenState extends State<CvScreen> {
   List<String> _creneaux = getAvailableCreneaux();
-  List<Map<String, String>> _creneauxTaken = [
-    {"nom": "Cochet", "prenom": "Henri", "horaire": "9:05"}
-  ];
 
   String nom = "";
   String prenom = "";
@@ -322,16 +319,28 @@ class _CvScreenState extends State<CvScreen> {
     );
   }
 
-  Widget builSlotWidget(List<Map<String, String>> creneauxTaken) {
-    return Column(
-      children: creneauxTaken.map((Map<String, String> creneau) {
-        return SlotWidget(
-          nom: creneau["nom"],
-          prenom: creneau["prenom"],
-          horaire: creneau["horaire"],
-        );
-      }).toList(),
+  Widget buildSlotWidgetStreamBuilder() {
+    return FutureBuilder(
+      future: getCreneauxSaved(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData != null) {
+          List<Map<String, String>> requestResult = snapshot.data;
+          return Column(
+            children: requestResult.map((Map<String, String> creneau) {
+              return SlotWidget(
+                nom: creneau["nom"],
+                prenom: creneau["prenom"],
+                horaire: creneau["horaire"],
+              );
+            }).toList(),
+          );
+        } else {
+          return Center();
+        }
+      },
     );
+
+    ;
   }
 
   @override
@@ -350,8 +359,10 @@ class _CvScreenState extends State<CvScreen> {
             ClassicPageTitle(
               title: 'reserve_photo_cv',
             ),
-            builSlotWidget(_creneauxTaken),
-            SizedBox(height: 10,),
+            buildSlotWidgetStreamBuilder(),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
