@@ -170,7 +170,7 @@ Future<Null> getCreneaux() async {
   return null;
 }
 
-void updateCreneau(Map<String, Object> map, BuildContext context) async {
+void updateCreneau(Map<String, Object> map) async {
   List<DocumentSnapshot> data = await getSnapshot('creneaux_cv');
 
   final DocumentSnapshot creneauToUpdate =
@@ -238,4 +238,15 @@ Future<List<Map<String, String>>> getCreneauxSaved() async {
   });
 
   return _returnValue;
+}
+
+void deleteCreneau(String horaire) async {
+  Map<String,Object> creneauToDelete = {
+    "horaire" : horaire,
+    "nom" : "",
+    "prenom" : "",
+    "deviceId" : "", 
+    "dispo" : true
+  };
+  updateCreneau(creneauToDelete);
 }

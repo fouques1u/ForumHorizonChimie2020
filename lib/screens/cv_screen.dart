@@ -39,7 +39,10 @@ class _CvScreenState extends State<CvScreen> {
                   color: darkBlueColor,
                 ),
               ),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                Navigator.pop(context);
+                setState(() {});
+              },
             )
           ],
         );
@@ -207,111 +210,110 @@ class _CvScreenState extends State<CvScreen> {
             ),
             onTap: () {
               showDialog(
-                  context: context,
-                  builder: (context) {
-                    final mapToUpdate = {
-                      'deviceId': deviceId,
-                      'dispo': false,
-                      'horaire': horaire,
-                      'nom': nom,
-                      'prenom': prenom
-                    };
-
-                    return Platform.isAndroid
-                        ? AlertDialog(
-                            title: Text(
+                context: context,
+                builder: (context) {
+                  final mapToUpdate = {
+                    'deviceId': deviceId,
+                    'dispo': false,
+                    'horaire': horaire,
+                    'nom': nom,
+                    'prenom': prenom
+                  };
+                  return Platform.isAndroid
+                      ? AlertDialog(
+                          title: Text(
+                            AppLocalizations.of(context)
+                                .translate('dialog_cv_title'),
+                            style: TextStyle(
+                                color: darkBlueColor, fontFamily: 'Gotham'),
+                          ),
+                          content: Text(
+                              AppLocalizations.of(context)
+                                      .translate('dialog_cv_text') +
+                                  '\n$nom\n$prenom\n$horaire',
+                              style: TextStyle(
+                                fontFamily: 'Gotham',
+                              )),
+                          actions: <Widget>[
+                            FlatButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('dialog_cv_cancel'),
+                                    style: TextStyle(
+                                        color: darkBlueColor,
+                                        fontFamily: 'Gotham'))),
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                if (checkCreneauAvailability(horaire)) {
+                                  updateCreneau(mapToUpdate);
+                                  showSimpleDialog(
+                                      context, 'dialog_confirmation_toast');
+                                } else {
+                                  showSimpleDialog(
+                                      context, 'toast_unable_save_creneau');
+                                }
+                              },
+                              child: Text(
+                                  AppLocalizations.of(context)
+                                      .translate('dialog_cv_confirm'),
+                                  style: TextStyle(
+                                      color: darkBlueColor,
+                                      fontFamily: 'Gotham')),
+                            )
+                          ],
+                        )
+                      : CupertinoAlertDialog(
+                          title: Text(
                               AppLocalizations.of(context)
                                   .translate('dialog_cv_title'),
                               style: TextStyle(
-                                  color: darkBlueColor, fontFamily: 'Gotham'),
+                                  color: darkBlueColor, fontFamily: 'Gotham')),
+                          content: Text(
+                            AppLocalizations.of(context)
+                                    .translate('dialog_cv_text') +
+                                "\n$nom\n$prenom\n$horaire",
+                            style: TextStyle(
+                              fontFamily: 'Gotham',
                             ),
-                            content: Text(
-                                AppLocalizations.of(context)
-                                        .translate('dialog_cv_text') +
-                                    '\n$nom\n$prenom\n$horaire',
-                                style: TextStyle(
-                                  fontFamily: 'Gotham',
-                                )),
-                            actions: <Widget>[
-                              FlatButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)
-                                          .translate('dialog_cv_cancel'),
-                                      style: TextStyle(
-                                          color: darkBlueColor,
-                                          fontFamily: 'Gotham'))),
-                              FlatButton(
+                          ),
+                          actions: <Widget>[
+                            FlatButton(
                                 onPressed: () {
                                   Navigator.pop(context);
-                                  if (checkCreneauAvailability(horaire)) {
-                                    updateCreneau(mapToUpdate, context);
-                                    showSimpleDialog(
-                                        context, 'dialog_confirmation_toast');
-                                  } else {
-                                    showSimpleDialog(
-                                        context, 'toast_unable_save_creneau');
-                                  }
                                 },
                                 child: Text(
                                     AppLocalizations.of(context)
-                                        .translate('dialog_cv_confirm'),
+                                        .translate('dialog_cv_cancel'),
                                     style: TextStyle(
                                         color: darkBlueColor,
-                                        fontFamily: 'Gotham')),
-                              )
-                            ],
-                          )
-                        : CupertinoAlertDialog(
-                            title: Text(
+                                        fontFamily: 'Gotham'))),
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                if (checkCreneauAvailability(horaire)) {
+                                  updateCreneau(mapToUpdate);
+                                  showSimpleDialog(
+                                      context, 'dialog_confirmation_toast');
+                                } else {
+                                  showSimpleDialog(
+                                      context, 'toast_unable_save_creneau');
+                                }
+                              },
+                              child: Text(
                                 AppLocalizations.of(context)
-                                    .translate('dialog_cv_title'),
+                                    .translate('dialog_cv_confirm'),
                                 style: TextStyle(
-                                    color: darkBlueColor,
-                                    fontFamily: 'Gotham')),
-                            content: Text(
-                              AppLocalizations.of(context)
-                                      .translate('dialog_cv_text') +
-                                  "\n$nom\n$prenom\n$horaire",
-                              style: TextStyle(
-                                fontFamily: 'Gotham',
+                                    color: darkBlueColor, fontFamily: 'Gotham'),
                               ),
-                            ),
-                            actions: <Widget>[
-                              FlatButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)
-                                          .translate('dialog_cv_cancel'),
-                                      style: TextStyle(
-                                          color: darkBlueColor,
-                                          fontFamily: 'Gotham'))),
-                              FlatButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  if (checkCreneauAvailability(horaire)) {
-                                    updateCreneau(mapToUpdate, context);
-                                    showSimpleDialog(
-                                        context, 'dialog_confirmation_toast');
-                                  } else {
-                                    showSimpleDialog(
-                                        context, 'toast_unable_save_creneau');
-                                  }
-                                },
-                                child: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('dialog_cv_confirm'),
-                                    style: TextStyle(
-                                        color: darkBlueColor,
-                                        fontFamily: 'Gotham')),
-                              )
-                            ],
-                          );
-                  });
+                            )
+                          ],
+                        );
+                },
+              );
             },
           ),
         ],
@@ -323,7 +325,9 @@ class _CvScreenState extends State<CvScreen> {
     return FutureBuilder(
       future: getCreneauxSaved(),
       builder: (context, snapshot) {
-        if (snapshot.hasData != null) {
+        if (snapshot.hasData != null &&
+            (snapshot.connectionState == ConnectionState.active ||
+                snapshot.connectionState == ConnectionState.done)) {
           List<Map<String, String>> requestResult = snapshot.data;
           return Column(
             children: requestResult.map((Map<String, String> creneau) {
@@ -331,6 +335,7 @@ class _CvScreenState extends State<CvScreen> {
                 nom: creneau["nom"],
                 prenom: creneau["prenom"],
                 horaire: creneau["horaire"],
+                onConfirimCreneauDelete: () => setState(() {}),
               );
             }).toList(),
           );

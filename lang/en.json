@@ -32,5 +32,11 @@
     "dialog_confirmation_toast" : "You have successfully saved this slot !",
     "toast_unable_save_creneau" : "Sorry ! Unfortunately we couldn't save this slot : already taken.",
     "conference" : "Talks", 
-    "welcome_to_fhc" : "Welcome to the job fair Forum Horizon Chimie !"
+    "welcome_to_fhc" : "Welcome to the job fair Forum Horizon Chimie !",
+    "dialog_cv_delete_title" : "Delete the slot",
+    "dialog_cv_delete_text" : "Are you sure to delete this slot ?",
+    "dialog_cv_delete_confirm" : "Yes, delete.",
+    "dialog_cv_delete_cancel" : "Cancel",
+    "cv_delete_error" : "Sorry, we could'nt delete this slot",
+    "cv_delete_success" : "The slot has been deleted !"
 }
