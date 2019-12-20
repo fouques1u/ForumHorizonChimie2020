@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:device_info/device_info.dart';
 
 List<Map<String, String>> firmsData = [];
@@ -66,6 +65,8 @@ List<String> listStands = const [
 ];
 List<Map<String, Object>> listCreneaux = [];
 List<String> listCreneauxId = [];
+List<Map<String,String>> conferencesData = [];
+List<String> conferencesId = [];
 String deviceId;
 const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
 final String defaultDeviceId = getRandomString(20);
@@ -92,7 +93,7 @@ void getDeviceId() async {
   }
 }
 
-void getFirms() async {
+Future<Null> getFirms() async {
   List<DocumentSnapshot> data = await Firestore.instance
       .collection('firms')
       .getDocuments()
@@ -118,6 +119,8 @@ void getFirms() async {
       }
     }
   });
+
+  return null;
 }
 
 Map<String, String> getStandInformations(String stand) {
@@ -138,6 +141,14 @@ List<String> getFirmsNames() {
   });
 
   return result;
+}
+
+Future<String> getStandFirmByName(String nom) async {
+  await getFirms();
+
+  return firmsData.firstWhere((Map<String,String> map) {
+    return map['nom'] == nom;
+  })['stand'];
 }
 
 Future<List<DocumentSnapshot>> getSnapshot(String collection) async {
@@ -249,4 +260,29 @@ void deleteCreneau(String horaire) async {
     "dispo" : true
   };
   updateCreneau(creneauToDelete);
+}
+
+void getConferences() async {
+  List<DocumentSnapshot> data = await Firestore.instance
+      .collection('conferences')
+      .getDocuments()
+      .then((QuerySnapshot querySnapshot) {
+    return querySnapshot.documents;
+  });
+
+  data.forEach((DocumentSnapshot documentSnapshot) {
+    if (documentSnapshot.data.isNotEmpty) {
+      Map<String, String> newMap = {
+        'sujet': documentSnapshot.data['sujet'],
+        'organisme': documentSnapshot.data['organisme'],
+        'intervenant': documentSnapshot.data['intervenant'],
+        'horaire': documentSnapshot.data['horaire'],
+        'description': documentSnapshot.data['description'],
+      };
+      if (!firmsId.contains(documentSnapshot.documentID)) {
+        firmsData.add(newMap);
+        firmsId.add(documentSnapshot.documentID);
+      }
+    }
+  });
 }

@@ -172,9 +172,18 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                                       style: Theme.of(context).textTheme.body2)
                                 ]
                               : _filteredNames.map((String name) {
-                                  return new ListTile(
-                                    title: Text(name),
-                                    onTap: () => print(name),
+                                  return FutureBuilder(
+                                    future: getStandFirmByName(name),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot snapshot) {
+
+                                      return ListTile(
+                                        title: Text(name),
+                                        // TODO continue...
+                                        subtitle: (snapshot.connectionState == ConnectionState.none || snapshot.connectionState == ConnectionState.waiting || snapshot.data == null) ? Text('Stand : ') :Text('Stand : ' +snapshot.data),
+                                        onTap: () => print(name),
+                                      );
+                                    },
                                   );
                                 }).toList())
                           : _filteredNames
