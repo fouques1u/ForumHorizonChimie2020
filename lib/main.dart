@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:forum_horizon_chimie/colors.dart';
+import 'colors.dart';
 import './app_localizations.dart';
 import './application.dart';
 import 'home_page.dart';

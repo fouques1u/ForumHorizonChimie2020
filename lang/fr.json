@@ -38,5 +38,6 @@
     "dialog_cv_delete_confirm" : "Oui, supprimer.",
     "dialog_cv_delete_cancel" : "Annuler",
     "cv_delete_error" : "Nous n'avons pas pu supprimer ce créneau...",
-    "cv_delete_success" : "Le créneau a été supprimé !"
+    "cv_delete_success" : "Le créneau a été supprimé !",
+    "thanks" : "Merci !"
 }

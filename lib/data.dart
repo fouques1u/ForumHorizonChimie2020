@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 List<Map<String, String>> firmsData = [];
 List<String> firmsId = [];
@@ -61,15 +63,17 @@ List<String> listStands = const [
   '207',
   '208',
   '209',
-  '210'
+  '210',
 ];
 List<Map<String, Object>> listCreneaux = [];
 List<String> listCreneauxId = [];
-List<Map<String,String>> conferencesData = [];
+List<Map<String, String>> conferencesData = [];
 List<String> conferencesId = [];
 String deviceId;
 const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
 final String defaultDeviceId = getRandomString(20);
+//final StorageReference storageReference = FirebaseStorage().ref().child('gs://forumhorizonchimie-3d3a8.appspot.com/');
+final String isShownId = 'IS_SHOWN_ID';
 
 String getRandomString(int strlen) {
   Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);
@@ -80,7 +84,7 @@ String getRandomString(int strlen) {
   return result;
 }
 
-void getDeviceId() async {
+Future<Null> getDeviceId() async {
   DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
   if (Platform.isAndroid) {
     AndroidDeviceInfo androidInfo = await _deviceInfoPlugin.androidInfo;
@@ -91,6 +95,8 @@ void getDeviceId() async {
   } else {
     deviceId = defaultDeviceId;
   }
+
+  return null;
 }
 
 Future<Null> getFirms() async {
@@ -123,8 +129,8 @@ Future<Null> getFirms() async {
   return null;
 }
 
-Map<String, String> getStandInformations(String stand) {
-  getFirms();
+Future<Map<String, String>> getStandInformations(String stand) async {
+  await getFirms();
 
   return firmsData.firstWhere((Map<String, String> element) {
     return element['stand'] == stand;
@@ -146,7 +152,7 @@ List<String> getFirmsNames() {
 Future<String> getStandFirmByName(String nom) async {
   await getFirms();
 
-  return firmsData.firstWhere((Map<String,String> map) {
+  return firmsData.firstWhere((Map<String, String> map) {
     return map['nom'] == nom;
   })['stand'];
 }
@@ -252,12 +258,12 @@ Future<List<Map<String, String>>> getCreneauxSaved() async {
 }
 
 void deleteCreneau(String horaire) async {
-  Map<String,Object> creneauToDelete = {
-    "horaire" : horaire,
-    "nom" : "",
-    "prenom" : "",
-    "deviceId" : "", 
-    "dispo" : true
+  Map<String, Object> creneauToDelete = {
+    "horaire": horaire,
+    "nom": "",
+    "prenom": "",
+    "deviceId": "",
+    "dispo": true
   };
   updateCreneau(creneauToDelete);
 }

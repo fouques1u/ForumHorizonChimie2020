@@ -19,8 +19,17 @@ class ThirdFloorPage extends StatelessWidget {
       elevation: 4,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
-      builder: (context) => FirmModalBottomSheet(
-        standInformations: getStandInformations(standNumber),
+      builder: (context) => FutureBuilder(
+        future: getStandInformations(standNumber),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting || snapshot.connectionState == ConnectionState.none || snapshot.data == null) {
+            return Center(
+              child: RefreshProgressIndicator(),
+            );
+          } else {
+            return FirmModalBottomSheet(standInformations: snapshot.data,);
+          }
+        },
       ),
     );
   }
@@ -97,8 +106,8 @@ class ThirdFloorPage extends StatelessWidget {
                         text: standNumber,
                         action: () =>
                             showFirmInformations(context, standNumber),
-                        longPressAction: () {
-                          final standInformations =
+                        longPressAction: () async {
+                          final standInformations = await 
                               getStandInformations(standNumber);
                           Scaffold.of(context).showSnackBar(SnackBar(
                             backgroundColor: darkBlueColor,

@@ -1,60 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/icon_data.dart';
-import 'package:forum_horizon_chimie/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:forum_horizon_chimie/app_localizations.dart';
 import 'package:forum_horizon_chimie/colors.dart';
 import 'package:forum_horizon_chimie/data.dart';
+import 'package:forum_horizon_chimie/utils.dart';
 import 'package:forum_horizon_chimie/widgets/grid_tile_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final Function selectDestination;
 
   HomeScreen({@required this.selectDestination});
 
-  void showPresidentWord(BuildContext context) {
-    showModalBottomSheet(
-                  backgroundColor: lightGreenColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
-                  ),
-                  builder: (BuildContext context) {
-                    return Container(
-                      color: lightGreenColor,
-                      margin: EdgeInsets.all(20),
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      child: ListView(
-                        scrollDirection: Axis.vertical,
-                        children: <Widget>[
-                          Text(
-                            AppLocalizations.of(context)
-                                .translate('president_word_title'),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Gotham',
-                              fontSize: 24,
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            AppLocalizations.of(context).translate('president_word_text'),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Gotham',
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                        ],
-                      ),
-                    );
-                    ;
-                  },
-                  context: context,
-                );
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  SharedPreferences _prefs;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      _prefs = await SharedPreferences.getInstance();
+
+      bool _popUpShown =  await _prefs.getBool(isShownId) ?? false;
+
+      if (!_popUpShown) {
+        await showLargeBottomSheet(context);
+
+        _popUpShown = true;
+        await _prefs.setBool(isShownId, true);
+      } 
+    });
   }
 
   Widget build(BuildContext context) {
@@ -97,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                   height: 50,
                   colorTile: darkBlueColor,
                   textCode: "firms",
-                  onTapFunction: () => selectDestination(1),
+                  onTapFunction: () => widget.selectDestination(1),
                 ),
                 SizedBox(
                   height: 15,
@@ -106,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                   height: 50,
                   colorTile: simpleBlueColor,
                   textCode: 'conference',
-                  onTapFunction: () => selectDestination(2),
+                  onTapFunction: () => widget.selectDestination(2),
                 ),
                 SizedBox(
                   height: 15,
@@ -115,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                   height: 50,
                   colorTile: lightBlueColor,
                   textCode: "cv_registering",
-                  onTapFunction: () => selectDestination(3),
+                  onTapFunction: () => widget.selectDestination(3),
                 ),
                 SizedBox(
                   height: 15,
@@ -124,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                   height: 50,
                   colorTile: lightGreenColor,
                   textCode: "options",
-                  onTapFunction: () => selectDestination(4),
+                  onTapFunction: () => widget.selectDestination(4),
                 ),
                 SizedBox(
                   height: 15,

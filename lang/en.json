@@ -38,5 +38,6 @@
     "dialog_cv_delete_confirm" : "Yes, delete.",
     "dialog_cv_delete_cancel" : "Cancel",
     "cv_delete_error" : "Sorry, we could'nt delete this slot",
-    "cv_delete_success" : "The slot has been deleted !"
+    "cv_delete_success" : "The slot has been deleted !",
+    "thanks" : "Thanks !"
 }

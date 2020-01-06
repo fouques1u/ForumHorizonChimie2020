@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'app_localizations.dart';
 import 'colors.dart';
 
 void _showSimpleDialog(BuildContext context, String text, Function onConfirm) {
@@ -144,5 +145,66 @@ void showDialogWithConfirmation({
               ],
             );
     },
+  );
+}
+
+void showLargeBottomSheet(BuildContext context) {
+  showBottomSheet(
+    builder: (BuildContext context) {
+      return Container(
+        color: Colors.white,
+        child: Container(
+          margin: EdgeInsets.all(15),
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 4,
+                color: lightGreenColor,
+              ),
+            ],
+            color: lightGreenColor,
+          ),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: <Widget>[
+              Text(
+                AppLocalizations.of(context).translate('president_word_title'),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Gotham',
+                  fontSize: 24,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                AppLocalizations.of(context).translate('president_word_text'),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Gotham',
+                  fontSize: 14,
+                ),
+                textAlign: TextAlign.justify,
+              ),
+              RaisedButton(
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  AppLocalizations.of(context).translate("thanks"),
+                  style: Theme.of(context).textTheme.body1.apply(color: lightGreenColor),
+                ),
+              )
+            ],
+          ),
+        ),
+      );
+    },
+    context: context,
   );
 }
