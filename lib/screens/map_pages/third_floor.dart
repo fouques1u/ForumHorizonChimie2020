@@ -34,7 +34,7 @@ class ThirdFloorPage extends StatelessWidget {
     );
   }
 
-  final List<String> standNumbers = [
+  final List<String> _standNumbers = [
     '201',
     '202',
     '203',
@@ -101,7 +101,7 @@ class ThirdFloorPage extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               childAspectRatio: 3,
-              children: standNumbers
+              children: _standNumbers
                   .map((String standNumber) => OutlineButtonClassic(
                         text: standNumber,
                         action: () =>

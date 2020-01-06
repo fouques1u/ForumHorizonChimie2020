@@ -31,6 +31,8 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
     text.toLowerCase();
 
     _names.forEach((name) {
+      if (name == null) return;
+
       String copy = name;
 
       if (copy.toLowerCase().contains(text)) {
@@ -163,38 +165,77 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Column(
-                      children: _filteredNames.length < 5
-                          ? (_filteredNames.length == 0
-                              ? [
-                                  Text(
-                                      AppLocalizations.of(context)
-                                          .translate("no_firms_found"),
-                                      style: Theme.of(context).textTheme.body2)
-                                ]
-                              : _filteredNames.map((String name) {
-                                  return FutureBuilder(
-                                    future: getStandFirmByName(name),
-                                    builder: (BuildContext context,
-                                        AsyncSnapshot snapshot) {
-
-                                      return ListTile(
-                                        title: Text(name),
-                                        // TODO continue...
-                                        subtitle: (snapshot.connectionState == ConnectionState.none || snapshot.connectionState == ConnectionState.waiting || snapshot.data == null) ? Text('Stand : ') :Text('Stand : ' +snapshot.data),
-                                        onTap: () => print(name),
-                                      );
-                                    },
-                                  );
-                                }).toList())
+                      children: _filteredNames.length == 0
+                          ? [
+                              Text(
+                                  AppLocalizations.of(context)
+                                      .translate("no_firms_found"),
+                                  style: Theme.of(context).textTheme.body2)
+                            ]
                           : _filteredNames
                               .map((String name) {
-                                return new ListTile(
-                                  title: Text(name),
-                                  onTap: () => print(name),
+                                return FutureBuilder(
+                                  future: getStandFirmByName(name),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    if (snapshot.connectionState ==
+                                            ConnectionState.none ||
+                                        snapshot.connectionState ==
+                                            ConnectionState.waiting ||
+                                        snapshot.data == null) {
+                                      return ListTile(
+                                        title: Text(name),
+                                      );
+                                    }
+
+                                    String _standNumber = snapshot.data;
+
+                                    return ListTile(
+                                      title: Text(name),
+                                      subtitle: Text('Stand : ' + _standNumber),
+                                      onTap: () {
+                                        if (_standNumber.length == 3) {
+                                          // Second floor
+                                          if (_standNumber.startsWith("2")) {
+                                            widget.pageController.animateToPage(
+                                              3,
+                                              curve: Curves.ease,
+                                              duration:
+                                                  Duration(milliseconds: 650),
+                                            );
+                                            FocusScope.of(context)
+                                                .requestFocus(FocusNode());
+                                          }
+                                          // First floor
+                                          if (_standNumber.startsWith("1")) {
+                                            widget.pageController.animateToPage(
+                                              2,
+                                              curve: Curves.ease,
+                                              duration:
+                                                  Duration(milliseconds: 650),
+                                            );
+                                            FocusScope.of(context)
+                                                .requestFocus(FocusNode());
+                                          }
+                                        }
+                                        // Ground floor
+                                        else {
+                                          widget.pageController.animateToPage(
+                                            1,
+                                            curve: Curves.ease,
+                                            duration:
+                                                Duration(milliseconds: 650),
+                                          );
+                                          FocusScope.of(context)
+                                              .requestFocus(FocusNode());
+                                        }
+                                      },
+                                    );
+                                  },
                                 );
                               })
-                              .toList()
-                              .sublist(0, 5),
+                              .take(5)
+                              .toList(),
                     ),
                   ),
                 ],
