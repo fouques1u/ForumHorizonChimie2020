@@ -39,5 +39,13 @@
     "dialog_cv_delete_cancel" : "Cancel",
     "cv_delete_error" : "Sorry, we could'nt delete this slot",
     "cv_delete_success" : "The slot has been deleted !",
-    "thanks" : "Thanks !"
+    "thanks" : "Thanks !",
+    "date_forum" : "Thursday 6th of February 2020",
+    "horaires_forum" : "From 9am to 6pm",
+    "entree_forum" : "Free entry",
+    "restauration_forum" : "Meals available",
+    "lieu_forum" : "Maison de la Chimie",
+    "adresse_forum" : "28, rue Saint Dominique, 75007 Paris",
+    "metro_forum" : "METRO : Invalides (line 8 or 13), Assemblée Nationale (line 12)",
+    "rer_forum" : "RER : Line C, Esplanade des invalides"
 }

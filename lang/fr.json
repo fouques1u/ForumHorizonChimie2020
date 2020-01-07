@@ -39,5 +39,13 @@
     "dialog_cv_delete_cancel" : "Annuler",
     "cv_delete_error" : "Nous n'avons pas pu supprimer ce créneau...",
     "cv_delete_success" : "Le créneau a été supprimé !",
-    "thanks" : "Merci !"
+    "thanks" : "Merci !",
+    "date_forum" : "Jeudi 6 Février 2020",
+    "horaires_forum" : "De 9h à 18h",
+    "entree_forum" : "Entrée libre et gratuite",
+    "restauration_forum" : "Restauration possible sur place",
+    "lieu_forum" : "Maison de la Chimie",
+    "adresse_forum" : "28, rue Saint Dominique, 75007 Paris",
+    "metro_forum" : "METRO : Invalides (ligne 8 ou 13), Assemblée Nationale (ligne 12)",
+    "rer_forum" : "RER : Ligne C, Esplanade des invalides"
 }
