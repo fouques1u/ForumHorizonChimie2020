@@ -1,4 +1,4 @@
-package com.example.forum_horizon_chimie;
+package com.forumhorizonchimie.forum_horizon_chimie;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

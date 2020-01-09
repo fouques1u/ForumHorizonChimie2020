@@ -344,8 +344,6 @@ class _CvScreenState extends State<CvScreen> {
         }
       },
     );
-
-    ;
   }
 
   @override

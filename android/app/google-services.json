@@ -41,6 +41,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233375140951:android:d3b591204e44b2207f6712",
+        "android_client_info": {
+          "package_name": "com.forumhorizonchimie.forum_horizon_chimie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233375140951-7p1a59kjja5fohppja7ef67mvfj7gvps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAomJF6iEVczYU3r0CuzYpgWBtVOIqtA_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233375140951-7p1a59kjja5fohppja7ef67mvfj7gvps.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "233375140951-oltqd7a0rkgk3g6b48ecbf7at6stls7n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.forumHorizonChimie"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -3,7 +3,6 @@ import 'package:forum_horizon_chimie/widgets/conference_modal_bottom_sheet.dart'
 import 'package:forum_horizon_chimie/widgets/conference_widget.dart';
 
 import '../widgets/page_title_classic.dart';
-import '../app_localizations.dart';
 import '../colors.dart';
 
 class ConferenceScreen extends StatefulWidget {
@@ -39,9 +38,9 @@ class _ConferenceScreenState extends State<ConferenceScreen> {
           ClassicPageTitle(
             title: 'conference',
           ),
-          ConferenceWidget(
+          /*ConferenceWidget(
             onTapFunction: () => showConferenceBottomSheet(context),
-          ),
+          ),*/
         ],
       ),
     );
