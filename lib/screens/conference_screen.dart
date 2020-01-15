@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/data.dart';
 import 'package:forum_horizon_chimie/widgets/conference_modal_bottom_sheet.dart';
 import 'package:forum_horizon_chimie/widgets/conference_widget.dart';
 
@@ -11,18 +12,7 @@ class ConferenceScreen extends StatefulWidget {
 }
 
 class _ConferenceScreenState extends State<ConferenceScreen> {
-  void showConferenceBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      backgroundColor: lightGreenColor,
-      context: context,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
-      builder: (BuildContext context) {
-        return ConferenceModalBottomSheet();
-      },
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +23,19 @@ class _ConferenceScreenState extends State<ConferenceScreen> {
           fit: BoxFit.cover,
         ),
       ),
-      child: ListView(
-        children: <Widget>[
-          ClassicPageTitle(
-            title: 'conference',
-          ),
-          /*ConferenceWidget(
-            onTapFunction: () => showConferenceBottomSheet(context),
-          ),*/
-        ],
+      child: ListView.builder(
+        itemCount: conferencesData.length+1,
+        itemBuilder: (BuildContext context, int index) {
+          if (index == 0) {
+            return ClassicPageTitle(
+              title: 'conference',
+            );
+          }
+
+          return ConferenceWidget(
+            conference: conferencesData[index - 1],
+          );
+        },
       ),
     );
   }

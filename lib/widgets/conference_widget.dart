@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:forum_horizon_chimie/app_localizations.dart';
 
 import '../colors.dart';
+import 'conference_modal_bottom_sheet.dart';
 
 class ConferenceWidget extends StatelessWidget {
-  final Function onTapFunction;
+  final Map<String,String> conference;
 
-  ConferenceWidget({@required this.onTapFunction});
+  void showConferenceBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: lightGreenColor,
+      context: context,
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      builder: (BuildContext context) {
+        return ConferenceModalBottomSheet(conference: conference);
+      },
+    );
+  }
+
+  ConferenceWidget({ @required this.conference});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onTapFunction(),
+      onTap: () => showConferenceBottomSheet(context),
       child: Container(
         margin: EdgeInsets.symmetric(
           vertical: 10,
@@ -53,7 +68,7 @@ class ConferenceWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Conférence 'Elles bougent'",
+                  AppLocalizations.of(context).currentLanguage() == 'fr' ? conference['sujet_fr'] : conference['sujet_en'],
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Gotham',
@@ -64,7 +79,18 @@ class ConferenceWidget extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  "10:00 - 11:15 ; Salle 105.",
+                  conference['intervenant'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Gotham',
+                    fontSize: 11,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  conference['horaire'],
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Gotham',

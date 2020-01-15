@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../app_localizations.dart';
+
 class FirmModalBottomSheet extends StatelessWidget {
   final Map<String, String> standInformations;
 
@@ -55,7 +57,7 @@ class FirmModalBottomSheet extends StatelessWidget {
             height: 20,
           ),
           Text(
-            standInformations['description'],
+            AppLocalizations.of(context).currentLanguage() == 'fr' ? standInformations['description_fr'] : standInformations['description_en'],
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'Gotham',

@@ -33,6 +33,10 @@ class AppLocalizations {
   String translate(String key) {
     return _localizaedStrings[key];
   }
+
+  String currentLanguage() {
+    return locale.languageCode;
+  }
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

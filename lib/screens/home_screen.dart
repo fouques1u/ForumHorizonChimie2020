@@ -28,14 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _prefs = await SharedPreferences.getInstance();
 
-      bool _popUpShown =  await _prefs.getBool(isShownId) ?? false;
+      bool _popUpShown = await _prefs.getBool(isShownId) ?? false;
 
       if (!_popUpShown) {
         await showLargeBottomSheet(context);
 
         _popUpShown = true;
         await _prefs.setBool(isShownId, true);
-      } 
+      }
     });
   }
 
@@ -60,7 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.scaleDown,
               child: Text(
                 AppLocalizations.of(context).translate('welcome_to_fhc'),
-                style: Theme.of(context).textTheme.title.apply(color: darkBlueColor),
+                style: Theme.of(context)
+                    .textTheme
+                    .title
+                    .apply(color: darkBlueColor),
               ),
             ),
           ),
@@ -89,27 +92,65 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 // Date
-                Text(AppLocalizations.of(context).translate("date_forum"), style: Theme.of(context).textTheme.title,),
-                SizedBox(height: 15,),
+                Text(
+                  AppLocalizations.of(context).translate("date_forum"),
+                  style: Theme.of(context).textTheme.title,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 // Horaire
-                Text(AppLocalizations.of(context).translate("horaires_forum"), style: Theme.of(context).textTheme.body1,),
-                SizedBox(height: 5,),
+                Text(
+                  AppLocalizations.of(context).translate("horaires_forum"),
+                  style: Theme.of(context).textTheme.body1,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 // Entrée libre et gratuite
-                Text(AppLocalizations.of(context).translate("entree_forum"), style: Theme.of(context).textTheme.body1,),
-                SizedBox(height: 5,),
+                Text(
+                  AppLocalizations.of(context).translate("entree_forum"),
+                  style: Theme.of(context).textTheme.body1,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 // Restauration
-                Text(AppLocalizations.of(context).translate("restauration_forum"), style: Theme.of(context).textTheme.body1,),
-                SizedBox(height: 15,),
+                Text(
+                  AppLocalizations.of(context).translate("restauration_forum"),
+                  style: Theme.of(context).textTheme.body1,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 // Maison de la chimie
-                Text(AppLocalizations.of(context).translate("lieu_forum"), style: Theme.of(context).textTheme.subtitle,),
-                SizedBox(height: 5,), 
+                Text(
+                  AppLocalizations.of(context).translate("lieu_forum"),
+                  style: Theme.of(context).textTheme.subtitle,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 // Adresse
-                Text(AppLocalizations.of(context).translate("adresse_forum"), style: Theme.of(context).textTheme.body1,),
-                SizedBox(height: 15,),
+                Text(
+                  AppLocalizations.of(context).translate("adresse_forum"),
+                  style: Theme.of(context).textTheme.body1,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 // Transports Metro + RER
-                Text(AppLocalizations.of(context).translate("metro_forum"), style: Theme.of(context).textTheme.body1,),
-                SizedBox(height: 5,),
-                Text(AppLocalizations.of(context).translate("rer_forum"), style: Theme.of(context).textTheme.body1,),
+                Text(
+                  AppLocalizations.of(context).translate("metro_forum"),
+                  style: Theme.of(context).textTheme.body1,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  AppLocalizations.of(context).translate("rer_forum"),
+                  style: Theme.of(context).textTheme.body1,
+                ),
               ],
             ),
           ),
@@ -122,7 +163,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 50,
                   colorTile: darkBlueColor,
                   textCode: "firms",
-                  onTapFunction: () => widget.selectDestination(1),
+                  onTapFunction: () async {
+                    widget.selectDestination(1);
+                  },
                 ),
                 SizedBox(
                   height: 15,
