@@ -101,7 +101,7 @@ class SlotWidget extends StatelessWidget {
                     .translate('dialog_cv_delete_confirm'),
                 dialogCancel: AppLocalizations.of(context)
                     .translate('dialog_cv_delete_cancel'),
-                dialogConfirmAction: () => deleteCreneau(horaire),
+                dialogConfirmAction: () => deleteCreneau(horaire, {'deviceId' : deviceId, 'nom' : nom, 'prenom' : prenom}),
                 dialogTestBeforeConfirmation: true,
                 confirmError: AppLocalizations.of(context).translate("cv_delete_error"),
                 confirmSuccess: AppLocalizations.of(context).translate("cv_delete_success"),

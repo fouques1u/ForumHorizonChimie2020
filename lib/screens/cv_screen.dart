@@ -126,7 +126,7 @@ class _CvScreenState extends State<CvScreen> {
           ),
           // GridView
           LimitedBox(
-            maxHeight: MediaQuery.of(context).size.height * 0.4,
+            maxHeight: MediaQuery.of(context).size.height * 0.3,
             child: RefreshIndicator(
               backgroundColor: white,
               color: darkBlueColor,
@@ -182,9 +182,9 @@ class _CvScreenState extends State<CvScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text("Prenom : $prenom",
+                Text( AppLocalizations.of(context).translate('surname')+" : $prenom",
                     style: Theme.of(context).textTheme.body1),
-                Text("Nom : $nom", style: Theme.of(context).textTheme.body1),
+                Text(AppLocalizations.of(context).translate('name')+" : $nom", style: Theme.of(context).textTheme.body1),
                 Text(horaire, style: Theme.of(context).textTheme.body1),
               ],
             ),
@@ -346,6 +346,43 @@ class _CvScreenState extends State<CvScreen> {
     );
   }
 
+  Widget buildAttenteWidget() {
+    return FutureBuilder(
+      future: getAttente(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData != null &&
+            (snapshot.connectionState == ConnectionState.active ||
+                snapshot.connectionState == ConnectionState.done)) {
+          String requestResult = snapshot.data;
+
+          return Container(
+            margin: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 20,
+            ),
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 15.0,
+                  spreadRadius: 0.0,
+                  color: lightGreenColor,
+                )
+              ],
+              shape: BoxShape.rectangle,
+              color: lightGreenColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text(AppLocalizations.of(context).translate('attente')+requestResult+' min', style: Theme.of(context).textTheme.body1.apply(color: Colors.white)),
+          );
+        } else {
+          return Center();
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -366,6 +403,8 @@ class _CvScreenState extends State<CvScreen> {
             SizedBox(
               height: 10,
             ),
+            buildAttenteWidget(),
+            SizedBox(height: 10,),
             Container(
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(15, 10, 15, 30),

@@ -346,40 +346,135 @@ Future<List<Map<String, String>>> getCreneauxSaved() async {
   return _returnValue;
 }
 
-void deleteCreneau(String horaire) async {
-  Map<String, Object> newMap = {
-    "horaire": horaire,
-    "nom_1": "",
-    "prenom_1": "",
-    "deviceId_1": "",
-    "nom_2": "",
-    "prenom_2": "",
-    "deviceId_2": "",
-    "nom_3": "",
-    "prenom_3": "",
-    "deviceId_3": "",
-    "dispo": 3
-  };
+void deleteCreneau(String horaire, Map<String, String> userInfo) async {
+  Map<String, Object> newMap;
 
   List<DocumentSnapshot> data = await getSnapshot('creneaux_cv');
 
   final DocumentSnapshot creneauToUpdate =
       data.firstWhere((DocumentSnapshot documentSnapshot) {
-    return documentSnapshot.data['horaire'] == newMap['horaire'];
+    return documentSnapshot.data['horaire'] == horaire;
   });
 
+  // Troisième créneau supprimé
+  if (creneauToUpdate.data['deviceId_3'] == userInfo['deviceId'] && creneauToUpdate.data['nom_3'] == userInfo['nom'] && creneauToUpdate.data['prenom_3'] == userInfo['prenom']) {
+    // 3 créneaux précedemment réservés
+    newMap = {
+      "horaire": horaire,
+      "nom_1": creneauToUpdate.data['nom_1'],
+      "prenom_1": creneauToUpdate.data['prenom_1'],
+      "deviceId_1": creneauToUpdate.data['deviceId_1'],
+      "nom_2": creneauToUpdate.data['nom_2'],
+      "prenom_2": creneauToUpdate.data['prenom_2'],
+      "deviceId_2": creneauToUpdate.data['deviceId_2'],
+      "nom_3": "",
+      "prenom_3": "",
+      "deviceId_3": "",
+      "dispo": creneauToUpdate.data['dispo'] + 1
+    };
+  }
+
+  // Deuxième créneau supprimé
+  if (creneauToUpdate.data['deviceId_2'] == userInfo['deviceId']&& creneauToUpdate.data['nom_2'] == userInfo['nom'] && creneauToUpdate.data['prenom_2'] == userInfo['prenom']) {
+    // 3 créneaux réservés
+    if (creneauToUpdate.data['dispo'] == 0) {
+      newMap = {
+        "horaire": horaire,
+        "nom_1": creneauToUpdate.data['nom_1'],
+        "prenom_1": creneauToUpdate.data['prenom_1'],
+        "deviceId_1": creneauToUpdate.data['deviceId_1'],
+        "nom_2": creneauToUpdate.data['nom_3'],
+        "prenom_2": creneauToUpdate.data['prenom_3'],
+        "deviceId_2": creneauToUpdate.data['deviceId_3'],
+        "nom_3": "",
+        "prenom_3": "",
+        "deviceId_3": "",
+        "dispo": creneauToUpdate.data['dispo'] + 1
+      };
+    }
+    // 2 créneaux réservés
+    if (creneauToUpdate.data['dispo'] == 1) {
+      newMap = {
+        "horaire": horaire,
+        "nom_1": creneauToUpdate.data['nom_1'],
+        "prenom_1": creneauToUpdate.data['prenom_1'],
+        "deviceId_1": creneauToUpdate.data['deviceId_1'],
+        "nom_2": "",
+        "prenom_2": "",
+        "deviceId_2": "",
+        "nom_3": "",
+        "prenom_3": "",
+        "deviceId_3": "",
+        "dispo": creneauToUpdate.data['dispo'] + 1
+      };
+    }
+  }
+
+  // Premier créneau supprimé
+  if (creneauToUpdate.data['deviceId_1'] == userInfo['deviceId']&& creneauToUpdate.data['nom_1'] == userInfo['nom'] && creneauToUpdate.data['prenom_1'] == userInfo['prenom']) {
+    // 3 créneaux réservés
+    if (creneauToUpdate.data['dispo'] == 0) {
+      newMap = {
+        "horaire": horaire,
+        "nom_1": creneauToUpdate.data['nom_2'],
+        "prenom_1": creneauToUpdate.data['prenom_2'],
+        "deviceId_1": creneauToUpdate.data['deviceId_2'],
+        "nom_2": creneauToUpdate.data['nom_3'],
+        "prenom_2": creneauToUpdate.data['prenom_3'],
+        "deviceId_2": creneauToUpdate.data['deviceId_3'],
+        "nom_3": "",
+        "prenom_3": "",
+        "deviceId_3": "",
+        "dispo": creneauToUpdate.data['dispo'] + 1
+      };
+    }
+    // 2 créneaux réservés
+    if (creneauToUpdate.data['dispo'] == 1) {
+      newMap = {
+        "horaire": horaire,
+        "nom_1": creneauToUpdate.data['nom_2'],
+        "prenom_1": creneauToUpdate.data['prenom_2'],
+        "deviceId_1": creneauToUpdate.data['deviceId_2'],
+        "nom_2": "",
+        "prenom_2": "",
+        "deviceId_2": "",
+        "nom_3": "",
+        "prenom_3": "",
+        "deviceId_3": "",
+        "dispo": creneauToUpdate.data['dispo'] + 1
+      };
+    }
+
+    // 1 créneau réservé
+    if (creneauToUpdate.data['dispo'] == 2) {
+      newMap = {
+        "horaire": horaire,
+        "nom_1": "",
+        "prenom_1": "",
+        "deviceId_1": "",
+        "nom_2": "",
+        "prenom_2": "",
+        "deviceId_2": "",
+        "nom_3": "",
+        "prenom_3": "",
+        "deviceId_3": "",
+        "dispo": 3
+      };
+    }
+  }
+
   await Firestore.instance
-        .collection('creneaux_cv')
-        .document(creneauToUpdate.documentID)
-        .updateData(newMap);
+      .collection('creneaux_cv')
+      .document(creneauToUpdate.documentID)
+      .updateData(newMap);
 
-    Map<String, Object> creneauInList =
-        listCreneaux.firstWhere((Map<String, Object> localMap) {
-      return newMap['horaire'] == localMap['horaire'];
-    });
+  Map<String, Object> creneauInList =
+      listCreneaux.firstWhere((Map<String, Object> localMap) {
+    return newMap['horaire'] == localMap['horaire'];
+  });
 
-    listCreneaux.remove(creneauInList);
-    listCreneaux.add(newMap);
+  listCreneaux.remove(creneauInList);
+  listCreneaux.add(newMap);
 }
 
 void getConferences() async {
@@ -407,4 +502,17 @@ void getConferences() async {
       }
     }
   });
+}
+
+Future<String> getAttente() async {
+  List<DocumentSnapshot> data = await Firestore.instance
+      .collection('file_attente')
+      .getDocuments()
+      .then((QuerySnapshot querySnapshot) {
+    return querySnapshot.documents;
+  });
+
+  return data.firstWhere((DocumentSnapshot documentSnapshot) {
+    return documentSnapshot.documentID == 'attente';
+  }).data['attente'];
 }
