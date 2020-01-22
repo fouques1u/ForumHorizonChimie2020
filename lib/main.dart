@@ -7,7 +7,10 @@ import './application.dart';
 import 'home_page.dart';
 import './data.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -57,10 +60,7 @@ class _MyAppState extends State<MyApp> {
             color: darkBlueColor,
           ),
           title: TextStyle(
-            fontSize: 22,
-            color: Colors.white,
-            fontFamily: 'Gotham'
-          ),
+              fontSize: 22, color: Colors.white, fontFamily: 'Gotham'),
           subtitle: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -82,9 +82,15 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
       ],
       localeResolutionCallback: (locale, supportedLocales) {
+        if ( locale == null) {
+          return supportedLocales.first;
+        }
+
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode) {
-            return supportedLocale;
+          if (supportedLocale != null && locale != null) {
+            if (supportedLocale.languageCode == locale.languageCode) {
+              return supportedLocale;
+            }
           }
         }
         return supportedLocales.first;
