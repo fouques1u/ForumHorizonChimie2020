@@ -200,12 +200,12 @@ void updateCreneau(Map<String, Object> map) async {
       "nom_1": map['nom'],
       "prenom_1": map['prenom'],
       "deviceId_1": map['deviceId'],
-      "nom_2": creneauToUpdate.data['horaire'],
-      "prenom_2": creneauToUpdate.data['horaire'],
-      "deviceId_2": creneauToUpdate.data['horaire'],
-      "nom_3": creneauToUpdate.data['horaire'],
-      "prenom_3": creneauToUpdate.data['horaire'],
-      "deviceId_3": creneauToUpdate.data['horaire'],
+      "nom_2": creneauToUpdate.data['nom_2'],
+      "prenom_2": creneauToUpdate.data['prenom_2'],
+      "deviceId_2": creneauToUpdate.data['deviceId_2'],
+      "nom_3": creneauToUpdate.data['nom_3'],
+      "prenom_3": creneauToUpdate.data['prenom_3'],
+      "deviceId_3": creneauToUpdate.data['deviceID_3'],
       "dispo": 2
     };
 
