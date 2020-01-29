@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:io';
 
 import '../app_localizations.dart';
 
@@ -17,11 +18,13 @@ class FirmModalBottomSheet extends StatelessWidget {
     }
   }
 
-  Future _launchFacebookUrl(String oldUrl, String newUrl) async {
-    //TODO: Manage the old way of going into a facebook app with id
+  Future _launchFacebookUrl(String oldUrl, String newUrl, String url) async {
     if (await canLaunch(newUrl)) {
       await launch(newUrl);
     } else {
+      if (Platform.isIOS && await canLaunch(url)) {
+        await launch(url);
+      }
       throw 'Could not launch $newUrl';
     }
   }
@@ -83,7 +86,7 @@ class FirmModalBottomSheet extends StatelessWidget {
                       color: Color.fromRGBO(60, 90, 153, 1),
                     ),
                     onTap: () =>
-                        _launchFacebookUrl(standInformations['old_facebook_url'], standInformations['facebook_url']),
+                        _launchFacebookUrl(standInformations['old_facebook_url'], standInformations['facebook_url'], standInformations['facebook_url'].substring(25)),
                   ),
                 ),
                 Expanded(

@@ -397,7 +397,7 @@ class _CvScreenState extends State<CvScreen> {
         child: ListView(
           children: <Widget>[
             ClassicPageTitle(
-              title: 'reserve_photo_cv',
+              title: 'cv_registering',
             ),
             buildSlotWidgetStreamBuilder(),
             SizedBox(

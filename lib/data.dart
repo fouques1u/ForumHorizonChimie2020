@@ -205,7 +205,7 @@ void updateCreneau(Map<String, Object> map) async {
       "deviceId_2": creneauToUpdate.data['deviceId_2'],
       "nom_3": creneauToUpdate.data['nom_3'],
       "prenom_3": creneauToUpdate.data['prenom_3'],
-      "deviceId_3": creneauToUpdate.data['deviceID_3'],
+      "deviceId_3": creneauToUpdate.data['deviceId_3'],
       "dispo": 2
     };
 

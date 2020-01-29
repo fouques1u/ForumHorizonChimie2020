@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 import 'package:forum_horizon_chimie/colors.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
@@ -13,6 +14,7 @@ class OptionsScreen extends StatelessWidget {
       'fb://page/forumhorizonchimie'; // Handle versions in Facebook
   final String _facebookUrl =
       'fb://facewebmodal/f?href=https://www.facebook.com/forumhorizonchimie/';
+  final String _iOSFacebookUrl = 'https://www.facebook.com/forumhorizonchimie/';
   final String _linkedInUrl =
       'https://www.linkedin.com/company/forum-horizon-chimie/';
   final String _twitterUrl = 'http://www.twitter.com/horizonchimie';
@@ -31,10 +33,12 @@ class OptionsScreen extends StatelessWidget {
   }
 
   Future _launchFacebookUrl(String oldUrl, String newUrl) async {
-    //TODO: Manage the old way of going into a facebook app with id
     if (await canLaunch(newUrl)) {
       await launch(newUrl);
     } else {
+      if (Platform.isIOS && await canLaunch(_iOSFacebookUrl)) {
+        await launch(_iOSFacebookUrl);
+      }
       throw 'Could not launch $newUrl';
     }
   }

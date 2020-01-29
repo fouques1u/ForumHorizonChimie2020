@@ -8,7 +8,7 @@ import 'home_page.dart';
 import './data.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  
   runApp(MyApp());
 }
 
@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
       ],
       localeResolutionCallback: (locale, supportedLocales) {
         if ( locale == null) {
-          return supportedLocales.first;
+          return Locale('fr', 'FR');
         }
 
         for (var supportedLocale in supportedLocales) {
