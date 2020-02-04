@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:forum_horizon_chimie/widgets/arrow.dart';
+import 'package:forum_horizon_chimie/widgets/list_tile_firm_widget.dart';
 import 'package:forum_horizon_chimie/widgets/outline_button_classic.dart';
 import 'package:forum_horizon_chimie/widgets/page_title_classic.dart';
 import '../../widgets/firm_modal_bottom_sheet.dart';
@@ -12,30 +13,6 @@ class FirstFloorPage extends StatelessWidget {
   final PageController pageController;
 
   FirstFloorPage({@required this.pageController});
-
-  void showFirmInformations(BuildContext context, String standNumber) {
-    showModalBottomSheet(
-      backgroundColor: lightGreenColor,
-      context: context,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
-      builder: (context) => FutureBuilder(
-        future: getStandInformations(standNumber),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting || snapshot.connectionState == ConnectionState.none || snapshot.data == null) {
-            return Center(
-              child: RefreshProgressIndicator(),
-            );
-          } else {
-            return FirmModalBottomSheet(standInformations: snapshot.data,);
-          }
-        },
-      )
-      
-      
-    );
-  }
 
   final List<String> _standNumbers = [
     '1',
@@ -110,36 +87,25 @@ class FirstFloorPage extends StatelessWidget {
               color: darkBlueColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: GridView.count(
-              padding: EdgeInsets.all(5),
+            child: ListView(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              crossAxisCount: 4,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 3,
               children: _standNumbers
-                  .map(
-                    (String standNumber) => OutlineButtonClassic(
-                      text: standNumber,
-                      action: () => showFirmInformations(context, standNumber),
-                      longPressAction: () async {
-                        final standInformations = await
-                            getStandInformations(standNumber);
-                        print(standInformations['nom']);
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                          backgroundColor: darkBlueColor,
-                          content: Text(
-                            'Stand $standNumber : ${standInformations['nom']}',
-                            style: Theme.of(context).textTheme.body1,
-                          ),
-                          duration: Duration(
-                            milliseconds: 1000,
-                          ),
-                        ));
-                      },
-                    ),
-                  )
+                  .map((String standNumber) => FutureBuilder(
+                        future: getStandInformations(standNumber),
+                        builder: (context, AsyncSnapshot snapshot) {
+                          if (snapshot.connectionState ==
+                                  ConnectionState.waiting ||
+                              snapshot.connectionState ==
+                                  ConnectionState.none ||
+                              snapshot.data == null) {
+                            return Container();
+                          } else {
+                            return ListTileFirmWidget(
+                                standInformations: snapshot.data);
+                          }
+                        },
+                      ))
                   .toList(),
             ),
           ),
