@@ -5,7 +5,7 @@ import '../colors.dart';
 import 'conference_modal_bottom_sheet.dart';
 
 class ConferenceWidget extends StatelessWidget {
-  final Map<String,String> conference;
+  final Map<String, String> conference;
 
   void showConferenceBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -20,7 +20,7 @@ class ConferenceWidget extends StatelessWidget {
     );
   }
 
-  ConferenceWidget({ @required this.conference});
+  ConferenceWidget({@required this.conference});
 
   @override
   Widget build(BuildContext context) {
@@ -64,40 +64,44 @@ class ConferenceWidget extends StatelessWidget {
             SizedBox(
               width: 15,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  AppLocalizations.of(context).currentLanguage() == 'fr' ? conference['sujet_fr'] : conference['sujet_en'],
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Gotham',
-                    fontSize: 14,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    AppLocalizations.of(context).currentLanguage() == 'fr'
+                        ? conference['sujet_fr']
+                        : conference['sujet_en'],
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Gotham',
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  conference['intervenant'],
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Gotham',
-                    fontSize: 11,
+                  SizedBox(
+                    height: 5,
                   ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  conference['horaire'],
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Gotham',
-                    fontSize: 11,
+                  Text(
+                    conference['intervenant'],
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Gotham',
+                      fontSize: 11,
+                    ),
                   ),
-                )
-              ],
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    conference['horaire'],
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Gotham',
+                      fontSize: 11,
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
