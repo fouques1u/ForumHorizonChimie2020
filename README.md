@@ -1,6 +1,6 @@
 # forum_horizon_chimie
 
-A new Flutter project.
+Flutter project for the association Forum Horizon Chimie in Paris 
 
 ## Getting Started
 
