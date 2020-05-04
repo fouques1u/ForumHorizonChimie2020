@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info/device_info.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 List<Map<String, String>> firmsData = [];
 List<String> firmsId = [];
@@ -72,6 +73,8 @@ const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
 final String defaultDeviceId = getRandomString(20);
 //final StorageReference storageReference = FirebaseStorage().ref().child('gs://forumhorizonchimie-3d3a8.appspot.com/');
 final String isShownId = 'IS_SHOWN_ID';
+
+final StorageReference firebaseStorageReference = FirebaseStorage.instance.ref(); 
 
 String getRandomString(int strlen) {
   Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);

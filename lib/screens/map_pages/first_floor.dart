@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,9 +55,22 @@ class FirstFloorPage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         children: <Widget>[
           ClassicPageTitle(title: 'ground_floor'),
-          Container(
-            alignment: Alignment.center,
-            child: Image.asset("assets/images/plan_rdc.png"),
+          Center(
+            child: FutureBuilder(
+              future: firebaseStorageReference.child("etages/plan_rdc.png").getDownloadURL(),
+              builder: (context, snapshot) {
+                // TODO : Add handler on no connection.
+                if (snapshot.hasData) {
+                  return CachedNetworkImage(imageUrl: snapshot.data);
+                }
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: colorFour,
+                    valueColor: AlwaysStoppedAnimation(colorThree),
+                  ),
+                );
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.all(20),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:forum_horizon_chimie/widgets/arrow.dart';
 import 'package:forum_horizon_chimie/widgets/list_tile_firm_widget.dart';
@@ -34,11 +35,21 @@ class ThirdFloorPage extends StatelessWidget {
           ClassicPageTitle(
             title: 'second_floor',
           ),
-          Container(
-            alignment: Alignment.center,
-            child: Image.asset(
-              "assets/images/plan_etage_2.png",
-              width: MediaQuery.of(context).size.width * 0.9,
+          Center(
+            child: FutureBuilder(
+              future: firebaseStorageReference.child("etages/plan_rdc.png").getDownloadURL(),
+              builder: (context, snapshot) {
+                // TODO : Add handler on no connection.
+                if (snapshot.hasData) {
+                  return CachedNetworkImage(imageUrl: snapshot.data);
+                }
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: colorFour,
+                    valueColor: AlwaysStoppedAnimation(colorThree),
+                  ),
+                );
+              },
             ),
           ),
           Container(
