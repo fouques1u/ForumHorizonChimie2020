@@ -27,10 +27,10 @@ Future<List<Color>> getColors() async {
   return result;
 }
 
-Color colorFour = Color.fromRGBO(54, 213, 12, 1);
-Color colorThree = Color.fromRGBO(136, 126, 179, 1);
-Color colorTwo = Color.fromRGBO(34, 203, 90, 1);
-Color colorOne = Color.fromRGBO(256, 256, 14, 1);
+Color colorFour = Color.fromRGBO(45, 53, 141, 1);
+Color colorThree = Color.fromRGBO(52, 126, 179, 1);
+Color colorTwo = Color.fromRGBO(101, 203, 218, 1);
+Color colorOne = Color.fromRGBO(84, 196, 164, 1);
 
 const white = Colors.white;
 
