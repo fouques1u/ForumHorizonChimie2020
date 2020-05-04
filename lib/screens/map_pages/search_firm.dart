@@ -116,19 +116,19 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
               decoration: BoxDecoration(
-                color: simpleBlueColor,
+                color: colorThree,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 15.0,
                     spreadRadius: 0.0,
-                    color: darkBlueColor,
+                    color: colorFour,
                   )
                 ],
                 gradient: LinearGradient(
                   colors: <Color>[
-                    simpleBlueColor,
-                    darkBlueColor,
+                    colorThree,
+                    colorFour,
                   ],
                   end: Alignment.topLeft,
                   begin: Alignment.bottomRight,
@@ -150,7 +150,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                         hintStyle: Theme.of(context).textTheme.body2,
                         prefixIcon: Icon(
                           Icons.search,
-                          color: darkBlueColor,
+                          color: colorFour,
                         ),
                       ),
                       onChanged: (String text) => onSearchTextChanged(text),
@@ -250,7 +250,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                 children: <Widget>[
                   buildFloorButtons(
                     context: context,
-                    colorTile: darkBlueColor,
+                    colorTile: colorFour,
                     icon: Icon(
                       Icons.filter_1,
                       color: Colors.white,
@@ -268,7 +268,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                   SizedBox(height: 15),
                   buildFloorButtons(
                     context: context,
-                    colorTile: simpleBlueColor,
+                    colorTile: colorThree,
                     icon: Icon(
                       Icons.filter_2,
                       color: Colors.white,
@@ -286,7 +286,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                   SizedBox(height: 15),
                   buildFloorButtons(
                     context: context,
-                    colorTile: lightBlueColor,
+                    colorTile: colorTwo,
                     icon: Icon(
                       Icons.filter_3,
                       color: Colors.white,

@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .title
-                    .apply(color: darkBlueColor),
+                    .apply(color: colorFour),
               ),
             ),
           ),
@@ -75,8 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(15),
               gradient: LinearGradient(
                 colors: <Color>[
-                  darkBlueColor,
-                  simpleBlueColor,
+                  colorFour,
+                  colorThree,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 BoxShadow(
                   blurRadius: 15.0,
                   spreadRadius: 0.0,
-                  color: darkBlueColor,
+                  color: colorFour,
                 )
               ],
             ),
@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 GridTileClassic(
                   height: 50,
-                  colorTile: darkBlueColor,
+                  colorTile: colorFour,
                   textCode: "firms",
                   onTapFunction: () async {
                     widget.selectDestination(1);
@@ -173,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GridTileClassic(
                   height: 50,
-                  colorTile: simpleBlueColor,
+                  colorTile: colorThree,
                   textCode: 'conference',
                   onTapFunction: () => widget.selectDestination(2),
                 ),
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GridTileClassic(
                   height: 50,
-                  colorTile: lightBlueColor,
+                  colorTile: colorTwo,
                   textCode: "cv_registering",
                   onTapFunction: () => widget.selectDestination(3),
                 ),
@@ -191,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GridTileClassic(
                   height: 50,
-                  colorTile: lightGreenColor,
+                  colorTile: colorOne,
                   textCode: "options",
                   onTapFunction: () => widget.selectDestination(4),
                 ),

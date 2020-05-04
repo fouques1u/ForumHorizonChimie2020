@@ -70,8 +70,8 @@ class FirstFloorPage extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: <Color>[
-                  darkBlueColor,
-                  simpleBlueColor,
+                  colorFour,
+                  colorThree,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -80,11 +80,11 @@ class FirstFloorPage extends StatelessWidget {
                 BoxShadow(
                   blurRadius: 15.0,
                   spreadRadius: 0.0,
-                  color: darkBlueColor,
+                  color: colorFour,
                 )
               ],
               shape: BoxShape.rectangle,
-              color: darkBlueColor,
+              color: colorFour,
               borderRadius: BorderRadius.circular(10),
             ),
             child: ListView(

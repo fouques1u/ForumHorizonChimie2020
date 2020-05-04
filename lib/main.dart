@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
     getCreneaux();
     getConferences();
     getDeviceId();
+    getColors();
   }
 
   onLocaleChange(Locale locale) {
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Forum Horizon Chimie',
       theme: ThemeData(
         primaryColor: Colors.white,
-        accentColor: darkBlueColor,
+        accentColor: colorFour,
         bottomAppBarColor: Colors.white,
         textTheme: TextTheme(
           body1: TextStyle(
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           body2: TextStyle(
             fontSize: 14,
             fontFamily: 'Gotham',
-            color: darkBlueColor,
+            color: colorFour,
           ),
           title: TextStyle(
               fontSize: 22, color: Colors.white, fontFamily: 'Gotham'),

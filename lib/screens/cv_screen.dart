@@ -28,7 +28,7 @@ class _CvScreenState extends State<CvScreen> {
         return SimpleDialog(
           title: Text(
             AppLocalizations.of(context).translate(textCode),
-            style: TextStyle(fontFamily: 'Gotham', color: darkBlueColor),
+            style: TextStyle(fontFamily: 'Gotham', color: colorFour),
           ),
           children: <Widget>[
             SimpleDialogOption(
@@ -36,7 +36,7 @@ class _CvScreenState extends State<CvScreen> {
                 'OK',
                 style: TextStyle(
                   fontFamily: 'Gotham',
-                  color: darkBlueColor,
+                  color: colorFour,
                 ),
               ),
               onPressed: () {
@@ -129,7 +129,7 @@ class _CvScreenState extends State<CvScreen> {
             maxHeight: MediaQuery.of(context).size.height * 0.3,
             child: RefreshIndicator(
               backgroundColor: white,
-              color: darkBlueColor,
+              color: colorFour,
               child: GridView.count(
                 scrollDirection: Axis.vertical,
                 physics: const AlwaysScrollableScrollPhysics(),
@@ -198,12 +198,12 @@ class _CvScreenState extends State<CvScreen> {
                 style: TextStyle(color: Colors.white),
               ),
               decoration: BoxDecoration(
-                  color: lightGreenColor,
+                  color: colorOne,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
-                      color: lightBlueColor,
+                      color: colorTwo,
                       blurRadius: 5,
                     ),
                   ]),
@@ -225,7 +225,7 @@ class _CvScreenState extends State<CvScreen> {
                             AppLocalizations.of(context)
                                 .translate('dialog_cv_title'),
                             style: TextStyle(
-                                color: darkBlueColor, fontFamily: 'Gotham'),
+                                color: colorFour, fontFamily: 'Gotham'),
                           ),
                           content: Text(
                               AppLocalizations.of(context)
@@ -243,7 +243,7 @@ class _CvScreenState extends State<CvScreen> {
                                     AppLocalizations.of(context)
                                         .translate('dialog_cv_cancel'),
                                     style: TextStyle(
-                                        color: darkBlueColor,
+                                        color: colorFour,
                                         fontFamily: 'Gotham'))),
                             FlatButton(
                               onPressed: () {
@@ -261,7 +261,7 @@ class _CvScreenState extends State<CvScreen> {
                                   AppLocalizations.of(context)
                                       .translate('dialog_cv_confirm'),
                                   style: TextStyle(
-                                      color: darkBlueColor,
+                                      color: colorFour,
                                       fontFamily: 'Gotham')),
                             )
                           ],
@@ -271,7 +271,7 @@ class _CvScreenState extends State<CvScreen> {
                               AppLocalizations.of(context)
                                   .translate('dialog_cv_title'),
                               style: TextStyle(
-                                  color: darkBlueColor, fontFamily: 'Gotham')),
+                                  color: colorFour, fontFamily: 'Gotham')),
                           content: Text(
                             AppLocalizations.of(context)
                                     .translate('dialog_cv_text') +
@@ -289,7 +289,7 @@ class _CvScreenState extends State<CvScreen> {
                                     AppLocalizations.of(context)
                                         .translate('dialog_cv_cancel'),
                                     style: TextStyle(
-                                        color: darkBlueColor,
+                                        color: colorFour,
                                         fontFamily: 'Gotham'))),
                             FlatButton(
                               onPressed: () {
@@ -307,7 +307,7 @@ class _CvScreenState extends State<CvScreen> {
                                 AppLocalizations.of(context)
                                     .translate('dialog_cv_confirm'),
                                 style: TextStyle(
-                                    color: darkBlueColor, fontFamily: 'Gotham'),
+                                    color: colorFour, fontFamily: 'Gotham'),
                               ),
                             )
                           ],
@@ -367,11 +367,11 @@ class _CvScreenState extends State<CvScreen> {
                 BoxShadow(
                   blurRadius: 15.0,
                   spreadRadius: 0.0,
-                  color: lightGreenColor,
+                  color: colorOne,
                 )
               ],
               shape: BoxShape.rectangle,
-              color: lightGreenColor,
+              color: colorOne,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(AppLocalizations.of(context).translate('attente')+requestResult+' min', style: Theme.of(context).textTheme.body1.apply(color: Colors.white)),
@@ -409,19 +409,19 @@ class _CvScreenState extends State<CvScreen> {
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
               decoration: BoxDecoration(
-                color: simpleBlueColor,
+                color: colorThree,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 15.0,
                     spreadRadius: 0.0,
-                    color: darkBlueColor,
+                    color: colorFour,
                   )
                 ],
                 gradient: LinearGradient(
                   colors: <Color>[
-                    simpleBlueColor,
-                    darkBlueColor,
+                    colorThree,
+                    colorFour,
                   ],
                   end: Alignment.topLeft,
                   begin: Alignment.bottomRight,

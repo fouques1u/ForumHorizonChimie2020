@@ -12,7 +12,7 @@ void _showSimpleDialog(BuildContext context, String text, Function onConfirm) {
       return SimpleDialog(
         title: Text(
           text,
-          style: TextStyle(fontFamily: 'Gotham', color: darkBlueColor),
+          style: TextStyle(fontFamily: 'Gotham', color: colorFour),
         ),
         children: <Widget>[
           SimpleDialogOption(
@@ -20,7 +20,7 @@ void _showSimpleDialog(BuildContext context, String text, Function onConfirm) {
               'OK',
               style: TextStyle(
                 fontFamily: 'Gotham',
-                color: darkBlueColor,
+                color: colorFour,
               ),
             ),
             onPressed: () {
@@ -54,7 +54,7 @@ void showDialogWithConfirmation({
               title: Text(
                 dialogTitle,
                 style: TextStyle(
-                  color: darkBlueColor,
+                  color: colorFour,
                   fontFamily: 'Gotham',
                 ),
               ),
@@ -72,7 +72,7 @@ void showDialogWithConfirmation({
                   child: Text(
                     dialogCancel,
                     style: TextStyle(
-                      color: darkBlueColor,
+                      color: colorFour,
                       fontFamily: 'Gotham',
                     ),
                   ),
@@ -90,7 +90,7 @@ void showDialogWithConfirmation({
                   child: Text(
                     dialogConfirm,
                     style: TextStyle(
-                      color: darkBlueColor,
+                      color: colorFour,
                       fontFamily: 'Gotham',
                     ),
                   ),
@@ -101,7 +101,7 @@ void showDialogWithConfirmation({
               title: Text(
                 dialogTitle,
                 style: TextStyle(
-                  color: darkBlueColor,
+                  color: colorFour,
                   fontFamily: 'Gotham',
                 ),
               ),
@@ -119,7 +119,7 @@ void showDialogWithConfirmation({
                   child: Text(
                     dialogCancel,
                     style: TextStyle(
-                      color: darkBlueColor,
+                      color: colorFour,
                       fontFamily: 'Gotham',
                     ),
                   ),
@@ -137,7 +137,7 @@ void showDialogWithConfirmation({
                   child: Text(
                     dialogConfirm,
                     style: TextStyle(
-                      color: darkBlueColor,
+                      color: colorFour,
                       fontFamily: 'Gotham',
                     ),
                   ),
@@ -161,10 +161,10 @@ void showLargeBottomSheet(BuildContext context) {
             boxShadow: [
               BoxShadow(
                 blurRadius: 4,
-                color: lightGreenColor,
+                color: colorOne,
               ),
             ],
-            color: lightGreenColor,
+            color: colorOne,
           ),
           child: ListView(
             scrollDirection: Axis.vertical,
@@ -197,7 +197,7 @@ void showLargeBottomSheet(BuildContext context) {
                 },
                 child: Text(
                   AppLocalizations.of(context).translate("thanks"),
-                  style: Theme.of(context).textTheme.body1.apply(color: lightGreenColor),
+                  style: Theme.of(context).textTheme.body1.apply(color: colorOne),
                 ),
               )
             ],

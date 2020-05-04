@@ -17,10 +17,10 @@ class ClassicPageTitle extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: <Color>[
-            lightGreenColor,
-            lightBlueColor,
-            simpleBlueColor,
-            darkBlueColor,
+            colorOne,
+            colorTwo,
+            colorThree,
+            colorFour,
           ],
         ),
         borderRadius: BorderRadius.circular(15),
@@ -28,7 +28,7 @@ class ClassicPageTitle extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 4,
-            color: lightBlueColor,
+            color: colorTwo,
           ),
         ],
       ),

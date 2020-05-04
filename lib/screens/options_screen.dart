@@ -73,9 +73,9 @@ class OptionsScreen extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: darkBlueColor,
+              color: colorFour,
               gradient: LinearGradient(
-                colors: <Color>[darkBlueColor, simpleBlueColor],
+                colors: <Color>[colorFour, colorThree],
                 end: Alignment.bottomRight,
                 begin: Alignment.topLeft,
               ),
@@ -83,7 +83,7 @@ class OptionsScreen extends StatelessWidget {
                 BoxShadow(
                   blurRadius: 15.0,
                   spreadRadius: 0.0,
-                  color: darkBlueColor,
+                  color: colorFour,
                 )
               ],
             ),
@@ -109,7 +109,7 @@ class OptionsScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () => changeLocale(Locale('fr', 'FR')),
-                        borderSide: BorderSide(color: lightBlueColor),
+                        borderSide: BorderSide(color: colorTwo),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
                       ),
@@ -119,7 +119,7 @@ class OptionsScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () => changeLocale(Locale('en', 'EN')),
-                        borderSide: BorderSide(color: lightBlueColor),
+                        borderSide: BorderSide(color: colorTwo),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
                       ),
@@ -180,7 +180,7 @@ class OptionsScreen extends StatelessWidget {
                         child: GestureDetector(
                           child: Icon(
                             Icons.language,
-                            color: darkBlueColor,
+                            color: colorFour,
                           ),
                           onTap: () => _launchURL(_webSiteUrl),
                         ),

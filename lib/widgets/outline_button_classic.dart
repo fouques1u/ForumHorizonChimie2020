@@ -12,7 +12,7 @@ class OutlineButtonClassic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      highlightColor: lightBlueColor,
+      highlightColor: colorTwo,
       child: Container(
         padding: EdgeInsets.symmetric(
           vertical: 1,
@@ -21,7 +21,7 @@ class OutlineButtonClassic extends StatelessWidget {
         child: FittedBox(
           child: Text(
             text,
-            style: TextStyle(color: lightBlueColor),
+            style: TextStyle(color: colorTwo),
           ),
         ),
         decoration: BoxDecoration(

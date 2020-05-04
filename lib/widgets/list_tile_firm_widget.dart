@@ -11,7 +11,7 @@ class ListTileFirmWidget extends StatelessWidget {
 
   void showFirmInformations(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: lightGreenColor,
+      backgroundColor: colorOne,
       context: context,
       elevation: 4,
       shape: RoundedRectangleBorder(
