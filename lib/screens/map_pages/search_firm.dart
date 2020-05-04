@@ -102,12 +102,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
     return InkWell(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: ExactAssetImage('assets/images/img_2_gradient.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        color: white,
         child: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[

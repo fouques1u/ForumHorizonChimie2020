@@ -48,12 +48,7 @@ class FirstFloorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: ExactAssetImage('assets/images/img_2_gradient.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
+      color: white,
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
@@ -94,15 +89,12 @@ class FirstFloorPage extends StatelessWidget {
                   .map((String standNumber) => FutureBuilder(
                         future: getStandInformations(standNumber),
                         builder: (context, AsyncSnapshot snapshot) {
-                          if (snapshot.connectionState ==
-                                  ConnectionState.waiting ||
-                              snapshot.connectionState ==
-                                  ConnectionState.none ||
+                          if (snapshot.connectionState == ConnectionState.waiting ||
+                              snapshot.connectionState == ConnectionState.none ||
                               snapshot.data == null) {
                             return Container();
                           } else {
-                            return ListTileFirmWidget(
-                                standInformations: snapshot.data);
+                            return ListTileFirmWidget(standInformations: snapshot.data);
                           }
                         },
                       ))

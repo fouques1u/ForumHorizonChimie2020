@@ -388,12 +388,7 @@ class _CvScreenState extends State<CvScreen> {
     return InkWell(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: ExactAssetImage('assets/images/img_1_gradient.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        color: white,
         child: ListView(
           children: <Widget>[
             ClassicPageTitle(

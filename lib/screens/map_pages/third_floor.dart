@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:forum_horizon_chimie/widgets/arrow.dart';
 import 'package:forum_horizon_chimie/widgets/list_tile_firm_widget.dart';
 
-import '../../widgets/firm_modal_bottom_sheet.dart';
 import '../../widgets/page_title_classic.dart';
-import '../../widgets/outline_button_classic.dart';
 import '../../colors.dart';
 import '../../data.dart';
 
@@ -29,12 +27,7 @@ class ThirdFloorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: ExactAssetImage('assets/images/img_2_gradient.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
+      color: white,
       child: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
