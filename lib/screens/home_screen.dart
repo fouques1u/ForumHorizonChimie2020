@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/icon_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:forum_horizon_chimie/app_localizations.dart';
@@ -61,10 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.scaleDown,
               child: Text(
                 AppLocalizations.of(context).translate('welcome_to_fhc'),
-                style: Theme.of(context)
-                    .textTheme
-                    .title
-                    .apply(color: colorFour),
+                style: Theme.of(context).textTheme.headline6.apply(color: colorFour),
               ),
             ),
           ),
@@ -95,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Date
                 Text(
                   AppLocalizations.of(context).translate("date_forum"),
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
                   height: 15,
@@ -103,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Horaire
                 Text(
                   AppLocalizations.of(context).translate("horaires_forum"),
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 SizedBox(
                   height: 5,
@@ -111,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Entrée libre et gratuite
                 Text(
                   AppLocalizations.of(context).translate("entree_forum"),
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 SizedBox(
                   height: 5,
@@ -119,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Restauration
                 Text(
                   AppLocalizations.of(context).translate("restauration_forum"),
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 SizedBox(
                   height: 15,
@@ -127,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Maison de la chimie
                 Text(
                   AppLocalizations.of(context).translate("lieu_forum"),
-                  style: Theme.of(context).textTheme.subtitle,
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
                 SizedBox(
                   height: 5,
@@ -135,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Adresse
                 Text(
                   AppLocalizations.of(context).translate("adresse_forum"),
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 SizedBox(
                   height: 15,
@@ -143,14 +139,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Transports Metro + RER
                 Text(
                   AppLocalizations.of(context).translate("metro_forum"),
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 SizedBox(
                   height: 5,
                 ),
                 Text(
                   AppLocalizations.of(context).translate("rer_forum"),
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
             ),

@@ -197,7 +197,7 @@ void showLargeBottomSheet(BuildContext context) {
                 },
                 child: Text(
                   AppLocalizations.of(context).translate("thanks"),
-                  style: Theme.of(context).textTheme.body1.apply(color: colorOne),
+                  style: Theme.of(context).textTheme.bodyText2.apply(color: colorOne),
                 ),
               )
             ],

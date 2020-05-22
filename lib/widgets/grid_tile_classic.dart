@@ -9,11 +9,7 @@ class GridTileClassic extends StatelessWidget {
   final double height;
   Icon icon;
 
-  GridTileClassic(
-      {@required this.colorTile,
-      @required this.textCode,
-      @required this.onTapFunction,
-      @required this.height});
+  GridTileClassic({@required this.colorTile, @required this.textCode, @required this.onTapFunction, @required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -93,18 +89,15 @@ class GridTileClassic extends StatelessWidget {
               ),
               Text(
                 AppLocalizations.of(context).translate(textCode),
-                style: Theme.of(context).textTheme.body1,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ],
           ),
         ),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            shape: BoxShape.rectangle,
-            color: colorTile,
-            boxShadow: <BoxShadow>[
-              BoxShadow(color: colorTile, blurRadius: 6, spreadRadius: 0),
-            ]),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(15), shape: BoxShape.rectangle, color: colorTile, boxShadow: <BoxShadow>[
+          BoxShadow(color: colorTile, blurRadius: 6, spreadRadius: 0),
+        ]),
       ),
     );
   }

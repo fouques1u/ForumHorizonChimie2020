@@ -52,12 +52,7 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
     onSearchTextChanged("");
   }
 
-  Widget buildFloorButtons(
-      {BuildContext context,
-      Function onTapFunction,
-      Icon icon,
-      String textCode,
-      Color colorTile}) {
+  Widget buildFloorButtons({BuildContext context, Function onTapFunction, Icon icon, String textCode, Color colorTile}) {
     return InkWell(
       onTap: () {
         onTapFunction();
@@ -82,17 +77,14 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
             ),
           ],
         ),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            shape: BoxShape.rectangle,
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(15), shape: BoxShape.rectangle, color: colorTile, boxShadow: <BoxShadow>[
+          BoxShadow(
             color: colorTile,
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: colorTile,
-                blurRadius: 6,
-                spreadRadius: 0,
-              ),
-            ]),
+            blurRadius: 6,
+            spreadRadius: 0,
+          ),
+        ]),
       ),
     );
   }
@@ -134,15 +126,12 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                   Container(
                     padding: EdgeInsets.all(5),
                     margin: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadiusDirectional.circular(15)),
+                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadiusDirectional.circular(15)),
                     child: TextField(
                       controller: _filter,
                       decoration: InputDecoration(
-                        hintText: AppLocalizations.of(context)
-                            .translate('search_firm'),
-                        hintStyle: Theme.of(context).textTheme.body2,
+                        hintText: AppLocalizations.of(context).translate('search_firm'),
+                        hintStyle: Theme.of(context).textTheme.bodyText1,
                         prefixIcon: Icon(
                           Icons.search,
                           color: colorFour,
@@ -161,22 +150,14 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                     ),
                     child: Column(
                       children: _filteredNames.length == 0
-                          ? [
-                              Text(
-                                  AppLocalizations.of(context)
-                                      .translate("no_firms_found"),
-                                  style: Theme.of(context).textTheme.body2)
-                            ]
+                          ? [Text(AppLocalizations.of(context).translate("no_firms_found"), style: Theme.of(context).textTheme.bodyText1)]
                           : _filteredNames
                               .map((String name) {
                                 return FutureBuilder(
                                   future: getStandFirmByName(name),
-                                  builder: (BuildContext context,
-                                      AsyncSnapshot snapshot) {
-                                    if (snapshot.connectionState ==
-                                            ConnectionState.none ||
-                                        snapshot.connectionState ==
-                                            ConnectionState.waiting ||
+                                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                    if (snapshot.connectionState == ConnectionState.none ||
+                                        snapshot.connectionState == ConnectionState.waiting ||
                                         snapshot.data == null) {
                                       return ListTile(
                                         title: Text(name),
@@ -195,22 +176,18 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                                             widget.pageController.animateToPage(
                                               3,
                                               curve: Curves.ease,
-                                              duration:
-                                                  Duration(milliseconds: 650),
+                                              duration: Duration(milliseconds: 650),
                                             );
-                                            FocusScope.of(context)
-                                                .requestFocus(FocusNode());
+                                            FocusScope.of(context).requestFocus(FocusNode());
                                           }
                                           // First floor
                                           if (_standNumber.startsWith("1")) {
                                             widget.pageController.animateToPage(
                                               2,
                                               curve: Curves.ease,
-                                              duration:
-                                                  Duration(milliseconds: 650),
+                                              duration: Duration(milliseconds: 650),
                                             );
-                                            FocusScope.of(context)
-                                                .requestFocus(FocusNode());
+                                            FocusScope.of(context).requestFocus(FocusNode());
                                           }
                                         }
                                         // Ground floor
@@ -218,11 +195,9 @@ class _SearchFirmPageState extends State<SearchFirmPage> {
                                           widget.pageController.animateToPage(
                                             1,
                                             curve: Curves.ease,
-                                            duration:
-                                                Duration(milliseconds: 650),
+                                            duration: Duration(milliseconds: 650),
                                           );
-                                          FocusScope.of(context)
-                                              .requestFocus(FocusNode());
+                                          FocusScope.of(context).requestFocus(FocusNode());
                                         }
                                       },
                                     );

@@ -39,7 +39,6 @@ class ThirdFloorPage extends StatelessWidget {
             child: FutureBuilder(
               future: firebaseStorageReference.child("etages/plan_rdc.png").getDownloadURL(),
               builder: (context, snapshot) {
-                // TODO : Add handler on no connection.
                 if (snapshot.hasData) {
                   return CachedNetworkImage(imageUrl: snapshot.data);
                 }
@@ -83,15 +82,12 @@ class ThirdFloorPage extends StatelessWidget {
                   .map((String standNumber) => FutureBuilder(
                         future: getStandInformations(standNumber),
                         builder: (context, AsyncSnapshot snapshot) {
-                          if (snapshot.connectionState ==
-                                  ConnectionState.waiting ||
-                              snapshot.connectionState ==
-                                  ConnectionState.none ||
+                          if (snapshot.connectionState == ConnectionState.waiting ||
+                              snapshot.connectionState == ConnectionState.none ||
                               snapshot.data == null) {
                             return Container();
                           } else {
-                            return ListTileFirmWidget(
-                                standInformations: snapshot.data);
+                            return ListTileFirmWidget(standInformations: snapshot.data);
                           }
                         },
                       ))

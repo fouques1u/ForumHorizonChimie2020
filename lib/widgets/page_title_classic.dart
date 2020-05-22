@@ -36,7 +36,7 @@ class ClassicPageTitle extends StatelessWidget {
       child: FittedBox(
         child: Text(
           AppLocalizations.of(context).translate(title),
-          style: Theme.of(context).textTheme.subtitle,
+          style: Theme.of(context).textTheme.subtitle2,
         ),
       ),
     );

@@ -4,8 +4,7 @@ import '../colors.dart';
 import 'firm_modal_bottom_sheet.dart';
 
 class ListTileFirmWidget extends StatelessWidget {
-  const ListTileFirmWidget({Key key, @required this.standInformations})
-      : super(key: key);
+  const ListTileFirmWidget({Key key, @required this.standInformations}) : super(key: key);
 
   final Map<String, String> standInformations;
 
@@ -14,8 +13,7 @@ class ListTileFirmWidget extends StatelessWidget {
       backgroundColor: colorOne,
       context: context,
       elevation: 4,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
       builder: (context) => FirmModalBottomSheet(
         standInformations: standInformations,
       ),
@@ -27,9 +25,9 @@ class ListTileFirmWidget extends StatelessWidget {
     return ListTile(
       title: Text(
         standInformations['nom'],
-        style: Theme.of(context).textTheme.body1,
+        style: Theme.of(context).textTheme.bodyText2,
       ),
-      subtitle: Text("Stand : ${standInformations['stand']}", style: Theme.of(context).textTheme.body1.apply(fontSizeDelta: -3.0)),
+      subtitle: Text("Stand : ${standInformations['stand']}", style: Theme.of(context).textTheme.bodyText2.apply(fontSizeDelta: -3.0)),
       onTap: () => showFirmInformations(context),
       dense: true,
     );

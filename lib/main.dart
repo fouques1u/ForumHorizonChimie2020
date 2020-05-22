@@ -8,7 +8,6 @@ import 'home_page.dart';
 import './data.dart';
 
 void main() {
-  
   runApp(MyApp());
 }
 
@@ -50,19 +49,18 @@ class _MyAppState extends State<MyApp> {
         accentColor: colorFour,
         bottomAppBarColor: Colors.white,
         textTheme: TextTheme(
-          body1: TextStyle(
+          bodyText2: TextStyle(
             fontSize: 14,
             fontFamily: 'Gotham',
             color: Colors.white,
           ),
-          body2: TextStyle(
+          bodyText1: TextStyle(
             fontSize: 14,
             fontFamily: 'Gotham',
             color: colorFour,
           ),
-          title: TextStyle(
-              fontSize: 22, color: Colors.white, fontFamily: 'Gotham'),
-          subtitle: TextStyle(
+          headline6: TextStyle(fontSize: 22, color: Colors.white, fontFamily: 'Gotham'),
+          subtitle2: TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontFamily: 'Gotham',
@@ -83,7 +81,7 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
       ],
       localeResolutionCallback: (locale, supportedLocales) {
-        if ( locale == null) {
+        if (locale == null) {
           return Locale('fr', 'FR');
         }
 

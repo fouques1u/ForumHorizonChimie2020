@@ -58,7 +58,7 @@ class _CvScreenState extends State<CvScreen> {
         children: <Widget>[
           // Textfields
           TextField(
-            style: Theme.of(context).textTheme.body1,
+            style: Theme.of(context).textTheme.bodyText2,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: AppLocalizations.of(context).translate('surname'),
@@ -89,7 +89,7 @@ class _CvScreenState extends State<CvScreen> {
             height: 10,
           ),
           TextField(
-            style: Theme.of(context).textTheme.body1,
+            style: Theme.of(context).textTheme.bodyText2,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: AppLocalizations.of(context).translate('name'),
@@ -121,7 +121,7 @@ class _CvScreenState extends State<CvScreen> {
             margin: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
             child: Text(
               AppLocalizations.of(context).translate('available_dates'),
-              style: Theme.of(context).textTheme.subtitle,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ),
           // GridView
@@ -182,10 +182,9 @@ class _CvScreenState extends State<CvScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text( AppLocalizations.of(context).translate('surname')+" : $prenom",
-                    style: Theme.of(context).textTheme.body1),
-                Text(AppLocalizations.of(context).translate('name')+" : $nom", style: Theme.of(context).textTheme.body1),
-                Text(horaire, style: Theme.of(context).textTheme.body1),
+                Text(AppLocalizations.of(context).translate('surname') + " : $prenom", style: Theme.of(context).textTheme.bodyText2),
+                Text(AppLocalizations.of(context).translate('name') + " : $nom", style: Theme.of(context).textTheme.bodyText2),
+                Text(horaire, style: Theme.of(context).textTheme.bodyText2),
               ],
             ),
           ),
@@ -197,40 +196,25 @@ class _CvScreenState extends State<CvScreen> {
                 AppLocalizations.of(context).translate('confirm'),
                 style: TextStyle(color: Colors.white),
               ),
-              decoration: BoxDecoration(
-                  color: colorOne,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: colorTwo,
-                      blurRadius: 5,
-                    ),
-                  ]),
+              decoration: BoxDecoration(color: colorOne, shape: BoxShape.rectangle, borderRadius: BorderRadius.circular(15), boxShadow: [
+                BoxShadow(
+                  color: colorTwo,
+                  blurRadius: 5,
+                ),
+              ]),
             ),
             onTap: () {
               showDialog(
                 context: context,
                 builder: (context) {
-                  final mapToUpdate = {
-                    'deviceId': deviceId,
-                    'dispo': false,
-                    'horaire': horaire,
-                    'nom': nom,
-                    'prenom': prenom
-                  };
+                  final mapToUpdate = {'deviceId': deviceId, 'dispo': false, 'horaire': horaire, 'nom': nom, 'prenom': prenom};
                   return Platform.isAndroid
                       ? AlertDialog(
                           title: Text(
-                            AppLocalizations.of(context)
-                                .translate('dialog_cv_title'),
-                            style: TextStyle(
-                                color: colorFour, fontFamily: 'Gotham'),
+                            AppLocalizations.of(context).translate('dialog_cv_title'),
+                            style: TextStyle(color: colorFour, fontFamily: 'Gotham'),
                           ),
-                          content: Text(
-                              AppLocalizations.of(context)
-                                      .translate('dialog_cv_text') +
-                                  '\n$nom\n$prenom\n$horaire',
+                          content: Text(AppLocalizations.of(context).translate('dialog_cv_text') + '\n$nom\n$prenom\n$horaire',
                               style: TextStyle(
                                 fontFamily: 'Gotham',
                               )),
@@ -239,43 +223,28 @@ class _CvScreenState extends State<CvScreen> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('dialog_cv_cancel'),
-                                    style: TextStyle(
-                                        color: colorFour,
-                                        fontFamily: 'Gotham'))),
+                                child: Text(AppLocalizations.of(context).translate('dialog_cv_cancel'),
+                                    style: TextStyle(color: colorFour, fontFamily: 'Gotham'))),
                             FlatButton(
                               onPressed: () {
                                 Navigator.pop(context);
                                 if (checkCreneauAvailability(horaire)) {
                                   updateCreneau(mapToUpdate);
-                                  showSimpleDialog(
-                                      context, 'dialog_confirmation_toast');
+                                  showSimpleDialog(context, 'dialog_confirmation_toast');
                                 } else {
-                                  showSimpleDialog(
-                                      context, 'toast_unable_save_creneau');
+                                  showSimpleDialog(context, 'toast_unable_save_creneau');
                                 }
                               },
-                              child: Text(
-                                  AppLocalizations.of(context)
-                                      .translate('dialog_cv_confirm'),
-                                  style: TextStyle(
-                                      color: colorFour,
-                                      fontFamily: 'Gotham')),
+                              child: Text(AppLocalizations.of(context).translate('dialog_cv_confirm'),
+                                  style: TextStyle(color: colorFour, fontFamily: 'Gotham')),
                             )
                           ],
                         )
                       : CupertinoAlertDialog(
-                          title: Text(
-                              AppLocalizations.of(context)
-                                  .translate('dialog_cv_title'),
-                              style: TextStyle(
-                                  color: colorFour, fontFamily: 'Gotham')),
+                          title: Text(AppLocalizations.of(context).translate('dialog_cv_title'),
+                              style: TextStyle(color: colorFour, fontFamily: 'Gotham')),
                           content: Text(
-                            AppLocalizations.of(context)
-                                    .translate('dialog_cv_text') +
-                                "\n$nom\n$prenom\n$horaire",
+                            AppLocalizations.of(context).translate('dialog_cv_text') + "\n$nom\n$prenom\n$horaire",
                             style: TextStyle(
                               fontFamily: 'Gotham',
                             ),
@@ -285,29 +254,21 @@ class _CvScreenState extends State<CvScreen> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('dialog_cv_cancel'),
-                                    style: TextStyle(
-                                        color: colorFour,
-                                        fontFamily: 'Gotham'))),
+                                child: Text(AppLocalizations.of(context).translate('dialog_cv_cancel'),
+                                    style: TextStyle(color: colorFour, fontFamily: 'Gotham'))),
                             FlatButton(
                               onPressed: () {
                                 Navigator.pop(context);
                                 if (checkCreneauAvailability(horaire)) {
                                   updateCreneau(mapToUpdate);
-                                  showSimpleDialog(
-                                      context, 'dialog_confirmation_toast');
+                                  showSimpleDialog(context, 'dialog_confirmation_toast');
                                 } else {
-                                  showSimpleDialog(
-                                      context, 'toast_unable_save_creneau');
+                                  showSimpleDialog(context, 'toast_unable_save_creneau');
                                 }
                               },
                               child: Text(
-                                AppLocalizations.of(context)
-                                    .translate('dialog_cv_confirm'),
-                                style: TextStyle(
-                                    color: colorFour, fontFamily: 'Gotham'),
+                                AppLocalizations.of(context).translate('dialog_cv_confirm'),
+                                style: TextStyle(color: colorFour, fontFamily: 'Gotham'),
                               ),
                             )
                           ],
@@ -326,8 +287,7 @@ class _CvScreenState extends State<CvScreen> {
       future: getCreneauxSaved(),
       builder: (context, snapshot) {
         if (snapshot.hasData != null &&
-            (snapshot.connectionState == ConnectionState.active ||
-                snapshot.connectionState == ConnectionState.done)) {
+            (snapshot.connectionState == ConnectionState.active || snapshot.connectionState == ConnectionState.done)) {
           List<Map<String, String>> requestResult = snapshot.data;
           return Column(
             children: requestResult.map((Map<String, String> creneau) {
@@ -351,8 +311,7 @@ class _CvScreenState extends State<CvScreen> {
       future: getAttente(),
       builder: (context, snapshot) {
         if (snapshot.hasData != null &&
-            (snapshot.connectionState == ConnectionState.active ||
-                snapshot.connectionState == ConnectionState.done)) {
+            (snapshot.connectionState == ConnectionState.active || snapshot.connectionState == ConnectionState.done)) {
           String requestResult = snapshot.data;
 
           return Container(
@@ -374,7 +333,8 @@ class _CvScreenState extends State<CvScreen> {
               color: colorOne,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Text(AppLocalizations.of(context).translate('attente')+requestResult+' min', style: Theme.of(context).textTheme.body1.apply(color: Colors.white)),
+            child: Text(AppLocalizations.of(context).translate('attente') + requestResult + ' min',
+                style: Theme.of(context).textTheme.bodyText2.apply(color: Colors.white)),
           );
         } else {
           return Center();
@@ -399,7 +359,9 @@ class _CvScreenState extends State<CvScreen> {
               height: 10,
             ),
             buildAttenteWidget(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(15, 10, 15, 30),
