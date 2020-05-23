@@ -24,6 +24,8 @@ class _HomePageState extends State<HomePage> {
   List<Map<String, Object>> _pages;
   CurvedNavigationBarState _navigationBarState;
   int _selectedPageIndex = 0;
+  final Widget confScreen = ConferenceScreen();
+  final Widget cvScreen = CvScreen();
 
   void _selectPage(int index) {
     setState(() {
@@ -55,8 +57,8 @@ class _HomePageState extends State<HomePage> {
         ),
         'title_code': 'plan'
       },
-      {'page' : ConferenceScreen(), 'title_code': 'conference'},
-      {'page': CvScreen(), 'title_code': 'cv_registering'},
+      {'page': confScreen, 'title_code': 'conference'},
+      {'page': cvScreen, 'title_code': 'cv_registering'},
       {
         'page': OptionsScreen(
           changeLocale: widget.setNewLanguage,
